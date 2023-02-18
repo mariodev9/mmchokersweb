@@ -48,6 +48,13 @@ export const theme = extendTheme({
   // COMPONENTES
   components: {
     Button: {
+      baseStyle: {
+        bg: "none",
+        _hover: {
+          bg: "none",
+        },
+      },
+
       variants: {
         primary: {
           bg: "yellow.100",

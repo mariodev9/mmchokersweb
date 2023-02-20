@@ -5,6 +5,7 @@ import { Slider } from "../components/Home/Slider";
 import { SocialMedia } from "../components/Home/SocialMedia";
 import { Smile } from "../components/Icons";
 import Product from "../components/Products/Product";
+import { motion } from "framer-motion";
 
 export default function Home({ data }) {
   return (
@@ -16,26 +17,40 @@ export default function Home({ data }) {
       </Head>
       <Layout>
         <Flex justify={"center"}>
-          <Text
-            fontFamily={"'Bebas Neue', cursive"}
-            fontSize={{ base: "5em", tablet: "15em", desktop: "23em" }}
-            letterSpacing={"15px"}
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1, type: "spring" }}
           >
-            we are
-          </Text>
+            <Text
+              fontFamily={"'Bebas Neue', cursive"}
+              fontSize={{ base: "5em", tablet: "15em", desktop: "23em" }}
+              letterSpacing={"15px"}
+            >
+              we are
+            </Text>
+          </motion.div>
           <Slider />
           <Box pos={"absolute"} top={"11vh"} right={"120px"}>
-            <Smile />
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1, type: "spring", delay: 1 }}
+            >
+              <Smile />
+            </motion.div>
           </Box>
         </Flex>
 
         <SocialMedia />
 
-        <Flex spacing={"20px"}>
+        {/* Productos */}
+
+        {/* <Flex spacing={"20px"}>
           {data.productos.map((producto) => (
             <Product key={producto.name} {...producto} />
           ))}
-        </Flex>
+        </Flex> */}
       </Layout>
     </>
   );

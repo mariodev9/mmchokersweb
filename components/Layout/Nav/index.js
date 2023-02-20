@@ -52,7 +52,7 @@ export const Navbar = () => {
             20
           </Flex>
 
-          <Button>
+          <Button bg={"none"}>
             <Cart />
           </Button>
         </Box>

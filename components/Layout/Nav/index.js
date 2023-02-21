@@ -50,7 +50,11 @@ export const Navbar = () => {
         width={"100%"}
         height={"10vh"}
       >
-        <Button display={{ base: "flex", tablet: "none" }} onClick={onOpen}>
+        <Button
+          display={{ base: "flex", tablet: "none" }}
+          onClick={onOpen}
+          variant={"outline"}
+        >
           <MenuIcon />
         </Button>
         <Logo />
@@ -95,15 +99,22 @@ export const Navbar = () => {
             <VStack
               spacing={10}
               h={"100%"}
-              fontWeight={700}
-              fontSize={"25px"}
+              fontWeight={600}
+              fontSize={"30px"}
               align={"center"}
               justify={"center"}
             >
               {NavLinks.map((navlink) => (
-                <Link key={navlink.title} href={navlink.url}>
-                  {navlink.title}
-                </Link>
+                <Box
+                  key={navlink.title}
+                  p={"5px 20px"}
+                  _hover={{
+                    bg: "yellow.100",
+                  }}
+                  borderRadius={"25px"}
+                >
+                  <Link href={navlink.url}>{navlink.title}</Link>
+                </Box>
               ))}
               <SocialMedia />
             </VStack>

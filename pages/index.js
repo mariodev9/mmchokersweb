@@ -24,7 +24,10 @@ export default function Home({ data }) {
 
         {/* Productos */}
 
-        <Box cursor={"grab"}>
+        <Text fontSize={"20px"} fontWeight={600}>
+          Productos Populares
+        </Text>
+        <Box cursor={"grab"} mt={"10px"}>
           <Swiper
             spaceBetween={10}
             // Este valor tiene que ser responsive

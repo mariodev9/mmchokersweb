@@ -71,6 +71,12 @@ export const theme = extendTheme({
           padding: "10px 10px",
           borderRadius: "8px",
         },
+        outline: {
+          bg: "none",
+          _hover: {
+            bg: "none",
+          },
+        },
       },
     },
     // TEXT

@@ -1,7 +1,24 @@
-import { Box, Button, Flex, HStack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  HStack,
+  Text,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure,
+  Input,
+  VStack,
+} from "@chakra-ui/react";
 import Link from "next/link";
-import { Cart, Logo } from "../../Icons";
+import { Cart, Logo, MenuIcon } from "../../Icons";
 import { motion } from "framer-motion";
+import { SocialMedia } from "../../Home/SocialMedia";
 
 const NavLinks = [
   {
@@ -19,14 +36,23 @@ const NavLinks = [
 ];
 
 export const Navbar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <motion.div
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1.5, type: "spring", delay: 1 }}
     >
-      <Flex justify={"space-between"} align={"end"}>
-        <Button display={{ base: "flex", tablet: "none" }}>Menu</Button>
+      <Flex
+        justify={"space-between"}
+        align={"center"}
+        width={"100%"}
+        height={"10vh"}
+      >
+        <Button display={{ base: "flex", tablet: "none" }} onClick={onOpen}>
+          <MenuIcon />
+        </Button>
         <Logo />
         <Box display={{ base: "none", tablet: "flex" }}>
           <HStack spacing={10} fontWeight={500}>
@@ -37,13 +63,20 @@ export const Navbar = () => {
             ))}
           </HStack>
         </Box>
-        <Box>
+        <Flex justify={"center"}>
+          <Button
+            bg={"none"}
+            _hover={{
+              bg: "none",
+            }}
+          >
+            <Cart />
+          </Button>
           <Flex
             justify={"center"}
             align={"center"}
             pos={"relative"}
-            top={"20px"}
-            left={"35px"}
+            right={"15px"}
             w={"25px"}
             h={"25px"}
             bg={"yellow.100"}
@@ -51,12 +84,34 @@ export const Navbar = () => {
           >
             20
           </Flex>
-
-          <Button bg={"none"}>
-            <Cart />
-          </Button>
-        </Box>
+        </Flex>
       </Flex>
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose} size={"lg"}>
+        <DrawerOverlay />
+        <DrawerContent bg={"#fff"}>
+          <DrawerCloseButton />
+
+          <DrawerBody>
+            <VStack
+              spacing={10}
+              h={"100%"}
+              fontWeight={700}
+              fontSize={"25px"}
+              align={"center"}
+              justify={"center"}
+            >
+              {NavLinks.map((navlink) => (
+                <Link key={navlink.title} href={navlink.url}>
+                  {navlink.title}
+                </Link>
+              ))}
+              <SocialMedia />
+            </VStack>
+          </DrawerBody>
+
+          <DrawerFooter></DrawerFooter>
+        </DrawerContent>
+      </Drawer>
     </motion.div>
   );
 };

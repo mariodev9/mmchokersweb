@@ -1,11 +1,14 @@
 import Head from "next/head";
 import { Box, Button, Flex, HStack, Text, VStack } from "@chakra-ui/react";
 import { Layout } from "../components/Layout/Layout";
-import { Slider } from "../components/Home/Slider";
-import { SocialMedia } from "../components/Home/SocialMedia";
-import { Smile } from "../components/Icons";
+
 import Product from "../components/Products/Product";
 import { motion } from "framer-motion";
+
+import { DesktopHeader } from "../components/Home/DesktopHeader";
+import { MobileHeader } from "../components/Home/MobileHeader";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 export default function Home({ data }) {
   return (
@@ -16,41 +19,26 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Flex justify={"center"}>
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1, type: "spring" }}
-          >
-            <Text
-              fontFamily={"'Bebas Neue', cursive"}
-              fontSize={{ base: "5em", tablet: "15em", desktop: "23em" }}
-              letterSpacing={"15px"}
-            >
-              we are
-            </Text>
-          </motion.div>
-          <Slider />
-          <Box pos={"absolute"} top={"11vh"} right={"120px"}>
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1, type: "spring", delay: 1 }}
-            >
-              <Smile />
-            </motion.div>
-          </Box>
-        </Flex>
-
-        <SocialMedia />
+        <DesktopHeader />
+        <MobileHeader />
 
         {/* Productos */}
 
-        {/* <Flex spacing={"20px"}>
-          {data.productos.map((producto) => (
-            <Product key={producto.name} {...producto} />
-          ))}
-        </Flex> */}
+        <Box cursor={"grab"}>
+          <Swiper
+            spaceBetween={10}
+            // Este valor tiene que ser responsive
+            slidesPerView={2}
+            // onSlideChange={() => console.log("slide change")}
+            // onSwiper={(swiper) => console.log(swiper)}
+          >
+            {data.productos.map((producto) => (
+              <SwiperSlide key={producto.name}>
+                <Product {...producto} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Box>
       </Layout>
     </>
   );

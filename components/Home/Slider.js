@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export const Slider = () => {
   return (
-    <Box pos={"absolute"}>
+    <Box pos={"absolute"} display={{ base: "none", tablet: "flex" }}>
       <motion.div
         className="slider"
         initial={{ opacity: 0 }}

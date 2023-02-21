@@ -1,9 +1,10 @@
+import { Icon } from "@chakra-ui/react";
 export const Logo = (props) => {
   return (
-    <svg
+    <Icon
       xmlns="http://www.w3.org/2000/svg"
-      width="250"
-      height="28"
+      width={{ base: "180px", desktop: "250px" }}
+      height={{ base: "20px", desktop: "28px" }}
       viewBox="0 0 449 64"
       fill="none"
       {...props}
@@ -85,7 +86,7 @@ export const Logo = (props) => {
         d="M49.3472 2L42.0653 17L30.5364 40.7485M13.2917 2L10.2188 17M13.2917 2L19.9403 17L30.5 40.8235L30.5364 40.7485M13.2917 2L30.5364 40.7485M10.2188 17L1 62H14.1111L17.77 33.7546M10.2188 17L17.77 33.7546M35.4167 51.7143L30.5 62L17.77 33.7546M35.4167 51.7143L43.887 33.9943M35.4167 51.7143L30.5364 40.7485M43.887 33.9943L52.0104 17L60 62H46.8889L43.887 33.9943Z"
         stroke="#4195D2"
       />
-    </svg>
+    </Icon>
   );
 };
 
@@ -111,12 +112,31 @@ export const Cart = () => {
   );
 };
 
-export const Smile = (props) => {
+export const MenuIcon = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="170"
-      height="170"
+      width="22"
+      height="13"
+      viewBox="0 0 22 13"
+      fill="none"
+    >
+      <path
+        d="M20.2227 11.7693H8.04551H1.22266M1.22266 1.76929H8.15336H13.5179"
+        stroke="black"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+};
+
+export const Smile = (props) => {
+  return (
+    <Icon
+      xmlns="http://www.w3.org/2000/svg"
+      width={{ base: "40px", tablet: "170px" }}
+      height={{ base: "40px", tablet: "170px" }}
       viewBox="0 0 200 196"
       fill="none"
       {...props}
@@ -157,7 +177,7 @@ export const Smile = (props) => {
         transform="rotate(18.1045 122.506 81.5364)"
         fill="black"
       />
-    </svg>
+    </Icon>
   );
 };
 

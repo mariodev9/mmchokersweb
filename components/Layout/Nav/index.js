@@ -19,6 +19,8 @@ import Link from "next/link";
 import { Cart, Logo, MenuIcon } from "../../Icons";
 import { motion } from "framer-motion";
 import { SocialMedia } from "../../Home/SocialMedia";
+import { useRouter } from "next/router";
+import CartButton from "../../Shared/Buttons/CartButton";
 
 const NavLinks = [
   {
@@ -36,13 +38,14 @@ const NavLinks = [
 ];
 
 export const Navbar = () => {
+  const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <motion.div
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1.5, type: "spring", delay: 1 }}
+      transition={{ duration: 1.5, type: "spring", delay: 0.5 }}
     >
       <Flex
         justify={"space-between"}
@@ -67,28 +70,8 @@ export const Navbar = () => {
             ))}
           </HStack>
         </Box>
-        <Flex justify={"center"}>
-          <Button
-            bg={"none"}
-            _hover={{
-              bg: "none",
-            }}
-          >
-            <Cart />
-          </Button>
-          <Flex
-            justify={"center"}
-            align={"center"}
-            pos={"relative"}
-            right={"15px"}
-            w={"25px"}
-            h={"25px"}
-            bg={"yellow.100"}
-            borderRadius={"full"}
-          >
-            20
-          </Flex>
-        </Flex>
+        {/* Carrito Button Component */}
+        <CartButton />
       </Flex>
       <Drawer isOpen={isOpen} placement="left" onClose={onClose} size={"lg"}>
         <DrawerOverlay />
@@ -112,6 +95,7 @@ export const Navbar = () => {
                     bg: "yellow.100",
                   }}
                   borderRadius={"25px"}
+                  textAlign={"center"}
                 >
                   <Link href={navlink.url}>{navlink.title}</Link>
                 </Box>

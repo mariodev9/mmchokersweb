@@ -23,7 +23,7 @@ export const getAllProducts = async () => {
 export const mapFromFirebaseToProductObject = (doc) => {
   const data = doc.data();
   const id = doc.id;
-  const { createdAt } = data;
+  // const { createdAt } = data;
 
   return {
     ...data,

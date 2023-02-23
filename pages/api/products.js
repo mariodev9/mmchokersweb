@@ -1,4 +1,7 @@
-import { getAllProducts } from "../../firebase/services/products";
+import {
+  getAllProducts,
+  mapFromFirebaseToProductObject,
+} from "../../firebase/services/products";
 import {
   collection,
   query,
@@ -16,9 +19,7 @@ export default function handler(req, res) {
   const querySnap = getDocs(q);
   onSnapshot(q, (querySnap) => {
     const { docs } = querySnap;
-    const allProducts = docs.map((doc) => {
-      return doc.data();
-    });
+    const allProducts = docs.map(mapFromFirebaseToProductObject);
     if (allProducts) {
       res.status(200).json({ productos: allProducts });
     } else {

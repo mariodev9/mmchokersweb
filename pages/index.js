@@ -25,13 +25,13 @@ export default function Home({ data }) {
         {/* Productos */}
 
         <Text fontSize={"20px"} fontWeight={600}>
-          Productos Populares
+          New in
         </Text>
         <Box cursor={"grab"} mt={"10px"}>
           <Swiper
             spaceBetween={10}
             // Este valor tiene que ser responsive
-            slidesPerView={2}
+            slidesPerView={1.5}
             // onSlideChange={() => console.log("slide change")}
             // onSwiper={(swiper) => console.log(swiper)}
           >
@@ -48,8 +48,8 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`https://mmchokers.vercel.app/api/hello`);
+  const res = await fetch(`https://mmchokers.vercel.app/api/products`);
   const data = await res.json();
-
+  console.log(data, "qavaa");
   return { props: { data } };
 }

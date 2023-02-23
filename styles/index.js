@@ -60,7 +60,7 @@ export const theme = extendTheme({
           bg: "yellow.100",
           color: "#000",
           fontSize: "15px",
-          padding: "23px 27px",
+          padding: "9px 27px",
           borderRadius: "30px",
           _hover: {
             bg: "#000",

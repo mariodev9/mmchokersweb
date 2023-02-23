@@ -24,23 +24,25 @@ export default function Home({ data }) {
 
         {/* Swiper Component */}
 
-        <Text fontSize={"20px"} fontWeight={600}>
-          New in
-        </Text>
-        <Box cursor={"grab"} mt={"10px"}>
-          <Swiper
-            spaceBetween={10}
-            // Este valor tiene que ser responsive
-            slidesPerView={1.5}
-            // onSlideChange={() => console.log("slide change")}
-            // onSwiper={(swiper) => console.log(swiper)}
-          >
-            {data.productos.map((producto) => (
-              <SwiperSlide key={producto.name}>
-                <Product {...producto} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        <Box mt={"25px"}>
+          <Text fontSize={"20px"} fontWeight={600}>
+            New in
+          </Text>
+          <Box cursor={"grab"} mt={"10px"}>
+            <Swiper
+              spaceBetween={10}
+              // Este valor tiene que ser responsive
+              slidesPerView={1.5}
+              // onSlideChange={() => console.log("slide change")}
+              // onSwiper={(swiper) => console.log(swiper)}
+            >
+              {data.productos.map((producto) => (
+                <SwiperSlide key={producto.name}>
+                  <Product {...producto} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Box>
         </Box>
       </Layout>
     </>

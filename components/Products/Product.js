@@ -25,6 +25,7 @@ export default function Product({
         <Flex direction={"column"} maxW={"200px"}>
           <Image
             src={image}
+            alt={"Imagen del producto"}
             width={"180px"}
             height={"220px"}
             borderRadius={"20px"}

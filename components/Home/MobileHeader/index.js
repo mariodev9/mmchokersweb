@@ -1,11 +1,9 @@
 import {
   Box,
-  HStack,
   Flex,
   Input,
   InputLeftElement,
   InputGroup,
-  Image,
   Text,
   LinkBox,
   LinkOverlay,
@@ -15,7 +13,6 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { SearchIcon } from "../../Icons";
-import CollaresImage from "../../../public/images/CollaresImage.jpg";
 
 const CategoryList = [
   //   {
@@ -46,7 +43,9 @@ export const MobileHeader = () => {
       <Box display={{ base: "block", tablet: "none" }}>
         {/* BUSCADOR */}
         <InputGroup>
-          <InputLeftElement pointerEvents="none" children={<SearchIcon />} />
+          <InputLeftElement pointerEvents="none">
+            <SearchIcon />
+          </InputLeftElement>
           <Input
             placeholder="Buscar"
             variant="filled"

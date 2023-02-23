@@ -29,7 +29,7 @@ export default function Product({
             height={"220px"}
             borderRadius={"20px"}
           />
-          <LinkOverlay href={`/${id}`}>
+          <LinkOverlay href={`/Producto/${id}`}>
             <Text
               fontSize={{ base: "16px", tablet: "20px" }}
               fontWeight={600}

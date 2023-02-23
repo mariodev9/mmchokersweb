@@ -19,7 +19,14 @@ export default function handler(req, res) {
   const querySnap = getDocs(q);
   onSnapshot(q, (querySnap) => {
     const { docs } = querySnap;
-    const allProducts = docs.map(mapFromFirebaseToProductObject);
+    const allProducts = docs.map((doc) => {
+      const data = doc.data();
+      const id = doc.id;
+      return {
+        ...data,
+        id,
+      };
+    });
     if (allProducts) {
       res.status(200).json({ productos: allProducts });
     } else {

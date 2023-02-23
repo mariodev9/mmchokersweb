@@ -248,3 +248,22 @@ export const Send = () => {
     </svg>
   );
 };
+
+export const SearchIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="13"
+      viewBox="0 0 14 13"
+      fill="none"
+    >
+      <path
+        d="M10.1765 9.66186C11.0526 8.74189 11.5882 7.50999 11.5882 6.15625C11.5882 3.30853 9.21798 1 6.29412 1C3.37026 1 1 3.30853 1 6.15625C1 9.00397 3.37026 11.3125 6.29412 11.3125C7.82804 11.3125 9.20959 10.6771 10.1765 9.66186ZM10.1765 9.66186L13 12"
+        stroke="#BABABA"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+};

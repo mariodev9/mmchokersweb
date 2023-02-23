@@ -22,7 +22,7 @@ export default function Home({ data }) {
         <DesktopHeader />
         <MobileHeader />
 
-        {/* Productos */}
+        {/* Swiper Component */}
 
         <Text fontSize={"20px"} fontWeight={600}>
           New in
@@ -50,6 +50,5 @@ export default function Home({ data }) {
 export async function getServerSideProps() {
   const res = await fetch(`https://mmchokers.vercel.app/api/products`);
   const data = await res.json();
-  console.log(data, "qavaa");
   return { props: { data } };
 }

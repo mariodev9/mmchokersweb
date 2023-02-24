@@ -23,18 +23,21 @@ export default function Product({
     <>
       <LinkBox>
         <Flex direction={"column"} maxW={"200px"}>
-          <Image
-            src={image}
-            alt={"Imagen del producto"}
-            width={"180px"}
+          <Flex
+            bgImage={image}
+            bgRepeat={"no-repeat"}
+            bgPosition={"center"}
+            bgSize={"cover"}
+            width={"full"}
             height={"220px"}
             borderRadius={"20px"}
-          />
+          ></Flex>
           <LinkOverlay href={`/Producto/${id}`}>
             <Text
-              fontSize={{ base: "16px", tablet: "20px" }}
-              fontWeight={600}
+              fontSize={{ base: "18px", tablet: "20px" }}
+              fontWeight={500}
               color={"gray.100"}
+              mt={"10px"}
             >
               {name}
             </Text>
@@ -42,7 +45,7 @@ export default function Product({
 
           <Text
             fontSize={{ base: "20px", tablet: "25px" }}
-            fontWeight={"medium"}
+            fontWeight={600}
             color={"gray.200"}
           >
             ${price}

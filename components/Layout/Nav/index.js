@@ -14,6 +14,14 @@ import {
   useDisclosure,
   Input,
   VStack,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { Cart, Logo, MenuIcon } from "../../Icons";
@@ -28,12 +36,12 @@ const NavLinks = [
     url: "/Colecciones",
   },
   {
-    title: "Categorias",
+    title: "Preguntas Frecuentes",
     url: "/Colecciones",
   },
   {
-    title: "Ultimos Productos",
-    url: "/Colecciones",
+    title: "Nosotros",
+    url: "/Nosotros",
   },
 ];
 
@@ -63,6 +71,21 @@ export const Navbar = () => {
         <Logo />
         <Box display={{ base: "none", tablet: "flex" }}>
           <HStack spacing={10} fontWeight={500}>
+            <Menu isLazy>
+              <MenuButton fontWeight={500}>Productos</MenuButton>
+              <MenuList bg={"#fff"}>
+                {/* Estos links deberian ser de next */}
+                <MenuItem as="a" href="/Collares" bg={"#fff"}>
+                  Collares
+                </MenuItem>
+                <MenuItem as="a" href="/Cadenas" bg={"#fff"}>
+                  Cadenas
+                </MenuItem>
+                <MenuItem as="a" href="/Pulseras" bg={"#fff"}>
+                  Pulseras
+                </MenuItem>
+              </MenuList>
+            </Menu>
             {NavLinks.map((navlink) => (
               <Link key={navlink.title} href={navlink.url}>
                 {navlink.title}
@@ -70,7 +93,6 @@ export const Navbar = () => {
             ))}
           </HStack>
         </Box>
-        {/* Carrito Button Component */}
         <CartButton />
       </Flex>
       <Drawer isOpen={isOpen} placement="left" onClose={onClose} size={"lg"}>

@@ -25,16 +25,34 @@ export default function Home({ data }) {
         {/* Swiper Component */}
 
         <Box mt={"25px"}>
-          <Text fontSize={"20px"} fontWeight={600}>
-            New in
-          </Text>
-          <Box cursor={"grab"} mt={"10px"}>
+          <Flex align={"center"} justify={"space-between"}>
+            <Text fontSize={"30px"} fontWeight={600}>
+              New in
+            </Text>
+            <Text fontSize={"15px"} fontWeight={500} color={"gray.100"}>
+              ver todo
+            </Text>
+          </Flex>
+          <Box mt={"10px"}>
             <Swiper
               spaceBetween={10}
-              // Este valor tiene que ser responsive
-              slidesPerView={1.5}
               // onSlideChange={() => console.log("slide change")}
               // onSwiper={(swiper) => console.log(swiper)}
+
+              breakpoints={{
+                0: {
+                  slidesPerView: 1.5,
+                },
+                450: {
+                  slidesPerView: 2.5,
+                },
+                720: {
+                  slidesPerView: 3.5,
+                },
+                960: {
+                  slidesPerView: 4,
+                },
+              }}
             >
               {data.productos.map((producto) => (
                 <SwiperSlide key={producto.name}>

@@ -1,7 +1,7 @@
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 
-const addProductToCart = (product, state) => {
+const AddProductToCart = (product, state) => {
   const updatedCart = [...state.cart];
 
   const updatedItemIndex = updatedCart.findIndex(
@@ -21,7 +21,7 @@ const addProductToCart = (product, state) => {
   return { ...state, cart: updatedCart, total: state.total++ };
 };
 
-const removeProductFromCart = (productId, state) => {
+const RemoveProductFromCart = (productId, state) => {
   const updatedCart = [...state.cart];
   const updatedItemIndex = updatedCart.findIndex(
     (item) => item.id === productId
@@ -45,10 +45,10 @@ export const shopReducer = (state, action) => {
 
   switch (type) {
     case ADD_PRODUCT:
-      return addProductToCart(action.product, state);
+      return AddProductToCart(action.product, state);
 
     case REMOVE_PRODUCT:
-      return removeProductFromCart(action.productId, state);
+      return RemoveProductFromCart(action.productId, state);
 
     default:
       return state;

@@ -15,7 +15,7 @@ export default function UseCartContext(props) {
     dispatch({ type: ADD_PRODUCT, product: productData });
   };
 
-  const removeProductFromCart = (productId) => {
+  const RemoveProductFromCart = (productId) => {
     dispatch({ type: REMOVE_PRODUCT, productId: productId });
   };
 
@@ -25,7 +25,7 @@ export default function UseCartContext(props) {
         cart: state.cart,
         total: state.total,
         AddProductToCart: AddProductToCart,
-        removeProductFromCart: removeProductFromCart,
+        RemoveProductFromCart: RemoveProductFromCart,
       }}
     >
       {children}

@@ -6,7 +6,6 @@ import CartContext from "../../../context/CartContext";
 import { Cart } from "../../Icons";
 
 export default function CartButton() {
-  const router = useRouter();
   const { total } = useContext(CartContext);
 
   return (

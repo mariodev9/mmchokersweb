@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import CartContext from "../../context/CartContext";
 
 export default function CartProduct({ name, price, image, id, quantity }) {
-  const { removeProductFromCart, AddProductToCart } = useContext(CartContext);
+  const { RemoveProductFromCart, AddProductToCart } = useContext(CartContext);
 
   return (
     <Flex w={"100%"} gap={10} justify={"space-around"}>
@@ -33,7 +33,7 @@ export default function CartProduct({ name, price, image, id, quantity }) {
           +
         </Button>
         <Text>{quantity}</Text>
-        <Button onClick={() => removeProductFromCart(id)}>-</Button>
+        <Button onClick={() => RemoveProductFromCart(id)}>-</Button>
       </Flex>
     </Flex>
   );

@@ -33,7 +33,7 @@ export const DesktopHeader = () => {
           </motion.div>
         </Box>
       </Flex>
-      <Flex justify={"end"}>
+      <Flex justify={"end"} px={"40px"}>
         <SocialMedia />
       </Flex>
     </Box>

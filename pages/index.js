@@ -21,11 +21,10 @@ export default function Home({ data }) {
       <Layout>
         <DesktopHeader />
         <MobileHeader />
-
         {/* Swiper Component */}
 
         <Box mt={"25px"}>
-          <Flex align={"center"} justify={"space-between"}>
+          <Flex align={"center"} justify={"space-between"} px={"40px"}>
             <Text fontSize={"30px"} fontWeight={600}>
               New in
             </Text>
@@ -38,7 +37,9 @@ export default function Home({ data }) {
               spaceBetween={10}
               // onSlideChange={() => console.log("slide change")}
               // onSwiper={(swiper) => console.log(swiper)}
-
+              style={{
+                paddingLeft: "40px",
+              }}
               breakpoints={{
                 0: {
                   slidesPerView: 1.5,
@@ -50,7 +51,7 @@ export default function Home({ data }) {
                   slidesPerView: 3.5,
                 },
                 960: {
-                  slidesPerView: 4,
+                  slidesPerView: 4.5,
                 },
               }}
             >

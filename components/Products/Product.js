@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import {
   Box,
   Button,
@@ -8,7 +9,7 @@ import {
   LinkOverlay,
 } from "@chakra-ui/react";
 // import Image from "next/image";
-import React from "react";
+import CartContext from "../../context/CartContext";
 
 export default function Product({
   image,
@@ -19,17 +20,29 @@ export default function Product({
   description,
   id,
 }) {
+  const { AddProductToCart } = useContext(CartContext);
+
+  let productData = {
+    image,
+    price,
+    name,
+    category,
+    popular,
+    description,
+    id,
+  };
+
   return (
     <>
       <LinkBox>
-        <Flex direction={"column"} maxW={"200px"}>
+        <Flex direction={"column"} maxW={"250px"}>
           <Flex
             bgImage={image}
             bgRepeat={"no-repeat"}
             bgPosition={"center"}
             bgSize={"cover"}
             width={"full"}
-            height={"220px"}
+            height={"240px"}
             borderRadius={"20px"}
           ></Flex>
           <LinkOverlay href={`/Producto/${id}`}>
@@ -51,7 +64,12 @@ export default function Product({
             ${price}
           </Text>
 
-          <Button variant={"primary"}>Comprar</Button>
+          <Button
+            variant={"primary"}
+            onClick={() => AddProductToCart(productData)}
+          >
+            Añadir al carro
+          </Button>
         </Flex>
       </LinkBox>
     </>

@@ -49,6 +49,7 @@ export const theme = extendTheme({
   components: {
     Button: {
       baseStyle: {
+        padding: 0,
         bg: "none",
         _hover: {
           bg: "none",

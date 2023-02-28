@@ -1,10 +1,13 @@
 import { Button, Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useContext } from "react";
+import CartContext from "../../../context/CartContext";
 import { Cart } from "../../Icons";
 
 export default function CartButton() {
   const router = useRouter();
+  const { total } = useContext(CartContext);
+
   return (
     <Flex justify={"center"}>
       <Button
@@ -26,7 +29,7 @@ export default function CartButton() {
         bg={"yellow.100"}
         borderRadius={"full"}
       >
-        20
+        {total}
       </Flex>
     </Flex>
   );

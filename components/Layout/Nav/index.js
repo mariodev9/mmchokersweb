@@ -35,6 +35,10 @@ const NavLinks = [
     title: "Colecciones",
     url: "/Colecciones",
   },
+  // {
+  //   title: "Productos",
+  //   url: "/Colecciones",
+  // },
   {
     title: "Preguntas Frecuentes",
     url: "/Colecciones",
@@ -58,8 +62,9 @@ export const Navbar = () => {
       <Flex
         justify={"space-between"}
         align={"center"}
-        width={"100%"}
-        height={"10vh"}
+        w={"100%"}
+        h={"10vh"}
+        p={{ base: "15px 20px", tablet: "40px 40px" }}
       >
         <Button
           display={{ base: "flex", tablet: "none" }}

@@ -7,7 +7,8 @@ export const Layout = ({ children }) => {
   return (
     <>
       {/* Hacer pos: absolute, h=100vh con scroll y aplicar Page Transitions */}
-      <Box p={"15px 20px"}>
+      {/* p={{ base: "15px 20px", tablet: "15px 40px" }} */}
+      <Box>
         <Navbar />
         {children}
         <Footer />

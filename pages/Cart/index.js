@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Text, VStack } from "@chakra-ui/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { useContext } from "react";
@@ -15,7 +16,7 @@ export default function Cart() {
     <div>
       <Box p={"15px 20px"}>
         <Flex justify={"space-between"} align="center" h="10vh">
-          <Button onClick={() => router.back()}>Volver</Button>
+          <Link href={"/"}>Volver</Link>
           <Text>Carrito</Text>
           <CartButton />
         </Flex>

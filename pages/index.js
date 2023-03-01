@@ -1,5 +1,13 @@
 import Head from "next/head";
-import { Box, Button, Flex, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  HStack,
+  Text,
+  useMediaQuery,
+  VStack,
+} from "@chakra-ui/react";
 import { Layout } from "../components/Layout/Layout";
 
 import Product from "../components/Products/Product";
@@ -11,6 +19,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 export default function Home({ data }) {
+  const [isLargerThan850] = useMediaQuery("(min-width: 850px)");
+
   return (
     <>
       <Head>
@@ -19,17 +29,17 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <DesktopHeader />
-        <MobileHeader />
+        {/* renderizarlo con useQuery */}
+        {isLargerThan850 ? <DesktopHeader /> : <MobileHeader />}
         {/* Swiper Component */}
 
         <Box mt={"25px"}>
           <Flex align={"center"} justify={"space-between"} px={"40px"}>
-            <Text fontSize={"30px"} fontWeight={600}>
-              New in
+            <Text fontSize={"25px"} fontWeight={600}>
+              Mas populares
             </Text>
-            <Text fontSize={"15px"} fontWeight={500} color={"gray.100"}>
-              ver todo
+            <Text fontSize={"10px"} fontWeight={500} color={"gray.100"}>
+              flechita
             </Text>
           </Flex>
           <Box mt={"10px"}>

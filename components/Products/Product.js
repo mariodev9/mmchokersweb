@@ -43,7 +43,7 @@ export default function Product({
             bgSize={"cover"}
             width={"full"}
             height={"240px"}
-            borderRadius={"20px"}
+            borderRadius={"15px"}
           ></Flex>
           <LinkOverlay href={`/Producto/${id}`}>
             <Text

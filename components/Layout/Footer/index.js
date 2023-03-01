@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Text } from "@chakra-ui/react";
 import { WhatsappIcon } from "../../Icons";
 export default function Footer() {
   return (

@@ -3,28 +3,21 @@ import {
   Button,
   Flex,
   HStack,
-  Text,
   Drawer,
   DrawerBody,
   DrawerFooter,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
-  Input,
   VStack,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { Cart, Logo, MenuIcon } from "../../Icons";
+import { Logo, MenuIcon } from "../../Icons";
 import { motion } from "framer-motion";
 import { SocialMedia } from "../../Home/SocialMedia";
 import { useRouter } from "next/router";
@@ -73,7 +66,9 @@ export const Navbar = () => {
         >
           <MenuIcon />
         </Button>
-        <Logo />
+        <Link href={"/"}>
+          <Logo />
+        </Link>
         <Box display={{ base: "none", tablet: "flex" }}>
           <HStack spacing={10} fontWeight={500}>
             <Menu isLazy>

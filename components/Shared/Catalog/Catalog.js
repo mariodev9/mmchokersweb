@@ -25,6 +25,10 @@ const CategoryList = [
     title: "Novedades",
     url: "/Novedades",
   },
+  {
+    title: "Para niños",
+    url: "/Novedades",
+  },
 ];
 
 export default function Catalog() {

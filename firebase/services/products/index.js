@@ -5,20 +5,20 @@ import {
   getDocs,
   orderBy,
   onSnapshot,
+  doc,
 } from "firebase/firestore";
 
-// export const getAllProducts = async () => {
-// const q = query(
-//   collection(firestore, "products"),
-//   orderBy("createdAt", "desc")
-// );
-// const querySnap = await getDocs(q);
-// onSnapshot(q, (querySnap) => {
-//   const { docs } = querySnap;
-//   const allProducts = docs.map(mapFromFirebaseToProductObject);
-//   return allProducts;
-// });
-// };
+export const getProduct = async (productoId, setProductData) => {
+  const productDataRef = doc(firestore, "products", `${productoId}`);
+
+  onSnapshot(productDataRef, (docSnap) => {
+    if (docSnap.exists()) {
+      setProductData(docSnap.data());
+    } else {
+      setProductData(false);
+    }
+  });
+};
 
 export const mapFromFirebaseToProductObject = (doc) => {
   const data = doc.data();

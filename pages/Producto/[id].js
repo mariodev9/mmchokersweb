@@ -10,17 +10,19 @@ import {
   AccordionIcon,
   Button,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { getProduct } from "../../firebase/services/products";
 import { LikeIcon } from "../../components/Icons";
 import { Navbar } from "../../components/Layout/Nav";
 import { Layout } from "../../components/Layout/Layout";
+import CartContext from "../../context/CartContext";
 
 export default function ProductPage() {
   const router = useRouter();
   const { id } = router.query;
   const [productData, setProductData] = useState(undefined);
+  const { AddProductToCart } = useContext(CartContext);
 
   useEffect(() => {
     id && getProduct(id, setProductData);
@@ -85,7 +87,11 @@ export default function ProductPage() {
               >
                 <LikeIcon />
               </Button>
-              <Button variant={"primary"} w={"full"}>
+              <Button
+                variant={"primary"}
+                w={"full"}
+                onClick={() => AddProductToCart(productData)}
+              >
                 Añadir al carrito
               </Button>
             </Flex>

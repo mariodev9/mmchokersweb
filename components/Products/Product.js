@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 // import Image from "next/image";
 import CartContext from "../../context/CartContext";
+import { LikeIcon } from "../Icons";
 
 export default function Product({
   image,
@@ -45,31 +46,37 @@ export default function Product({
             height={"240px"}
             borderRadius={"15px"}
           ></Flex>
-          <LinkOverlay href={`/Producto/${id}`}>
-            <Text
-              fontSize={{ base: "18px", tablet: "20px" }}
-              fontWeight={500}
-              color={"gray.100"}
-              mt={"10px"}
+          <Flex mt={"10px"} justify={"space-between"}>
+            <Box>
+              <LinkOverlay href={`/Producto/${id}`}>
+                <Text
+                  fontSize={{ base: "15px", tablet: "18px" }}
+                  fontWeight={500}
+                  color={"gray.200"}
+                >
+                  {name}
+                </Text>
+              </LinkOverlay>
+
+              <Text
+                fontSize={{ base: "20px", tablet: "25px" }}
+                fontWeight={600}
+                color={"gray.200"}
+              >
+                ${price}
+              </Text>
+            </Box>
+            <Flex
+              px={"0px"}
+              borderRadius={"full"}
+              bg={"gray.50"}
+              _hover={{
+                bg: "red.100",
+              }}
             >
-              {name}
-            </Text>
-          </LinkOverlay>
-
-          <Text
-            fontSize={{ base: "20px", tablet: "25px" }}
-            fontWeight={600}
-            color={"gray.200"}
-          >
-            ${price}
-          </Text>
-
-          <Button
-            variant={"primary"}
-            onClick={() => AddProductToCart(productData)}
-          >
-            Añadir al carro
-          </Button>
+              <LikeIcon width={"35px"} />
+            </Flex>
+          </Flex>
         </Flex>
       </LinkBox>
     </>

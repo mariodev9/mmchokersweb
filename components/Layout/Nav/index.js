@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -18,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { Logo, MenuIcon } from "../../Icons";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { SocialMedia } from "../../Home/SocialMedia";
 import { useRouter } from "next/router";
 import CartButton from "../../Shared/Buttons/CartButton";
@@ -28,10 +29,7 @@ const NavLinks = [
     title: "Colecciones",
     url: "/Colecciones",
   },
-  // {
-  //   title: "Productos",
-  //   url: "/Colecciones",
-  // },
+
   {
     title: "Preguntas Frecuentes",
     url: "/Colecciones",
@@ -42,15 +40,35 @@ const NavLinks = [
   },
 ];
 
+const variants = {
+  visible: { y: 0, opacity: 1 },
+  hidden: { y: -100, opacity: 0 },
+};
+
 export const Navbar = () => {
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
+
+  function update() {
+    if (scrollY?.current < scrollY?.prev) {
+      setHidden(false);
+    } else if (scrollY?.current > 100 && scrollY?.current > scrollY?.prev) {
+      setHidden(true);
+    }
+  }
+
+  useEffect(() => {
+    return scrollY.onChange(() => update());
+  }, [scrollY]);
 
   return (
     <motion.div
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1.5, type: "spring", delay: 0.5 }}
+      variants={variants}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.6 }}
+      style={{ width: "100%", position: "fixed", zIndex: 99 }}
     >
       <Flex
         justify={"space-between"}
@@ -58,6 +76,7 @@ export const Navbar = () => {
         w={"100%"}
         h={"10vh"}
         p={{ base: "15px 20px", tablet: "40px 40px" }}
+        bg={"#fff"}
       >
         <Button
           display={{ base: "flex", tablet: "none" }}
@@ -93,8 +112,10 @@ export const Navbar = () => {
             ))}
           </HStack>
         </Box>
+
         <CartButton />
       </Flex>
+
       <Drawer isOpen={isOpen} placement="left" onClose={onClose} size={"lg"}>
         <DrawerOverlay />
         <DrawerContent bg={"#fff"}>

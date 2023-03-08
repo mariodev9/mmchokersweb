@@ -7,7 +7,7 @@ import { Slider } from "../Slider";
 
 export const DesktopHeader = () => {
   return (
-    <Box display={{ base: "none", tablet: "block" }}>
+    <Box display={{ base: "none", tablet: "block" }} pt={"10vh"}>
       <Flex justify={"center"} height={"90vh"}>
         <motion.div
           initial={{ scale: 0 }}

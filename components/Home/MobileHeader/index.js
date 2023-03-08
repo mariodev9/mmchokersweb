@@ -7,7 +7,7 @@ import Catalog from "../../Shared/Catalog/Catalog";
 export const MobileHeader = () => {
   return (
     <>
-      <Box display={{ base: "block", tablet: "none" }} px={"30px"}>
+      <Box display={{ base: "block", tablet: "none" }} p={"10vh 30px"}>
         {/* BUSCADOR */}
         <SearchBar />
 

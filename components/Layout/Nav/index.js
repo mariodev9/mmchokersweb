@@ -60,7 +60,7 @@ export const Navbar = () => {
   }
 
   useEffect(() => {
-    return scrollY.onChange(() => update());
+    scrollY.onChange(() => update());
   }, [scrollY]);
 
   return (
@@ -82,6 +82,7 @@ export const Navbar = () => {
           display={{ base: "flex", tablet: "none" }}
           onClick={onOpen}
           border={"none"}
+          bg={"none"}
         >
           <MenuIcon />
         </Button>

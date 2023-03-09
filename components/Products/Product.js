@@ -46,37 +46,25 @@ export default function Product({
             height={"240px"}
             borderRadius={"15px"}
           ></Flex>
-          <Flex mt={"10px"} justify={"space-between"}>
-            <Box>
-              <LinkOverlay href={`/Producto/${id}`}>
-                <Text
-                  fontSize={{ base: "15px", tablet: "18px" }}
-                  fontWeight={500}
-                  color={"gray.200"}
-                >
-                  {name}
-                </Text>
-              </LinkOverlay>
-
+          <Box mt={"10px"}>
+            <LinkOverlay href={`/Producto/${id}`}>
               <Text
-                fontSize={{ base: "20px", tablet: "25px" }}
-                fontWeight={600}
+                fontSize={{ base: "15px", tablet: "18px" }}
+                fontWeight={500}
                 color={"gray.200"}
               >
-                ${price}
+                {name}
               </Text>
-            </Box>
-            <Flex
-              px={"0px"}
-              borderRadius={"full"}
-              bg={"gray.50"}
-              _hover={{
-                bg: "red.100",
-              }}
+            </LinkOverlay>
+
+            <Text
+              fontSize={{ base: "20px", tablet: "25px" }}
+              fontWeight={600}
+              color={"gray.200"}
             >
-              <LikeIcon width={"35px"} />
-            </Flex>
-          </Flex>
+              ${price}
+            </Text>
+          </Box>
         </Flex>
       </LinkBox>
     </>

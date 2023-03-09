@@ -30,11 +30,11 @@ export default function Home({ data }) {
       </Head>
       <Layout>
         {/* renderizarlo con useQuery */}
-        {isLargerThan850 ? <DesktopHeader /> : <MobileHeader />}
+        {isLargerThan850 ? <DesktopHeader /> : <MobileHeader data={data} />}
         {/* Swiper Component */}
 
         <Box mt={"25px"}>
-          <Flex align={"center"} justify={"space-between"} px={"40px"}>
+          <Flex align={"center"} justify={"space-between"} px={"30px"}>
             <Text fontSize={"25px"} fontWeight={600}>
               Mas populares
             </Text>
@@ -42,13 +42,11 @@ export default function Home({ data }) {
               flechita
             </Text>
           </Flex>
-          <Box mt={"10px"}>
+          <Box mt={"5px"}>
             <Swiper
               spaceBetween={10}
-              // onSlideChange={() => console.log("slide change")}
-              // onSwiper={(swiper) => console.log(swiper)}
               style={{
-                paddingLeft: "40px",
+                paddingLeft: "30px",
               }}
               breakpoints={{
                 0: {

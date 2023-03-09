@@ -37,7 +37,12 @@ export const Slider = () => {
             </div>
             <div className="slide rotate-image-right">
               <Flex justify={"center"}>
-                <Image src={sliderImage} height={"120px"} width={"100px"} />
+                <Image
+                  src={sliderImage}
+                  alt={"producto"}
+                  height={"120px"}
+                  width={"100px"}
+                />
               </Flex>
             </div>
             <div className="slide">
@@ -59,7 +64,12 @@ export const Slider = () => {
             </div>
             <div className="slide rotate-image-left">
               <Flex justify={"center"}>
-                <Image src={sliderImage2} height={"140px"} width={"100px"} />
+                <Image
+                  src={sliderImage2}
+                  alt={"producto"}
+                  height={"140px"}
+                  width={"100px"}
+                />
               </Flex>
             </div>
           </>
@@ -84,7 +94,12 @@ export const Slider = () => {
             </div>
             <div className="slide rotate-image-right">
               <Flex justify={"center"}>
-                <Image src={sliderImage} height={"120px"} width={"100px"} />
+                <Image
+                  src={sliderImage}
+                  alt={"producto"}
+                  height={"120px"}
+                  width={"100px"}
+                />
               </Flex>
             </div>
             <div className="slide">
@@ -106,7 +121,12 @@ export const Slider = () => {
             </div>
             <div className="slide rotate-image-left">
               <Flex justify={"center"}>
-                <Image src={sliderImage2} height={"140px"} width={"100px"} />
+                <Image
+                  src={sliderImage2}
+                  alt={"producto"}
+                  height={"140px"}
+                  width={"100px"}
+                />
               </Flex>
             </div>
           </>
@@ -131,7 +151,12 @@ export const Slider = () => {
             </div>
             <div className="slide rotate-image-right">
               <Flex justify={"center"}>
-                <Image src={sliderImage} height={"120px"} width={"100px"} />
+                <Image
+                  src={sliderImage}
+                  alt={"producto"}
+                  height={"120px"}
+                  width={"100px"}
+                />
               </Flex>
             </div>
             <div className="slide">
@@ -153,7 +178,12 @@ export const Slider = () => {
             </div>
             <div className="slide rotate-image-left">
               <Flex justify={"center"}>
-                <Image src={sliderImage2} height={"140px"} width={"100px"} />
+                <Image
+                  src={sliderImage2}
+                  alt={"producto"}
+                  height={"140px"}
+                  width={"100px"}
+                />
               </Flex>
             </div>
           </>

@@ -18,7 +18,7 @@ import {
   MenuItem,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { Logo, MenuIcon } from "../../Icons";
+import { Logo, Logoo, MenuIcon } from "../../Icons";
 import { motion, useScroll } from "framer-motion";
 import { SocialMedia } from "../../Home/SocialMedia";
 import { useRouter } from "next/router";
@@ -81,12 +81,12 @@ export const Navbar = () => {
         <Button
           display={{ base: "flex", tablet: "none" }}
           onClick={onOpen}
-          variant={"outline"}
+          border={"none"}
         >
           <MenuIcon />
         </Button>
         <Link href={"/"}>
-          <Logo />
+          <Logoo />
         </Link>
         <Box display={{ base: "none", tablet: "flex" }}>
           <HStack spacing={10} fontWeight={500}>

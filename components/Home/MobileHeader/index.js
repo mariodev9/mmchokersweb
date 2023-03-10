@@ -59,7 +59,7 @@ export const MobileHeader = ({ data }) => {
       <Box pl={" 30px"}>
         <Catalog />
       </Box>
-      <Grid px={"30px"} templateColumns="repeat(2, 1fr)" gap={3}>
+      <Grid px={"30px"} templateColumns={"repeat(2, 1fr)"} gap={3}>
         <GridItem w="100%">
           <VStack spacing={5}>
             {data.productos.slice(0, mitad).map((product) => (
@@ -67,7 +67,7 @@ export const MobileHeader = ({ data }) => {
             ))}
           </VStack>
         </GridItem>
-        <GridItem mt={"30px"} w="100%">
+        <GridItem mt={"40px"} w="100%">
           <VStack spacing={5}>
             {data.productos.slice(mitad).map((product) => (
               <ProductItem key={product.id} {...product} />

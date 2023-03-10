@@ -27,7 +27,7 @@ export default function ProductItem({
           bgPosition={"center"}
           bgSize={"cover"}
           width={"full"}
-          height={"180px"}
+          height={{ base: "180px", md: "220px" }}
           borderRadius={"18px"}
         ></Flex>
         <Box mt={"10px"}>

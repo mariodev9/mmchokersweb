@@ -19,7 +19,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 export default function Home({ data }) {
-  const [isLargerThan850] = useMediaQuery("(min-width: 850px)");
+  const [isLargerThan834] = useMediaQuery("(min-width: 834px)");
 
   return (
     <>
@@ -30,7 +30,7 @@ export default function Home({ data }) {
       </Head>
       <Layout>
         {/* renderizarlo con useQuery */}
-        {isLargerThan850 ? <DesktopHeader /> : <MobileHeader data={data} />}
+        {isLargerThan834 ? <DesktopHeader /> : <MobileHeader data={data} />}
         {/* Swiper Component */}
 
         <Box mt={"25px"}>

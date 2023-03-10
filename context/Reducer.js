@@ -18,7 +18,7 @@ const AddProductToCart = (product, state) => {
     updatedCart[updatedItemIndex] = updatedItem;
   }
 
-  return { ...state, cart: updatedCart, total: state.total++ };
+  return { cart: updatedCart, total: state.total++ };
 };
 
 const RemoveProductFromCart = (productId, state) => {
@@ -37,7 +37,7 @@ const RemoveProductFromCart = (productId, state) => {
     updatedCart[updatedItemIndex] = updatedItem;
   }
 
-  return { ...state, cart: updatedCart, total: state.total-- };
+  return { cart: updatedCart, total: state.total-- };
 };
 
 export const shopReducer = (state, action) => {

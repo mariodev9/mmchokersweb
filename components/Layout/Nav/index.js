@@ -26,11 +26,6 @@ import CartButton from "../../Shared/Buttons/CartButton";
 
 const NavLinks = [
   {
-    title: "Colecciones",
-    url: "/Colecciones",
-  },
-
-  {
     title: "Preguntas Frecuentes",
     url: "/Colecciones",
   },
@@ -75,7 +70,7 @@ export const Navbar = () => {
         align={"center"}
         w={"100%"}
         h={"10vh"}
-        p={{ base: "15px 20px", tablet: "40px 40px" }}
+        p={{ base: "15px 30px", tablet: "40px 40px" }}
         bg={"#fff"}
       >
         <Button
@@ -83,26 +78,36 @@ export const Navbar = () => {
           onClick={onOpen}
           border={"none"}
           bg={"none"}
+          px={"0px"}
         >
           <MenuIcon />
         </Button>
         <Link href={"/"}>
-          <Logoo />
+          <Logo />
         </Link>
         <Box display={{ base: "none", tablet: "flex" }}>
           <HStack spacing={10} fontWeight={500}>
             <Menu isLazy>
-              <MenuButton fontWeight={500}>Productos</MenuButton>
+              <MenuButton
+                p={"5px 10px"}
+                fontWeight={500}
+                _expanded={{
+                  bg: "yellow.100",
+                  borderRadius: "10px",
+                }}
+              >
+                Productos
+              </MenuButton>
               <MenuList bg={"#fff"}>
                 {/* Estos links deberian ser de next */}
-                <MenuItem as="a" href="/Collares" bg={"#fff"}>
-                  Collares
+                <MenuItem as="a" bg={"none"}>
+                  <Link href="/Collares">Collares</Link>
                 </MenuItem>
-                <MenuItem as="a" href="/Cadenas" bg={"#fff"}>
-                  Cadenas
+                <MenuItem as="a" bg={"none"}>
+                  <Link href="/Cadenas">Cadenas</Link>
                 </MenuItem>
-                <MenuItem as="a" href="/Pulseras" bg={"#fff"}>
-                  Pulseras
+                <MenuItem as="a" bg={"none"}>
+                  <Link href="/Pulseras">Pulseras</Link>
                 </MenuItem>
               </MenuList>
             </Menu>

@@ -7,7 +7,7 @@ export default function PulserasPage() {
   return (
     <CategoryPage>
       <Box pt={"15vh"}>
-        <Text>Pulseras!!!!</Text>
+        <Text>Pulserasgit!!!!</Text>
       </Box>
     </CategoryPage>
   );

@@ -1,10 +1,10 @@
 import React from "react";
 import { Layout } from "../Layout";
 
-export default function CategoryPage() {
+export default function CategoryPage({ children }) {
   return (
     <>
-      <Layout>Categori pagee</Layout>
+      <Layout>{children}</Layout>
     </>
   );
 }

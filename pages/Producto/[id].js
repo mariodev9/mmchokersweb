@@ -62,10 +62,10 @@ export default function ProductPage() {
                 gap={5}
               >
                 <TabList display={"flex"} flexDirection={"column"} gap={5}>
-                  {productData.images.map((imagen) => (
-                    <Tab p={"0px"}>
+                  {productData.images.map((image) => (
+                    <Tab p={"0px"} key={image}>
                       <Flex
-                        bgImage={imagen}
+                        bgImage={image}
                         bgRepeat={"no-repeat"}
                         bgPosition={"center"}
                         bgSize={"cover"}
@@ -77,10 +77,10 @@ export default function ProductPage() {
                   ))}
                 </TabList>
                 <TabPanels>
-                  {productData.images.map((imagen) => (
-                    <TabPanel p={"0px"}>
+                  {productData.images.map((image) => (
+                    <TabPanel key={image} p={"0px"}>
                       <Flex
-                        bgImage={imagen}
+                        bgImage={image}
                         bgRepeat={"no-repeat"}
                         bgPosition={"center"}
                         bgSize={"cover"}

@@ -27,7 +27,7 @@ import CartButton from "../../Shared/Buttons/CartButton";
 const NavLinks = [
   {
     title: "Preguntas Frecuentes",
-    url: "/Colecciones",
+    url: "/Preguntas",
   },
   {
     title: "Nosotros",

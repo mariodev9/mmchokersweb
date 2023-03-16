@@ -13,7 +13,7 @@ import CartContext from "../../context/CartContext";
 import { LikeIcon } from "../Icons";
 
 export default function Product({
-  image,
+  images,
   price,
   name,
   category,
@@ -24,7 +24,7 @@ export default function Product({
   const { AddProductToCart } = useContext(CartContext);
 
   let productData = {
-    image,
+    images,
     price,
     name,
     category,
@@ -38,7 +38,7 @@ export default function Product({
       <LinkBox>
         <Flex direction={"column"} maxW={"250px"}>
           <Flex
-            bgImage={image}
+            bgImage={images[0]}
             bgRepeat={"no-repeat"}
             bgPosition={"center"}
             bgSize={"cover"}

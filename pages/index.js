@@ -9,14 +9,13 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { Layout } from "../components/Layout/Layout";
-
 import Product from "../components/Products/Product";
 import { motion } from "framer-motion";
-
 import { DesktopHeader } from "../components/Home/DesktopHeader";
 import { MobileHeader } from "../components/Home/MobileHeader";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import SwiperProducts from "../components/Shared/SwiperProducts/SwiperProducts";
 
 export default function Home({ data }) {
   const [isLargerThan834] = useMediaQuery("(min-width: 834px)");
@@ -43,32 +42,7 @@ export default function Home({ data }) {
             </Text>
           </Flex>
           <Box mt={"5px"}>
-            <Swiper
-              spaceBetween={10}
-              style={{
-                paddingLeft: "30px",
-              }}
-              breakpoints={{
-                0: {
-                  slidesPerView: 1.5,
-                },
-                450: {
-                  slidesPerView: 2.5,
-                },
-                720: {
-                  slidesPerView: 3.5,
-                },
-                960: {
-                  slidesPerView: 4.5,
-                },
-              }}
-            >
-              {data.productos.map((producto) => (
-                <SwiperSlide key={producto.name}>
-                  <Product {...producto} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            <SwiperProducts products={data.productos} />
           </Box>
         </Box>
       </Layout>

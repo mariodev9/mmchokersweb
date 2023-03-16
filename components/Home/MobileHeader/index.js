@@ -67,7 +67,7 @@ export const MobileHeader = ({ data }) => {
             ))}
           </VStack>
         </GridItem>
-        <GridItem mt={"40px"} w="100%">
+        <GridItem mt={"50px"} w="100%">
           <VStack spacing={5}>
             {data.productos.slice(mitad).map((product) => (
               <ProductItem key={product.id} {...product} />

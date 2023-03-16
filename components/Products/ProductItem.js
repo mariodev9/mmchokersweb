@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 
 export default function ProductItem({
-  image,
+  images,
   price,
   name,
   category,
@@ -22,7 +22,7 @@ export default function ProductItem({
     <LinkBox w={"100%"}>
       <Flex direction={"column"} maxW={"250px"}>
         <Flex
-          bgImage={image}
+          bgImage={images[0]}
           bgRepeat={"no-repeat"}
           bgPosition={"center"}
           bgSize={"cover"}

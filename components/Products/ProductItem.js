@@ -8,6 +8,7 @@ import {
   LinkBox,
   LinkOverlay,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 export default function ProductItem({
   images,
@@ -31,15 +32,17 @@ export default function ProductItem({
           borderRadius={"18px"}
         ></Flex>
         <Box mt={"10px"}>
-          <LinkOverlay href={`/Producto/${id}`}>
-            <Text
-              fontSize={{ base: "15px", tablet: "18px" }}
-              fontWeight={500}
-              color={"gray.200"}
-            >
-              {name}
-            </Text>
-          </LinkOverlay>
+          <Link href={`/Producto/${id}`} passHref>
+            <LinkOverlay>
+              <Text
+                fontSize={{ base: "15px", tablet: "18px" }}
+                fontWeight={500}
+                color={"gray.200"}
+              >
+                {name}
+              </Text>
+            </LinkOverlay>
+          </Link>
 
           <Text
             fontSize={{ base: "18px", tablet: "25px" }}

@@ -11,6 +11,7 @@ import {
 // import Image from "next/image";
 import CartContext from "../../context/CartContext";
 import { LikeIcon } from "../Icons";
+import Link from "next/link";
 
 export default function Product({
   images,
@@ -35,7 +36,7 @@ export default function Product({
 
   return (
     <>
-      <LinkBox>
+      <LinkBox as="article">
         <Flex direction={"column"} maxW={"250px"}>
           <Flex
             bgImage={images[0]}
@@ -47,15 +48,17 @@ export default function Product({
             borderRadius={"15px"}
           ></Flex>
           <Box mt={"10px"}>
-            <LinkOverlay href={`/Producto/${id}`}>
-              <Text
-                fontSize={{ base: "15px", tablet: "18px" }}
-                fontWeight={500}
-                color={"gray.200"}
-              >
-                {name}
-              </Text>
-            </LinkOverlay>
+            <Link href={`/Producto/${id}`}>
+              <LinkOverlay>
+                <Text
+                  fontSize={{ base: "15px", tablet: "18px" }}
+                  fontWeight={500}
+                  color={"gray.200"}
+                >
+                  {name}
+                </Text>
+              </LinkOverlay>
+            </Link>
 
             <Text
               fontSize={{ base: "20px", tablet: "25px" }}

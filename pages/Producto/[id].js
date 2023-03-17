@@ -99,7 +99,6 @@ export default function ProductPage() {
                 bg={"#fff"}
                 w={{ base: "full", tablet: "40%" }}
                 borderRadius={"30px 30px 0px 0px"}
-                // p={"35px 15px 15px"}
               >
                 <Box>
                   <Flex
@@ -137,7 +136,7 @@ export default function ProductPage() {
                   <Button
                     variant={"primary"}
                     w={"full"}
-                    onClick={() => AddProductToCart(productData)}
+                    onClick={() => AddProductToCart({ id, ...productData })}
                   >
                     Añadir al carrito
                   </Button>

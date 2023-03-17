@@ -6,7 +6,7 @@ import CartContext from "../../../context/CartContext";
 import { Cart } from "../../Icons";
 
 export default function CartButton() {
-  const { total } = useContext(CartContext);
+  const context = useContext(CartContext);
 
   return (
     <LinkBox cursor={"pointer"}>
@@ -28,7 +28,9 @@ export default function CartButton() {
           bg={"yellow.100"}
           borderRadius={"full"}
         >
-          {total}
+          {context.cart.reduce((count, curItem) => {
+            return count + curItem.quantity;
+          }, 0)}
         </Flex>
       </Flex>
     </LinkBox>

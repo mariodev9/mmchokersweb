@@ -3,16 +3,12 @@ import { useRouter } from "next/router";
 import React from "react";
 import CategoryPage from "../../components/Layout/CategoryPage";
 import { Layout } from "../../components/Layout/Layout";
+import WraperProducts from "../../components/Shared/WraperProducts/WraperProducts";
 
 export default function CadenasPage({ category, data }) {
   return (
-    <CategoryPage>
-      <Text>{category}</Text>
-      <Grid templateColumns="repeat(4, 1fr)" gap={5}>
-        {data.products.map((item) => (
-          <GridItem key={item.name} w="100%" h="10" bg="blue.500" />
-        ))}
-      </Grid>
+    <CategoryPage category={category}>
+      <WraperProducts products={data.products} />
     </CategoryPage>
   );
 }

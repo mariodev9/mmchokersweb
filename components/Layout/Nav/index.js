@@ -23,6 +23,8 @@ import { motion, useScroll } from "framer-motion";
 import { SocialMedia } from "../../Home/SocialMedia";
 import { useRouter } from "next/router";
 import CartButton from "../../Shared/Buttons/CartButton";
+import { useContext } from "react";
+import CartContext from "../../../context/CartContext";
 
 const NavLinks = [
   {
@@ -42,6 +44,7 @@ const variants = {
 
 export const Navbar = () => {
   const router = useRouter();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);

@@ -1,16 +1,13 @@
 import { Box, Text, Grid, GridItem } from "@chakra-ui/react";
 import React from "react";
 import CategoryPage from "../../components/Layout/CategoryPage";
+import WraperProducts from "../../components/Shared/WraperProducts/WraperProducts";
 
 export default function PulserasPage({ category, data }) {
   return (
     <CategoryPage>
       <Text>{category}</Text>
-      <Grid templateColumns="repeat(4, 1fr)" gap={5}>
-        {data.products.map((item) => (
-          <GridItem key={item.name} w="100%" h="10" bg="blue.500" />
-        ))}
-      </Grid>
+      <WraperProducts products={data.products} />
     </CategoryPage>
   );
 }

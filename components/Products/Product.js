@@ -36,7 +36,7 @@ export default function Product({
 
   return (
     <>
-      <LinkBox as="article">
+      <LinkBox as="article" cursor={"pointer"}>
         <Flex direction={"column"} maxW={"250px"}>
           <Flex
             bgImage={images[0]}

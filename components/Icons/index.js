@@ -4,10 +4,11 @@ export const Logo = (props) => {
   return (
     <Icon
       xmlns="http://www.w3.org/2000/svg"
-      width={{ base: "180px", desktop: "250px" }}
-      height={{ base: "20px", desktop: "28px" }}
+      width={{ base: "180px", tablet: "220px" }}
+      height={{ base: "20px", tablet: "28px" }}
       viewBox="0 0 87 11"
       fill="none"
+      cursor={"pointer"}
       {...props}
     >
       <path

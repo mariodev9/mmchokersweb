@@ -82,7 +82,7 @@ export const Navbar = () => {
         >
           <MenuIcon />
         </Button>
-        <Link href={"/"}>
+        <Link href={"/"} passHref legacyBehavior>
           <Logo />
         </Link>
         <Box display={{ base: "none", tablet: "flex" }}>

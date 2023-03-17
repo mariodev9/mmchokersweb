@@ -1,14 +1,13 @@
+import { Box } from "@chakra-ui/react";
 import React from "react";
 import { Layout } from "../Layout";
 
 export default function CategoryPage({ children }) {
   return (
     <>
-      <Layout>{children}</Layout>
+      <Layout>
+        <Box p={"15vh 40px 0px"}>{children}</Box>
+      </Layout>
     </>
   );
 }
-
-// en server side props:
-// obtener nombre de la ruta (params)
-// traer los productos por categorias

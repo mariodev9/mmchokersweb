@@ -1,15 +1,11 @@
 import {
-  getAllProducts,
-  mapFromFirebaseToProductObject,
-} from "../../firebase/services/products";
-import {
   collection,
   query,
   getDocs,
   orderBy,
   onSnapshot,
 } from "firebase/firestore";
-import { firestore } from "../../firebase/firebaseConfig";
+import { firestore } from "../../../firebase/firebaseConfig";
 
 export default function handler(req, res) {
   const q = query(

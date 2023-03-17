@@ -23,7 +23,9 @@ export async function getServerSideProps(context) {
 
   console.log(category, "la categoria es!");
 
-  const res = await fetch(`http://localhost:3000/api/Categoria/${category}`);
+  const res = await fetch(
+    `https://mmchokers.vercel.app/api/Categoria/${category}`
+  );
   const data = await res.json();
 
   return { props: { category, data } };

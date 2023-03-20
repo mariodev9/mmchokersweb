@@ -12,22 +12,28 @@ export default function CartProduct({ name, price, images, id, quantity }) {
         bgRepeat={"no-repeat"}
         bgPosition={"center"}
         bgSize={"cover"}
-        w={"120px"}
-        h={"120px"}
+        w={"140px"}
+        h={"100px"}
         borderRadius={"20px"}
-      ></Box>
-      <Box>
-        <Text fontSize={"20px"}>{name}</Text>
-        <Text>${price}</Text>
+      />
+      <Box w={"40%"}>
+        <Text fontSize={{ base: "16px", tablet: "20px" }}>{name}</Text>
+        <Text fontWeight={500} fontSize={{ base: "14px", tablet: "20px" }}>
+          ${price}
+        </Text>
       </Box>
       <Flex
         direction={"column"}
-        h={"120px"}
+        h={"full"}
         justify={"space-around"}
         align={"center"}
-        border={"2px solid red"}
+        border={"2px dashed"}
+        borderColor={"gray.100"}
+        borderRadius={"15px"}
+        w={"20%"}
       >
         <Button
+          bg={"none"}
           onClick={() =>
             AddProductToCart({ name, price, images, id, quantity })
           }
@@ -35,7 +41,9 @@ export default function CartProduct({ name, price, images, id, quantity }) {
           +
         </Button>
         <Text>{quantity}</Text>
-        <Button onClick={() => RemoveProductFromCart(id)}>-</Button>
+        <Button bg={"none"} onClick={() => RemoveProductFromCart(id)}>
+          -
+        </Button>
       </Flex>
     </Flex>
   );

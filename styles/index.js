@@ -26,8 +26,8 @@ export const theme = extendTheme({
       100: "#181818",
     },
     gray: {
-      100: "#393939",
-      200: "#222222",
+      100: "#BEBEBE",
+      200: "#666",
     },
     red: {
       100: "#FF4150",
@@ -42,10 +42,11 @@ export const theme = extendTheme({
   // LAYER
   layerStyles: {
     layoutWraper: {
-      p: "11vh 30px 0px",
+      px: "30px",
+      pt: { base: "11vh", tablet: "13vh" },
     },
     xWraper: {
-      p: "0px 30px ",
+      px: "30px",
     },
   },
   // COMPONENTES

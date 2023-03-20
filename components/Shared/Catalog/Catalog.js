@@ -29,7 +29,7 @@ const CategoryList = [
 
 export default function Catalog() {
   return (
-    <Box m={"5vh 0px"}>
+    <Box m={"5vh 0px"} pl={"30px"}>
       <Text my={"5px"} fontSize={"25px"} fontWeight={600}>
         Catalogo
       </Text>

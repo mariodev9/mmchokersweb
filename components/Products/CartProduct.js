@@ -2,13 +2,13 @@ import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import CartContext from "../../context/CartContext";
 
-export default function CartProduct({ name, price, image, id, quantity }) {
+export default function CartProduct({ name, price, images, id, quantity }) {
   const { RemoveProductFromCart, AddProductToCart } = useContext(CartContext);
 
   return (
-    <Flex w={"100%"} gap={10} justify={"space-around"}>
+    <Flex w={"100%"} gap={10} justify={"space-between"}>
       <Box
-        bgImage={image}
+        bgImage={images[0]}
         bgRepeat={"no-repeat"}
         bgPosition={"center"}
         bgSize={"cover"}
@@ -28,7 +28,9 @@ export default function CartProduct({ name, price, image, id, quantity }) {
         border={"2px solid red"}
       >
         <Button
-          onClick={() => AddProductToCart({ name, price, image, id, quantity })}
+          onClick={() =>
+            AddProductToCart({ name, price, images, id, quantity })
+          }
         >
           +
         </Button>

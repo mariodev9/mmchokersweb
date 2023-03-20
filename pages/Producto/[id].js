@@ -32,7 +32,7 @@ export default function ProductPage() {
 
   return (
     <>
-      <Layout>
+      <Layout footer>
         {/* loader */}
         {productData === undefined && (
           <Flex h="100vh" justify="center" align="center">

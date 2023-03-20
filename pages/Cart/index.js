@@ -5,7 +5,6 @@ import React from "react";
 import { useContext } from "react";
 import { Layout } from "../../components/Layout/Layout";
 import CartProduct from "../../components/Products/CartProduct";
-import CartButton from "../../components/Shared/Buttons/CartButton";
 import CartContext from "../../context/CartContext";
 
 export default function Cart() {
@@ -15,11 +14,20 @@ export default function Cart() {
 
   return (
     <Layout>
-      <VStack pt={"15vh"}>
-        {cart.map((item) => (
-          <CartProduct key={item.id} {...item} />
-        ))}
-      </VStack>
+      <Box layerStyle={"layoutWraper"}>
+        <Text variant={"sectionTitle"}>Carrito de compras</Text>
+        {cart.length === 0 && (
+          <Flex h={"70vh"} justify={"center"} align={"center"}>
+            <Text color={"#555"}>Tu carrito esta vacio!</Text>
+          </Flex>
+        )}
+        <VStack spacing={"35px"} pt={"30px"} border={"1px solid red"}>
+          {cart.map((item) => (
+            <CartProduct key={item.id} {...item} />
+          ))}
+        </VStack>
+        asdasdasd
+      </Box>
     </Layout>
   );
 }

@@ -20,46 +20,47 @@ export const MobileHeader = ({ data }) => {
   return (
     <>
       {/* Search */}
-      <Box display={{ base: "block", tablet: "none" }} p={"10vh 30px 0px"}>
-        <SearchBar />
-      </Box>
+      <Box layerStyle={"layoutWraper"}>
+        <Box display={{ base: "block", tablet: "none" }}>
+          <SearchBar />
+        </Box>
 
-      {/* Header */}
-      <Box mt={"15px"} display={{ base: "block", tablet: "none" }} px={"30px"}>
-        <LinkBox>
-          <Box overflow={"hidden"} borderRadius={"20px"} cursor={"pointer"}>
-            <Flex
-              w={"full"}
-              h={"20vh"}
-              bgImage={"/images/CollaresImage.jpg"}
-              bgRepeat={"no-repeat"}
-              bgPosition={"center"}
-              bgSize={"cover"}
-              justify={"center"}
-              align={"center"}
-              transition="all 1s ease"
-              overflow={"hidden"}
-              _hover={{
-                transform: "scale(1.1)",
-              }}
-            >
-              <Link href={"/Collares"}>
-                <LinkOverlay>
-                  <Text fontSize={"26px"} color={"#fff"}>
-                    Nueva colección
-                  </Text>
-                </LinkOverlay>
-              </Link>
-            </Flex>
-          </Box>
-        </LinkBox>
+        {/* Header */}
+        <Box mt={"15px"} display={{ base: "block", tablet: "none" }}>
+          <LinkBox>
+            <Box overflow={"hidden"} borderRadius={"20px"} cursor={"pointer"}>
+              <Flex
+                w={"full"}
+                h={"20vh"}
+                bgImage={"/images/CollaresImage.jpg"}
+                bgRepeat={"no-repeat"}
+                bgPosition={"center"}
+                bgSize={"cover"}
+                justify={"center"}
+                align={"center"}
+                transition="all 1s ease"
+                overflow={"hidden"}
+                _hover={{
+                  transform: "scale(1.1)",
+                }}
+              >
+                <Link href={"/Collares"}>
+                  <LinkOverlay>
+                    <Text fontSize={"26px"} color={"#fff"}>
+                      Nueva colección
+                    </Text>
+                  </LinkOverlay>
+                </Link>
+              </Flex>
+            </Box>
+          </LinkBox>
+        </Box>
       </Box>
 
       {/* Catalogo */}
-      <Box pl={" 30px"}>
-        <Catalog />
-      </Box>
-      <Grid px={"30px"} templateColumns={"repeat(2, 1fr)"} gap={3}>
+      <Catalog />
+
+      <Grid layerStyle={"xWraper"} templateColumns={"repeat(2, 1fr)"} gap={3}>
         <GridItem w="100%">
           <VStack spacing={5}>
             {data.productos.slice(0, mitad).map((product) => (

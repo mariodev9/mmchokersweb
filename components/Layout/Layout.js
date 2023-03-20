@@ -5,7 +5,7 @@ import CartContext from "../../context/CartContext";
 import Footer from "./Footer";
 import { Navbar } from "./Nav";
 
-export const Layout = ({ children }) => {
+export const Layout = ({ children, footer }) => {
   return (
     <>
       {/* Hacer pos: absolute, h=100vh con scroll y aplicar Page Transitions */}
@@ -13,8 +13,7 @@ export const Layout = ({ children }) => {
       <Box>
         <Navbar />
         <Box>{children}</Box>
-
-        <Footer />
+        {footer && <Footer />}
       </Box>
     </>
   );

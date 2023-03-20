@@ -22,6 +22,9 @@ export const theme = extendTheme({
   },
   // COLORES
   colors: {
+    black: {
+      100: "#181818",
+    },
     gray: {
       100: "#393939",
       200: "#222222",
@@ -38,11 +41,11 @@ export const theme = extendTheme({
   },
   // LAYER
   layerStyles: {
-    primaryBox: {
-      bg: "black.50",
-      borderColor: "gray.500",
-      borderRadius: "20px",
-      boxShadow: "0 5px 5px rgba(0, 0, 0, 0.1)",
+    layoutWraper: {
+      p: "11vh 30px 0px",
+    },
+    xWraper: {
+      p: "0px 30px ",
     },
   },
   // COMPONENTES
@@ -84,6 +87,13 @@ export const theme = extendTheme({
     Text: {
       baseStyle: {
         fontWeight: "600",
+      },
+      variants: {
+        sectionTitle: {
+          fontWeight: "600",
+          fontSize: "20px",
+          textAlign: "center",
+        },
       },
     },
     // CONTAINER

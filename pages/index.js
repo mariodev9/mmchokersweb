@@ -27,11 +27,10 @@ export default function Home({ data }) {
         <meta name="e-commerce mmchokers" content="e-commerce" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
+      <Layout footer>
         {/* renderizarlo con useQuery */}
         {isLargerThan834 ? <DesktopHeader /> : <MobileHeader data={data} />}
         {/* Swiper Component */}
-
         <Box mt={"25px"}>
           <Flex align={"center"} justify={"space-between"} px={"30px"}>
             <Text fontSize={"25px"} fontWeight={600}>

@@ -32,8 +32,8 @@ export default function Home({ data }) {
         {isLargerThan834 ? <DesktopHeader /> : <MobileHeader data={data} />}
         {/* Swiper Component */}
         <Box mt={"25px"}>
-          <Flex align={"center"} justify={"space-between"} px={"30px"}>
-            <Text fontSize={"25px"} fontWeight={600}>
+          <Flex align={"center"} justify={"space-between"} p={"10px 30px"}>
+            <Text fontSize={"35px"} fontWeight={500}>
               Mas populares
             </Text>
             <Text fontSize={"10px"} fontWeight={500} color={"gray.100"}>

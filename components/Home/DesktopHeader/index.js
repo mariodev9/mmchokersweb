@@ -1,10 +1,13 @@
 import React from "react";
-import { Box, Button, Flex, HStack, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { SocialMedia } from "../SocialMedia";
-import { Smile } from "../../Icons";
+// import { SocialMedia } from "../SocialMedia";
+// import { Smile } from "../../Icons";
 import { Slider } from "../Slider";
-import Footer from "../../Layout/Footer";
+
+import CategoryBox from "../../Shared/CategoryBox/CategoryBox";
+
+// category list y mapear
 
 export const DesktopHeader = () => {
   const heightWraper = "90vh";
@@ -38,6 +41,14 @@ export const DesktopHeader = () => {
           <Slider />
         </Flex>
 
+        <Grid px={"30px"} templateColumns="repeat(2, 1fr)" gap={6}>
+          {[1, 2, 3, 4].map((item) => (
+            <GridItem>
+              <CategoryBox />
+            </GridItem>
+          ))}
+        </Grid>
+
         {/* smile */}
         {/* <Box pos={"absolute"} right={"120px"}>
           <motion.div
@@ -50,9 +61,9 @@ export const DesktopHeader = () => {
         </Box> */}
 
         {/* Redes sociales */}
-        <Flex justify={"end"} px={"30px"}>
+        {/* <Flex justify={"end"} px={"30px"}>
           <SocialMedia />
-        </Flex>
+        </Flex> */}
       </Box>
     </>
   );

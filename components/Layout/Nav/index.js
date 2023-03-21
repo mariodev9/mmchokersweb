@@ -16,8 +16,15 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionIcon,
+  AccordionPanel,
+  Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
+// import { Link } from "@chakra-ui/react";
 import { Logo, Logoo, MenuIcon } from "../../Icons";
 import { motion, useScroll } from "framer-motion";
 import { SocialMedia } from "../../Home/SocialMedia";
@@ -27,6 +34,22 @@ import { useContext } from "react";
 import CartContext from "../../../context/CartContext";
 
 const NavLinks = [
+  // {
+  //   title: "Collares",
+  //   url: "/Collares",
+  // },
+  // {
+  //   title: "Cadenas",
+  //   url: "/Cadenas",
+  // },
+  // {
+  //   title: "Pulseras",
+  //   url: "/Pulseras",
+  // },
+  // {
+  //   title: "Billeteras",
+  //   url: "/Billeteras",
+  // },
   {
     title: "Preguntas Frecuentes",
     url: "/Preguntas",
@@ -44,6 +67,7 @@ const variants = {
 
 export const Navbar = () => {
   const router = useRouter();
+  const { cart } = useContext(CartContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { scrollY } = useScroll();
@@ -122,7 +146,11 @@ export const Navbar = () => {
           </HStack>
         </Box>
 
-        <CartButton />
+        <CartButton
+          subtotal={cart.reduce((count, curItem) => {
+            return count + curItem.price * curItem.quantity;
+          }, 0)}
+        />
       </Flex>
 
       <Drawer isOpen={isOpen} placement="left" onClose={onClose} size={"lg"}>
@@ -132,13 +160,45 @@ export const Navbar = () => {
 
           <DrawerBody>
             <VStack
-              spacing={10}
+              spacing={5}
               h={"100%"}
               fontWeight={600}
               fontSize={"30px"}
               align={"center"}
               justify={"center"}
             >
+              <Accordion allowToggle>
+                <AccordionItem>
+                  <h2>
+                    <AccordionButton
+                      fontWeight={600}
+                      fontSize={"30px"}
+                      p={"5px 20px"}
+                      _hover={{
+                        bg: "yellow.100",
+                      }}
+                      borderRadius={"25px"}
+                    >
+                      <Text>Productos</Text>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={4} fontSize={"25px"} textAlign={"center"}>
+                    <Box>
+                      <Link href="/Collares">Collares</Link>
+                    </Box>
+                    <Box>
+                      <Link href="/Cadenas">Cadenas</Link>
+                    </Box>
+                    <Box>
+                      <Link href="/Pulseras">Pulseras</Link>
+                    </Box>
+                    <Box>
+                      <Link href="/Billeteras">Billeteras</Link>
+                    </Box>
+                  </AccordionPanel>
+                </AccordionItem>
+              </Accordion>
               {NavLinks.map((navlink) => (
                 <Box
                   key={navlink.title}

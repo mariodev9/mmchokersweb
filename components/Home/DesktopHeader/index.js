@@ -4,26 +4,42 @@ import { motion } from "framer-motion";
 import { SocialMedia } from "../SocialMedia";
 import { Smile } from "../../Icons";
 import { Slider } from "../Slider";
+import Footer from "../../Layout/Footer";
 
 export const DesktopHeader = () => {
+  const heightWraper = "90vh";
+
   return (
-    <Box display={{ base: "none", tablet: "block" }} pt={"10vh"}>
-      <Flex justify={"center"} height={"90vh"}>
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1, type: "spring" }}
+    <>
+      <Box pt={"10vh"}>
+        <Flex
+          pos={"absolute"}
+          zIndex={-1}
+          w={"full"}
+          h={heightWraper}
+          align={"center"}
+          justify={"center"}
         >
-          <Text
-            fontFamily={"'Bebas Neue', cursive"}
-            fontSize={{ base: "5em", tablet: "15em", desktop: "400px" }}
-            letterSpacing={"15px"}
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1, type: "spring" }}
           >
-            we are
-          </Text>
-        </motion.div>
-        <Slider />
-        <Box pos={"absolute"} right={"120px"}>
+            <Text
+              fontFamily={"'Bebas Neue', cursive"}
+              fontSize={{ base: "5em", tablet: "15em", desktop: "400px" }}
+              letterSpacing={"15px"}
+            >
+              we are
+            </Text>
+          </motion.div>
+        </Flex>
+        <Flex align={"center"} h={heightWraper} overflowX={"hidden"}>
+          <Slider />
+        </Flex>
+
+        {/* smile */}
+        {/* <Box pos={"absolute"} right={"120px"}>
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -31,11 +47,13 @@ export const DesktopHeader = () => {
           >
             <Smile />
           </motion.div>
-        </Box>
-      </Flex>
-      <Flex justify={"end"} px={"40px"}>
-        <SocialMedia />
-      </Flex>
-    </Box>
+        </Box> */}
+
+        {/* Redes sociales */}
+        <Flex justify={"end"} px={"30px"}>
+          <SocialMedia />
+        </Flex>
+      </Box>
+    </>
   );
 };

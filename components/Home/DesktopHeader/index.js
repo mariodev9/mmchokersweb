@@ -43,7 +43,7 @@ export const DesktopHeader = () => {
 
         <Grid px={"30px"} templateColumns="repeat(2, 1fr)" gap={6}>
           {[1, 2, 3, 4].map((item) => (
-            <GridItem>
+            <GridItem key={item}>
               <CategoryBox />
             </GridItem>
           ))}

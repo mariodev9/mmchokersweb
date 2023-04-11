@@ -63,14 +63,14 @@ export const MobileHeader = ({ data }) => {
       <Grid layerStyle={"xWraper"} templateColumns={"repeat(2, 1fr)"} gap={3}>
         <GridItem w="100%">
           <VStack spacing={5}>
-            {data.productos.slice(0, mitad).map((product) => (
+            {data.productos.slice(mitad).map((product) => (
               <ProductItem key={product.id} {...product} />
             ))}
           </VStack>
         </GridItem>
         <GridItem mt={"50px"} w="100%">
           <VStack spacing={5}>
-            {data.productos.slice(mitad).map((product) => (
+            {data.productos.slice(0, mitad).map((product) => (
               <ProductItem key={product.id} {...product} />
             ))}
           </VStack>

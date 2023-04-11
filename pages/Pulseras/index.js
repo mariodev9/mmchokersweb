@@ -5,8 +5,7 @@ import WraperProducts from "../../components/Shared/WraperProducts/WraperProduct
 
 export default function PulserasPage({ category, data }) {
   return (
-    <CategoryPage>
-      <Text>{category}</Text>
+    <CategoryPage category={category}>
       <WraperProducts products={data.products} />
     </CategoryPage>
   );

@@ -18,7 +18,10 @@ import "swiper/css";
 import SwiperProducts from "../components/Shared/SwiperProducts/SwiperProducts";
 
 export default function Home({ data }) {
-  const [isLargerThan834] = useMediaQuery("(min-width: 834px)");
+  const [isLargerThan834] = useMediaQuery("(min-width: 834px)", {
+    ssr: true,
+    fallback: true, // return false on the server, and re-evaluate on the client side
+  });
 
   return (
     <>
@@ -35,9 +38,6 @@ export default function Home({ data }) {
           <Flex align={"center"} justify={"space-between"} p={"10px 30px"}>
             <Text fontSize={"35px"} fontWeight={500}>
               Mas populares
-            </Text>
-            <Text fontSize={"10px"} fontWeight={500} color={"gray.100"}>
-              flechita
             </Text>
           </Flex>
           <Box mt={"5px"}>

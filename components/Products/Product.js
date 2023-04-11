@@ -1,14 +1,6 @@
 import React, { useContext } from "react";
-import {
-  Box,
-  Button,
-  Flex,
-  Text,
-  Image,
-  LinkBox,
-  LinkOverlay,
-} from "@chakra-ui/react";
-// import Image from "next/image";
+import { Box, Flex, Text, LinkBox, LinkOverlay } from "@chakra-ui/react";
+import Image from "next/image";
 import CartContext from "../../context/CartContext";
 import { LikeIcon } from "../Icons";
 import Link from "next/link";
@@ -37,38 +29,37 @@ export default function Product({
   return (
     <>
       <LinkBox as="article" cursor={"pointer"}>
-        <Flex direction={"column"} maxW={"250px"}>
-          <Flex
-            bgImage={images[0]}
-            bgRepeat={"no-repeat"}
-            bgPosition={"center"}
-            bgSize={"cover"}
-            width={"full"}
-            height={"240px"}
-            borderRadius={"15px"}
-          ></Flex>
-          <Box mt={"10px"}>
-            <Link href={`/Producto/${id}`}>
-              <LinkOverlay>
-                <Text
-                  fontSize={{ base: "15px", tablet: "18px" }}
-                  fontWeight={500}
-                  color={"gray.200"}
-                >
-                  {name}
-                </Text>
-              </LinkOverlay>
-            </Link>
-
-            <Text
-              fontSize={{ base: "20px", tablet: "25px" }}
-              fontWeight={600}
-              color={"gray.200"}
-            >
-              ${price}
-            </Text>
+        <Box display={"flex"} flexDirection={"column"} maxW={"250px"}>
+          <Box width={"full"} height={"250px"} pos={"relative"}>
+            <Image
+              src={images[0]}
+              alt={name}
+              style={{ borderRadius: "10px" }}
+              layout="fill"
+              objectFit="cover"
+            />
           </Box>
-        </Flex>
+
+          <Link href={`/Producto/${id}`}>
+            <LinkOverlay>
+              <Text
+                fontSize={{ base: "20px", tablet: "25px" }}
+                fontWeight={500}
+                color={"#000"}
+              >
+                {name}
+              </Text>
+            </LinkOverlay>
+          </Link>
+
+          <Text
+            fontSize={{ base: "15px", tablet: "18px" }}
+            fontWeight={600}
+            color={"#000"}
+          >
+            ${price}
+          </Text>
+        </Box>
       </LinkBox>
     </>
   );

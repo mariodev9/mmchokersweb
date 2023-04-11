@@ -10,6 +10,7 @@ import {
   Tab,
   TabPanel,
   Image,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
@@ -22,13 +23,28 @@ import SwiperProducts from "../../components/Shared/SwiperProducts/SwiperProduct
 
 export default function ProductPage() {
   const router = useRouter();
-  const { id } = router.query;
-  const [productData, setProductData] = useState(undefined);
+  const toast = useToast();
+
   const { AddProductToCart } = useContext(CartContext);
+
+  const [productData, setProductData] = useState(undefined);
+
+  const { id } = router.query;
 
   useEffect(() => {
     id && getProduct(id, setProductData);
   }, [id]);
+
+  function handleAddProduct() {
+    toast({
+      title: "Nuevo producto añadido al carrito de compras!",
+      description: `${productData.name} añadido al carro de compras`,
+      status: "success",
+      duration: 4000,
+      isClosable: true,
+    });
+    AddProductToCart({ id, ...productData });
+  }
 
   return (
     <>
@@ -61,9 +77,14 @@ export default function ProductPage() {
                 display={"flex"}
                 gap={5}
               >
-                <TabList display={"flex"} flexDirection={"column"} gap={5}>
+                <TabList
+                  display={"flex"}
+                  flexDirection={"column"}
+                  gap={5}
+                  borderWidth={"0px"}
+                >
                   {productData.images.map((image) => (
-                    <Tab p={"0px"} key={image}>
+                    <Tab p={"0px"} key={image} borderWidth={"0px"}>
                       <Flex
                         bgImage={image}
                         bgRepeat={"no-repeat"}
@@ -136,11 +157,12 @@ export default function ProductPage() {
                   <Button
                     variant={"primary"}
                     w={"full"}
-                    onClick={() => AddProductToCart({ id, ...productData })}
+                    onClick={() => handleAddProduct()}
                   >
                     Añadir al carrito
                   </Button>
-                  <Button
+                  {/* Button like */}
+                  {/* <Button
                     borderRadius={"full"}
                     bg={"gray.50"}
                     _hover={{
@@ -148,7 +170,7 @@ export default function ProductPage() {
                     }}
                   >
                     <LikeIcon />
-                  </Button>
+                  </Button> */}
                 </Flex>
               </Flex>
             </Flex>

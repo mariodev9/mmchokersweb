@@ -168,21 +168,19 @@ export const Navbar = () => {
               justify={"center"}
             >
               <Accordion allowToggle>
-                <AccordionItem>
-                  <h2>
-                    <AccordionButton
-                      fontWeight={600}
-                      fontSize={"30px"}
-                      p={"5px 20px"}
-                      _hover={{
-                        bg: "yellow.100",
-                      }}
-                      borderRadius={"25px"}
-                    >
-                      <Text>Productos</Text>
-                      <AccordionIcon />
-                    </AccordionButton>
-                  </h2>
+                <AccordionItem borderColor={"#fff"}>
+                  <AccordionButton
+                    fontWeight={600}
+                    fontSize={"30px"}
+                    p={"5px 20px"}
+                    _hover={{
+                      bg: "yellow.100",
+                    }}
+                    borderRadius={"25px"}
+                  >
+                    <Text>Productos</Text>
+                    <AccordionIcon />
+                  </AccordionButton>
                   <AccordionPanel pb={4} fontSize={"25px"} textAlign={"center"}>
                     <Box>
                       <Link href="/Collares">Collares</Link>

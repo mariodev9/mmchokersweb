@@ -93,7 +93,9 @@ export default function ProductPage() {
                         width={"40px"}
                         height={"40px"}
                         borderRadius={"5px"}
-                      ></Flex>
+                      >
+                        {/* {image} */}
+                      </Flex>
                     </Tab>
                   ))}
                 </TabList>

@@ -99,14 +99,14 @@ export default function CartButton({ subtotal }) {
           </DrawerBody>
 
           {cart.length != 0 && (
-            <DrawerFooter>
+            <DrawerFooter mb={"20px"}>
               <Button
                 w={"full"}
                 onClick={() =>
                   router.push(`https://wa.me/2494600003?text=${message}`)
                 }
                 variant={"primary"}
-                mb={"40px"}
+                mb={"50px"}
                 fontSize={"20px"}
               >
                 Finalizar compra

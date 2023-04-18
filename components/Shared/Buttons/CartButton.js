@@ -106,7 +106,7 @@ export default function CartButton({ subtotal }) {
                   router.push(`https://wa.me/2494600003?text=${message}`)
                 }
                 variant={"primary"}
-                mb={"10px"}
+                mb={"40px"}
                 fontSize={"20px"}
               >
                 Finalizar compra

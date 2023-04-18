@@ -40,7 +40,6 @@ export const DesktopHeader = () => {
         <Flex align={"center"} h={heightWraper} overflowX={"hidden"}>
           <Slider />
         </Flex>
-
         <Grid px={"30px"} templateColumns="repeat(2, 1fr)" gap={6}>
           {[1, 2, 3, 4].map((item) => (
             <GridItem key={item}>
@@ -48,7 +47,6 @@ export const DesktopHeader = () => {
             </GridItem>
           ))}
         </Grid>
-
         {/* smile */}
         {/* <Box pos={"absolute"} right={"120px"}>
           <motion.div
@@ -59,7 +57,6 @@ export const DesktopHeader = () => {
             <Smile />
           </motion.div>
         </Box> */}
-
         {/* Redes sociales */}
         {/* <Flex justify={"end"} px={"30px"}>
           <SocialMedia />

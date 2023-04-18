@@ -50,7 +50,7 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`https://mmchokers.vercel.app/api/products`);
+  const res = await fetch(`${process.env.API_URL}/products`);
   const data = await res.json();
   return { props: { data } };
 }

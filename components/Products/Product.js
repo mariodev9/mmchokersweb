@@ -34,7 +34,7 @@ export default function Product({
             <Image
               src={images[0]}
               alt={name}
-              style={{ borderRadius: "10px" }}
+              style={{ borderRadius: "2px" }}
               layout="fill"
               objectFit="cover"
             />

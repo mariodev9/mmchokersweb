@@ -66,7 +66,7 @@ export const theme = extendTheme({
           color: "#000",
           fontSize: "15px",
           padding: "15px 27px",
-          borderRadius: "10px",
+          borderRadius: "2px",
           _hover: {
             bg: "#000",
             color: "yellow.100",
@@ -74,7 +74,7 @@ export const theme = extendTheme({
         },
         social: {
           padding: "10px 10px",
-          borderRadius: "8px",
+          borderRadius: "4px",
         },
         outline: {
           bg: "none",

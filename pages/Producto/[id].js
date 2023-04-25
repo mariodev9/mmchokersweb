@@ -92,7 +92,7 @@ export default function ProductPage() {
                         bgSize={"cover"}
                         width={"40px"}
                         height={"40px"}
-                        borderRadius={"5px"}
+                        borderRadius={"2px"}
                       >
                         {/* {image} */}
                       </Flex>
@@ -109,7 +109,7 @@ export default function ProductPage() {
                         bgSize={"cover"}
                         width={"full"}
                         height={"60vh"}
-                        borderRadius={"15px"}
+                        borderRadius={"2px"}
                       ></Flex>
                     </TabPanel>
                   ))}

@@ -22,6 +22,9 @@ function SwiperProducts({ products }) {
         960: {
           slidesPerView: 4.5,
         },
+        1200: {
+          slidesPerView: 5.5,
+        },
       }}
     >
       {products.map((product) => (

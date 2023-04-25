@@ -120,7 +120,7 @@ export const Navbar = () => {
                 fontWeight={500}
                 _expanded={{
                   bg: "yellow.100",
-                  borderRadius: "10px",
+                  borderRadius: "2px",
                 }}
               >
                 Productos
@@ -176,7 +176,7 @@ export const Navbar = () => {
                     _hover={{
                       bg: "yellow.100",
                     }}
-                    borderRadius={"25px"}
+                    borderRadius={"2px"}
                   >
                     <Text>Productos</Text>
                     <AccordionIcon />
@@ -204,7 +204,7 @@ export const Navbar = () => {
                   _hover={{
                     bg: "yellow.100",
                   }}
-                  borderRadius={"25px"}
+                  borderRadius={"2px"}
                   textAlign={"center"}
                 >
                   <Link href={navlink.url}>{navlink.title}</Link>

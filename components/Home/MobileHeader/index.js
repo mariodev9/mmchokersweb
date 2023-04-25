@@ -28,7 +28,7 @@ export const MobileHeader = ({ data }) => {
         {/* Header */}
         <Box mt={"15px"} display={{ base: "block", tablet: "none" }}>
           <LinkBox>
-            <Box overflow={"hidden"} borderRadius={"20px"} cursor={"pointer"}>
+            <Box overflow={"hidden"} borderRadius={"2px"} cursor={"pointer"}>
               <Flex
                 w={"full"}
                 h={"20vh"}

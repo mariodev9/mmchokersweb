@@ -40,7 +40,7 @@ export default function Catalog() {
               p={"5px"}
               bg="#000"
               color={"#fff"}
-              borderRadius={"10px"}
+              borderRadius={"2px"}
               fontWeight={600}
               justify={"center"}
               _hover={{

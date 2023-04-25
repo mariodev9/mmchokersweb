@@ -14,7 +14,7 @@ export default function CartProduct({ name, price, images, id, quantity }) {
         bgSize={"cover"}
         w={"140px"}
         h={"100px"}
-        borderRadius={"20px"}
+        borderRadius={"2px"}
       />
       <Box w={"40%"}>
         <Text fontSize={{ base: "16px", tablet: "20px" }}>{name}</Text>
@@ -27,13 +27,14 @@ export default function CartProduct({ name, price, images, id, quantity }) {
         h={"full"}
         justify={"space-around"}
         align={"center"}
-        border={"2px dashed"}
         borderColor={"gray.100"}
-        borderRadius={"15px"}
+        borderRadius={"2px"}
         w={"20%"}
       >
         <Button
-          bg={"none"}
+          bg={"#000"}
+          color={"#fff"}
+          _hover={{ bg: "yellow.100", color: "#000" }}
           onClick={() =>
             AddProductToCart({ name, price, images, id, quantity })
           }
@@ -41,7 +42,12 @@ export default function CartProduct({ name, price, images, id, quantity }) {
           +
         </Button>
         <Text>{quantity}</Text>
-        <Button bg={"none"} onClick={() => RemoveProductFromCart(id)}>
+        <Button
+          bg={"#000"}
+          color={"#fff"}
+          _hover={{ bg: "yellow.100", color: "#000" }}
+          onClick={() => RemoveProductFromCart(id)}
+        >
           -
         </Button>
       </Flex>

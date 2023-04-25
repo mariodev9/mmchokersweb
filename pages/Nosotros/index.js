@@ -1,24 +1,33 @@
-import { Box, Text } from "@chakra-ui/react";
-import React from "react";
+import { Box, Button, Text } from "@chakra-ui/react";
 import { Layout } from "../../components/Layout/Layout";
+import { useState } from "react";
 
 export default function NosotrosPage() {
+  // const createPreference = () => {
+  //   fetch("http://localhost:3000/api/preference", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(orderData),
+  //   })
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setPreferenceId(data.preference.id);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // };
+
   return (
     <Layout footer>
       <Box layerStyle={"layoutWraper"}>
         <Text fontSize={"20px"} textAlign={"center"} mb={"20px"}>
           Nosotros
         </Text>
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id qui
-          voluptas, sed nobis dolorum tempore nisi quas quae ut minima beatae.
-          Debitis ab temporibus quasi amet corporis accusamus quos recusandae.
-        </div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum
-          libero veniam deserunt sit dicta nisi eaque enim, possimus asperiores
-          optio nulla explicabo totam porro assumenda facilis est a maiores et?
-        </p>
       </Box>
     </Layout>
   );

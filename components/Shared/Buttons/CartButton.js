@@ -78,7 +78,7 @@ export default function CartButton({ subtotal }) {
                   gap={2}
                   bg={"black.100"}
                   color={"#fff"}
-                  borderRadius={"15px"}
+                  borderRadius={"2px"}
                   p={"10px 16px"}
                 >
                   <Flex justify={"space-between"}>
@@ -109,7 +109,7 @@ export default function CartButton({ subtotal }) {
                 mb={"50px"}
                 fontSize={"20px"}
               >
-                Finalizar compra
+                Iniciar compra
               </Button>
             </DrawerFooter>
           )}

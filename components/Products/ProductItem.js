@@ -22,7 +22,7 @@ export default function ProductItem({ images, price, name, id }) {
           <Image
             src={images[0]}
             alt={name}
-            style={{ borderRadius: "18px" }}
+            style={{ borderRadius: "2px" }}
             layout="fill"
             objectFit="cover"
           />

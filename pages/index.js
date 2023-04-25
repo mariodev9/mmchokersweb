@@ -1,19 +1,8 @@
 import Head from "next/head";
-import {
-  Box,
-  Button,
-  Flex,
-  HStack,
-  Text,
-  useMediaQuery,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Flex, Text, useMediaQuery } from "@chakra-ui/react";
 import { Layout } from "../components/Layout/Layout";
-import Product from "../components/Products/Product";
-import { motion } from "framer-motion";
 import { DesktopHeader } from "../components/Home/DesktopHeader";
 import { MobileHeader } from "../components/Home/MobileHeader";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import SwiperProducts from "../components/Shared/SwiperProducts/SwiperProducts";
 
@@ -27,7 +16,7 @@ export default function Home({ data }) {
     <>
       <Head>
         <title>mmChokers</title>
-        <meta name="e-commerce mmchokers" content="e-commerce" />
+        <meta name="e-commerce mmchokers"></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout footer>

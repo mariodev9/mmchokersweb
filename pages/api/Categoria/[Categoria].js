@@ -8,6 +8,8 @@ import {
 } from "firebase/firestore";
 import { firestore } from "../../../firebase/firebaseConfig";
 
+// Obtengo productos por CATEGORIA
+
 export default function handler(req, res) {
   const param = req.query.Categoria;
 
@@ -27,9 +29,14 @@ export default function handler(req, res) {
       };
     });
     if (allProducts) {
-      res.status(200).json({ products: allProducts });
+      res
+        .status(200)
+        .json({
+          products: allProducts,
+          message: `Productos obtenidos con exito`,
+        });
     } else {
-      response.status(404).json({ message: `No hay productos` });
+      response.status(404).json({ products: [], message: `No hay productos` });
     }
   });
 }

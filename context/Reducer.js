@@ -1,5 +1,6 @@
 export const ADD_PRODUCT = "ADD_PRODUCT";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
+export const SAVE_BUYER_DATA = "SAVE_BUYER_DATA";
 
 const AddProductToCart = (product, state) => {
   const updatedCart = [...state.cart];
@@ -17,8 +18,8 @@ const AddProductToCart = (product, state) => {
     updatedItem.quantity++;
     updatedCart[updatedItemIndex] = updatedItem;
   }
-
-  return { cart: updatedCart, total: state.total++ };
+  return { cart: updatedCart };
+  // return { cart: updatedCart, total: state.total++ };
 };
 
 const RemoveProductFromCart = (productId, state) => {
@@ -37,7 +38,12 @@ const RemoveProductFromCart = (productId, state) => {
     updatedCart[updatedItemIndex] = updatedItem;
   }
 
-  return { cart: updatedCart, total: state.total-- };
+  return { cart: updatedCart };
+  // return { cart: updatedCart, total: state.total-- };
+};
+
+const SaveBuyerData = (data, state) => {
+  return { ...state, buyerData: data };
 };
 
 export const shopReducer = (state, action) => {
@@ -49,6 +55,9 @@ export const shopReducer = (state, action) => {
 
     case REMOVE_PRODUCT:
       return RemoveProductFromCart(action.productId, state);
+
+    case SAVE_BUYER_DATA:
+      return SaveBuyerData(action.data, state);
 
     default:
       return state;

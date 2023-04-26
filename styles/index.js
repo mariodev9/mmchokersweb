@@ -97,6 +97,7 @@ export const theme = extendTheme({
         },
       },
     },
+
     // CONTAINER
     Container: {
       variants: {

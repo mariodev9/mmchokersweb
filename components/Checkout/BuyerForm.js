@@ -63,7 +63,7 @@ export default function BuyerForm() {
         setFormData(values);
         setHideForm(true);
         resolve();
-      }, 2000);
+      }, 1500);
     });
   }
 

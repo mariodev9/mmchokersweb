@@ -12,6 +12,7 @@ import {
   Radio,
   RadioGroup,
   Stack,
+  Grid,
 } from "@chakra-ui/react";
 import Summary from "../../components/Checkout/Summary";
 import { useForm } from "react-hook-form";
@@ -47,7 +48,19 @@ export default function CheckoutPage() {
       setTimeout(() => {
         setIsReady(true);
         resolve();
-      }, 2000);
+      }, 1500);
+    });
+  }
+
+  function onSubmitBuyer(values) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        console.log(values, "quien retirara la roden?");
+        // GUARDAR DATA EN ESTADO GLOBAL
+        // FIX: AGREGAR EMAIL Y TIPO DE ENVIO AL BUYER GLOBAL STATE?
+        // ROUTER.PUSH("/PAYMENT")
+        resolve();
+      }, 1500);
     });
   }
   return (
@@ -56,8 +69,19 @@ export default function CheckoutPage() {
         <Flex layerStyle={"xWraper"} py={"15px"} justify={"center"}>
           <Logo width={"276px"} height={"53px"} />
         </Flex>
-        <Flex layerStyle={"xWraper"} gap={10}>
-          <Box w={"70%"}>
+        <Text pl={"30px"} fontSize={"26px"}>
+          Datos de envio
+        </Text>
+
+        <Flex
+          direction={{ base: "column", desktop: "row" }}
+          layerStyle={"xWraper"}
+          gap={{ base: 0, desktop: 10 }}
+        >
+          <Box
+            w={{ base: "100%", desktop: "70%" }}
+            order={{ base: 2, desktop: 1 }}
+          >
             <WraperInfo title={"¿Como entregamos tu compra?"}>
               <RadioGroup
                 name="form-shipping"
@@ -68,11 +92,23 @@ export default function CheckoutPage() {
                 <Stack direction="row" justify={"center"} gap={10}>
                   <Radio colorScheme="blue" value="1" size={"lg"}>
                     <Text>Retiro en tienda</Text>
-                    <Text>¡Gratis!</Text>
+                    <Text
+                      fontWeight={"regular"}
+                      fontSize={"16px"}
+                      color={"gray.200"}
+                    >
+                      ¡Gratis!
+                    </Text>
                   </Radio>
                   <Radio colorScheme="blue" value="2" size={"lg"}>
                     <Text> Envio por Correo Argentino</Text>
-                    <Text>A partir de ....</Text>
+                    <Text
+                      fontWeight={"regular"}
+                      fontSize={"16px"}
+                      color={"gray.200"}
+                    >
+                      Envio Gratis a partir de $5000
+                    </Text>
                   </Radio>
                 </Stack>
               </RadioGroup>
@@ -123,7 +159,107 @@ export default function CheckoutPage() {
 
             {isReady && (
               <>
-                {shippingType === "1" && <Box>Elegi local!! ndqa</Box>}
+                {shippingType === "1" && (
+                  <>
+                    <WraperInfo title={"Punto de retiro"}>
+                      Usted selecciono retirar por la tienda Quien retirara la
+                      orden? (formulario de datos)
+                    </WraperInfo>
+                    <WraperInfo title={"¿Quien retirara la orden?"}>
+                      <form onSubmit={handleSubmit(onSubmitBuyer)}>
+                        <Grid
+                          templateColumns="repeat(2, 2fr)"
+                          gap={10}
+                          py={"15px"}
+                        >
+                          <FormControl isInvalid={errors.name}>
+                            <FormLabel>Nombre</FormLabel>
+                            <Input
+                              {...register("name", {
+                                required: "Este campo es requerido",
+                              })}
+                              w={"100%"}
+                              type="text"
+                              focusBorderColor="yellow.100"
+                            />
+                            <FormErrorMessage>
+                              {errors.name && errors.name.message}
+                            </FormErrorMessage>
+                          </FormControl>
+
+                          <FormControl isInvalid={errors.lastName}>
+                            <FormLabel>Apellido</FormLabel>
+                            <Input
+                              {...register("lastName", {
+                                required: "Este campo es requerido",
+                              })}
+                              w={"100%"}
+                              type="text"
+                              focusBorderColor="yellow.100"
+                            />
+                            <FormErrorMessage>
+                              {errors.lastName && errors.lastName.message}
+                            </FormErrorMessage>
+                          </FormControl>
+
+                          <FormControl isInvalid={errors.dni}>
+                            <FormLabel>Documento</FormLabel>
+                            <Input
+                              {...register("dni", {
+                                required: "Este campo es requerido",
+                                minLength: {
+                                  value: 8,
+                                  message: "Su DNI debe tener 8 digitos",
+                                },
+                                maxLength: {
+                                  value: 8,
+                                  message: "Su DNI debe tener 8 digitos",
+                                },
+                                pattern: {
+                                  value: /^([0-9])*$/,
+                                  message: "DNI invalido",
+                                },
+                              })}
+                              w={"100%"}
+                              type="number"
+                              focusBorderColor="yellow.100"
+                            />
+                            <FormErrorMessage>
+                              {errors.dni && errors.dni.message}
+                            </FormErrorMessage>
+                          </FormControl>
+
+                          <FormControl isInvalid={errors.tel}>
+                            <FormLabel>Telefono</FormLabel>
+                            <Input
+                              {...register("tel", {
+                                required: "Este campo es requerido",
+                              })}
+                              w={"100%"}
+                              type="number"
+                              focusBorderColor="yellow.100"
+                            />
+                            <FormErrorMessage>
+                              {errors.tel && errors.tel.message}
+                            </FormErrorMessage>
+                          </FormControl>
+                        </Grid>
+                        <Flex justify={"end"}>
+                          <Button
+                            variant={"primary"}
+                            px={"60px"}
+                            mt={"20px"}
+                            fontSize={"20px"}
+                            isLoading={isSubmitting}
+                            type="submit"
+                          >
+                            Continuar
+                          </Button>
+                        </Flex>
+                      </form>
+                    </WraperInfo>
+                  </>
+                )}
 
                 {shippingType === "2" && (
                   <WraperInfo title={"¿A qué dirección la enviamos?"}>
@@ -133,7 +269,10 @@ export default function CheckoutPage() {
               </>
             )}
           </Box>
-          <Box w={"30%"}>
+          <Box
+            w={{ base: "100%", desktop: "30%" }}
+            order={{ base: 1, desktop: 2 }}
+          >
             <WraperInfo title={"Resumen de compra"}>
               <Summary />
             </WraperInfo>

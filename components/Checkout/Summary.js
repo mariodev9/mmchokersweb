@@ -26,7 +26,7 @@ const Product = ({ images, name, quantity, price }) => (
   </Flex>
 );
 
-export default function Summary() {
+export default function Summary({ children }) {
   const { cart } = useContext(CartContext);
 
   return (
@@ -42,6 +42,7 @@ export default function Summary() {
           <Product key={item.id} {...item} />
         ))}
       </Box>
+      <Box>{children}</Box>
     </>
   );
 }

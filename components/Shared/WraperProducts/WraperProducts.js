@@ -8,12 +8,12 @@ export default function WraperProducts({ products }) {
       templateColumns={{
         base: "repeat(2, 1fr)",
         tablet: "repeat(3, 1fr)",
-        desktop: "repeat(4, 1fr)",
+        desktop: "repeat(5, 1fr)",
       }}
-      gap={5}
+      gap={3}
     >
       {products.map((item) => (
-        <GridItem key={item.name} w="100%">
+        <GridItem key={item.name} w="100%" mb={"15px"}>
           <Product {...item} />
         </GridItem>
       ))}

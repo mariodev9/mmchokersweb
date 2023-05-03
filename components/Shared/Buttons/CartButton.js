@@ -102,7 +102,7 @@ export default function CartButton({ subtotal }) {
             <DrawerFooter mb={"20px"}>
               <Button
                 w={"full"}
-                onClick={() => router.push(`/Checkout`)}
+                onClick={() => router.push(`/checkout`)}
                 variant={"primary"}
                 mb={"50px"}
                 fontSize={"20px"}

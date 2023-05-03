@@ -8,7 +8,6 @@ export const Logo = (props) => {
       height={{ base: "20px", tablet: "28px" }}
       viewBox="0 0 87 11"
       fill="none"
-      cursor={"pointer"}
       {...props}
     >
       <path

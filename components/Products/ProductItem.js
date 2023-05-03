@@ -30,19 +30,28 @@ export default function ProductItem({ images, price, name, id }) {
         <Box mt={"10px"}>
           <Link href={`/Producto/${id}`} passHref>
             <LinkOverlay>
+              {/* <Box
+                w={"100px"}
+                display={"inline-block"}
+                whiteSpace={"nowrap"}
+                overflow={"hidden"}
+                textOverflow={"ellipsis"}
+              > */}
               <Text
-                fontSize={{ base: "18px", tablet: "25px" }}
-                fontWeight={500}
-                color={"#000"}
+                textTransform="uppercase"
+                fontSize={{ base: "16px", tablet: "25px" }}
+                fontWeight={"light"}
+                color={"#333"}
               >
                 {name}
               </Text>
+              {/* </Box> */}
             </LinkOverlay>
           </Link>
 
           <Text
             fontSize={{ base: "15px", tablet: "18px" }}
-            fontWeight={600}
+            fontWeight={500}
             color={"#000"}
           >
             ${price}

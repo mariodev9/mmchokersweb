@@ -12,7 +12,6 @@ export default function UseCartContext(props) {
 
   const initialState = {
     cart: [],
-    // total: 0,
     buyerData: {},
   };
   const [state, dispatch] = useReducer(shopReducer, initialState);
@@ -33,7 +32,6 @@ export default function UseCartContext(props) {
     <CartContext.Provider
       value={{
         cart: state.cart,
-        total: state.total,
         buyerData: state.buyerData,
         AddProductToCart: AddProductToCart,
         RemoveProductFromCart: RemoveProductFromCart,

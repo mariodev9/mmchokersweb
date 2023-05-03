@@ -40,8 +40,8 @@ export const DesktopHeader = () => {
         <Flex align={"center"} h={heightWraper} overflowX={"hidden"}>
           <Slider />
         </Flex>
-        <Grid px={"30px"} templateColumns="repeat(2, 1fr)" gap={6}>
-          {[1, 2, 3, 4].map((item) => (
+        <Grid templateColumns="repeat(3, 1fr)" gap={2}>
+          {[1, 2, 3].map((item) => (
             <GridItem key={item}>
               <CategoryBox />
             </GridItem>

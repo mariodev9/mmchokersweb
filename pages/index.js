@@ -24,8 +24,12 @@ export default function Home({ data }) {
         {isLargerThan834 ? <DesktopHeader /> : <MobileHeader data={data} />}
         {/* Swiper Component */}
         <Box mt={"25px"}>
-          <Flex align={"center"} justify={"space-between"} p={"10px 30px"}>
-            <Text fontSize={"35px"} fontWeight={500}>
+          <Flex justify={"center"} p={"10px 30px"}>
+            <Text
+              textAlign={"center"}
+              fontSize={{ base: "24px", tablet: "48px" }}
+              fontWeight={500}
+            >
               Mas populares
             </Text>
           </Flex>

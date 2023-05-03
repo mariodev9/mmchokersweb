@@ -9,8 +9,8 @@ export default function CategoryPage({ children, category }) {
   return (
     <>
       <Layout footer>
-        <Box p={"13vh 40px 0px"}>
-          <Flex justify={"space-between"} align={"start"} pb={"30px"}>
+        <Box p={"120px 40px 0px"}>
+          <Flex justify={"space-between"} align={"center"} pb={"30px"}>
             <Button
               p={"0px"}
               onClick={() => router.back()}
@@ -20,7 +20,7 @@ export default function CategoryPage({ children, category }) {
               <BackIcon />
             </Button>
             <Text
-              fontSize={{ base: "20px ", tablet: "30px" }}
+              fontSize={{ base: "20px ", tablet: "40px" }}
               fontWeight={500}
               textAlign={{ base: "center", tablet: "start" }}
             >

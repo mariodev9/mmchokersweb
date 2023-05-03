@@ -18,12 +18,8 @@ const CategoryList = [
     url: "/Pulseras",
   },
   {
-    title: "Novedades",
-    url: "/Novedades",
-  },
-  {
-    title: "Para niños",
-    url: "/Novedades",
+    title: "Billeteras",
+    url: "/Billeteras",
   },
 ];
 

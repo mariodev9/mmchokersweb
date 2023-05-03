@@ -21,9 +21,9 @@ export const MobileHeader = ({ data }) => {
     <>
       {/* Search */}
       <Box layerStyle={"layoutWraper"}>
-        <Box display={{ base: "block", tablet: "none" }}>
+        {/* <Box display={{ base: "block", tablet: "none" }}>
           <SearchBar />
-        </Box>
+        </Box> */}
 
         {/* Header */}
         <Box mt={"15px"} display={{ base: "block", tablet: "none" }}>
@@ -60,21 +60,17 @@ export const MobileHeader = ({ data }) => {
       {/* Catalogo */}
       <Catalog />
 
-      <Grid layerStyle={"xWraper"} templateColumns={"repeat(2, 1fr)"} gap={3}>
-        <GridItem w="100%">
+      <Grid layerStyle={"xWraper"} templateColumns={"repeat(2, 2fr)"} gap={3}>
+        {/* <GridItem w="100%">
           <VStack spacing={5}>
             {data.productos.slice(mitad).map((product) => (
               <ProductItem key={product.id} {...product} />
             ))}
           </VStack>
-        </GridItem>
-        <GridItem mt={"50px"} w="100%">
-          <VStack spacing={5}>
-            {data.productos.slice(0, mitad).map((product) => (
-              <ProductItem key={product.id} {...product} />
-            ))}
-          </VStack>
-        </GridItem>
+        </GridItem> */}
+        {data.productos.map((product) => (
+          <ProductItem key={product.id} {...product} />
+        ))}
       </Grid>
     </>
   );

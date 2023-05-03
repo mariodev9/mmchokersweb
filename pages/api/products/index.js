@@ -7,7 +7,7 @@ import {
 } from "firebase/firestore";
 import { firestore } from "../../../firebase/firebaseConfig";
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   // QUERY que obtiene todos los productos
   const q = query(
     collection(firestore, "products"),
@@ -15,7 +15,7 @@ export default function handler(req, res) {
   );
 
   // ejecuto la QUERY
-  const querySnap = getDocs(q);
+  const querySnap = await getDocs(q);
 
   // Devuelvo todos los productos con su respectivo Id.
   onSnapshot(q, (querySnap) => {
@@ -34,7 +34,7 @@ export default function handler(req, res) {
       res.status(200).json({ productos: allProducts });
     } else {
       // No hay productos
-      response.status(404).json({ message: `No hay productos` });
+      response.status(404).json({ message: `404 not found` });
     }
   });
 }

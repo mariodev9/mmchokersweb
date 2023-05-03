@@ -29,8 +29,16 @@ export default function Product({
   return (
     <>
       <LinkBox as="article" cursor={"pointer"}>
-        <Box display={"flex"} flexDirection={"column"} maxW={"250px"}>
-          <Box width={"full"} height={"250px"} pos={"relative"}>
+        <Box
+          display={"flex"}
+          flexDirection={"column"}
+          // maxW={"250px"}
+        >
+          <Box
+            width={"100%"}
+            height={{ base: "250px", tablet: "250px" }}
+            pos={"relative"}
+          >
             <Image
               src={images[0]}
               alt={name}
@@ -43,9 +51,11 @@ export default function Product({
           <Link href={`/Producto/${id}`}>
             <LinkOverlay>
               <Text
-                fontSize={{ base: "20px", tablet: "25px" }}
-                fontWeight={500}
+                mt={"8px"}
+                fontSize={{ base: "16px", tablet: "18px" }}
+                fontWeight={400}
                 color={"#000"}
+                textTransform={"uppercase"}
               >
                 {name}
               </Text>
@@ -54,7 +64,7 @@ export default function Product({
 
           <Text
             fontSize={{ base: "15px", tablet: "18px" }}
-            fontWeight={600}
+            fontWeight={500}
             color={"#000"}
           >
             ${price}

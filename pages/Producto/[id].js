@@ -1,25 +1,12 @@
-import {
-  Box,
-  Flex,
-  Spinner,
-  Text,
-  Button,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-  Image,
-  useToast,
-} from "@chakra-ui/react";
+import { Box, Flex, Spinner, Text, Button, useToast } from "@chakra-ui/react";
 import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { getProduct } from "../../firebase/services/products";
-import { LikeIcon } from "../../components/Icons";
-import { Navbar } from "../../components/Layout/Nav";
+
 import { Layout } from "../../components/Layout/Layout";
 import CartContext from "../../context/CartContext";
-import SwiperProducts from "../../components/Shared/SwiperProducts/SwiperProducts";
+import Image from "next/image";
+import { SwiperSlide, Swiper } from "swiper/react";
 
 export default function ProductPage() {
   const router = useRouter();
@@ -42,6 +29,7 @@ export default function ProductPage() {
       status: "success",
       duration: 4000,
       isClosable: true,
+      position: "top",
     });
     AddProductToCart({ id, ...productData });
   }
@@ -66,62 +54,67 @@ export default function ProductPage() {
         {productData && (
           <>
             <Flex
-              p={"15vh 30px 0px"}
+              pt={{ base: "70px", tablet: "120px" }}
               direction={{ base: "column", tablet: "row" }}
               gap={5}
             >
               {/* images */}
 
-              <Tabs
-                w={{ base: "full", tablet: "60%" }}
-                display={"flex"}
-                gap={5}
+              <Box
+                mx={{ base: "0px", tablet: "30px" }}
+                pos={"relative"}
+                w={{ base: "100%", tablet: "70%" }}
+                minH={{ base: "400px", tablet: "500px" }}
               >
-                <TabList
-                  display={"flex"}
-                  flexDirection={"column"}
-                  gap={5}
-                  borderWidth={"0px"}
+                <Image
+                  src={productData.images[0]}
+                  alt={"producto"}
+                  style={{ borderRadius: "2px" }}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </Box>
+
+              {/* <Box>
+                <Swiper
+                  spaceBetween={10}
+                  breakpoints={{
+                    0: {
+                      slidesPerView: 1.5,
+                    },
+                    450: {
+                      slidesPerView: 2.5,
+                    },
+                    720: {
+                      slidesPerView: 3.5,
+                    },
+                    960: {
+                      slidesPerView: 4.5,
+                    },
+                    1200: {
+                      slidesPerView: 5.5,
+                    },
+                  }}
                 >
                   {productData.images.map((image) => (
-                    <Tab p={"0px"} key={image} borderWidth={"0px"}>
-                      <Flex
-                        bgImage={image}
-                        bgRepeat={"no-repeat"}
-                        bgPosition={"center"}
-                        bgSize={"cover"}
-                        width={"40px"}
-                        height={"40px"}
-                        borderRadius={"2px"}
-                      >
-                        {/* {image} */}
-                      </Flex>
-                    </Tab>
+                    <SwiperSlide key={image}>
+                      <Box
+                        h={"100px"}
+                        w={"full"}
+                        border={"1px solid blue"}
+                      ></Box>
+                    </SwiperSlide>
                   ))}
-                </TabList>
-                <TabPanels>
-                  {productData.images.map((image) => (
-                    <TabPanel key={image} p={"0px"}>
-                      <Flex
-                        bgImage={image}
-                        bgRepeat={"no-repeat"}
-                        bgPosition={"center"}
-                        bgSize={"cover"}
-                        width={"full"}
-                        height={"60vh"}
-                        borderRadius={"2px"}
-                      ></Flex>
-                    </TabPanel>
-                  ))}
-                </TabPanels>
-              </Tabs>
+                </Swiper>
+              </Box> */}
 
               <Flex
                 direction={"column"}
                 bottom={0}
                 bg={"#fff"}
-                w={{ base: "full", tablet: "40%" }}
+                w={{ base: "full", tablet: "50%" }}
                 borderRadius={"30px 30px 0px 0px"}
+                layerStyle={"xWraper"}
               >
                 <Box>
                   <Flex
@@ -137,19 +130,19 @@ export default function ProductPage() {
                   </Flex>
                   <Box mt={"10px"} fontSize={"14px"}>
                     <Text>Descripcion</Text>
-                    <Text fontWeight={400} color={"gray.100"}>
+                    <Text fontWeight={400} color={"gray.200"}>
                       {productData.description}
                     </Text>
                   </Box>
                   <Box mt={"10px"} fontSize={"14px"}>
                     <Text>Color</Text>
-                    <Text fontWeight={400} color={"gray.100"}>
+                    <Text fontWeight={400} color={"gray.200"}>
                       Negro
                     </Text>
                   </Box>
                   <Box mt={"10px"} fontSize={"14px"}>
                     <Text>Dimensiones</Text>
-                    <Text fontWeight={400} color={"gray.100"}>
+                    <Text fontWeight={400} color={"gray.200"}>
                       28.00 cm
                     </Text>
                   </Box>
@@ -163,16 +156,6 @@ export default function ProductPage() {
                   >
                     Añadir al carrito
                   </Button>
-                  {/* Button like */}
-                  {/* <Button
-                    borderRadius={"full"}
-                    bg={"gray.50"}
-                    _hover={{
-                      bg: "red.100",
-                    }}
-                  >
-                    <LikeIcon />
-                  </Button> */}
                 </Flex>
               </Flex>
             </Flex>
@@ -182,7 +165,7 @@ export default function ProductPage() {
               textAlign={"center"}
               mt={"50px"}
             >
-              Productos que te pueden interesar
+              Tambien te puede interesar
             </Text>
             {/* <SwiperProducts products={dar array de productos} /> */}
           </>

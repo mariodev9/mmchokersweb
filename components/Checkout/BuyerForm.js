@@ -1,4 +1,7 @@
 import { useState, useContext } from "react";
+import CartContext from "../../context/CartContext";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import {
   Text,
   Grid,
@@ -10,12 +13,12 @@ import {
   FormErrorMessage,
   Select,
   Box,
-  Divider,
+  RadioGroup,
+  Stack,
+  Radio,
 } from "@chakra-ui/react";
-import { useForm } from "react-hook-form";
-import CartContext from "../../context/CartContext";
 
-const Provincias = [
+const ProvinceList = [
   { name: "Buenos Aires", zone: 2 },
   { name: "Capital Federal", zone: 2 },
   { name: "Catamarca", zone: 3 },
@@ -42,9 +45,43 @@ const Provincias = [
   { name: " Tucumán", zone: 3 },
 ];
 
+const ShippingPriceList = [
+  {},
+  {
+    zone: 1,
+    homePrice: 890,
+    branchPrice: 545,
+  },
+  {
+    zone: 2,
+    homePrice: 990,
+    branchPrice: 640,
+  },
+  {
+    zone: 3,
+    homePrice: 1075,
+    branchPrice: 700,
+  },
+  {
+    zone: 4,
+    homePrice: 1080,
+    branchPrice: 720,
+  },
+];
+
 export default function BuyerForm() {
-  const [formData, setFormData] = useState(null);
+  const router = useRouter();
   const [hideForm, setHideForm] = useState(false);
+
+  // shippingPriceType
+  const [shippingPriceType, setShippingPriceType] = useState("1");
+
+  // Zona de la provincia para calcular costo de envio
+  const [provinceZone, setProvinceZone] = useState(null);
+
+  // Envio a SUCURSAL y envio a DOMICILIO
+  // const [branchPrice, setBranchPrice] = useState(undefined);
+  // const [homePrice, setHomePrice] = useState(undefined);
 
   const { SaveBuyerData, buyerData } = useContext(CartContext);
 
@@ -55,28 +92,56 @@ export default function BuyerForm() {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  function onSubmit(values) {
+  function saveFormData(values) {
+    // Obtengo la zona del campo: province
+    // formato del campo ej: Buenos Aires, 2
+    let zone = values.province.split("")[1];
+
     return new Promise((resolve) => {
       setTimeout(() => {
-        console.log(values, "la data");
-        SaveBuyerData(values);
-        setFormData(values);
+        SaveBuyerData({ ...buyerData, ...values });
+        setProvinceZone(zone);
         setHideForm(true);
         resolve();
       }, 1500);
     });
   }
 
+  function goToPayment() {
+    shippingPriceType === "1"
+      ? SaveBuyerData({
+          ...buyerData,
+          shipping: {
+            type: "A domicilio",
+            price: ShippingPriceList[provinceZone].homePrice,
+          },
+        })
+      : SaveBuyerData({
+          ...buyerData,
+          shipping: {
+            type: "A sucursal",
+            price: ShippingPriceList[provinceZone].branchPrice,
+          },
+        });
+
+    router.push("/payment");
+  }
+
   return (
     <>
       <Box mt={"20px"}>
         {hideForm ? (
-          <Box p={"20px"} border={"1px solid gray"} w={"50%"}>
+          // Caja que muestra la informacion del comprador una vez completada
+          <Box
+            p={"20px"}
+            border={"1px solid gray"}
+            w={{ base: "100%", tablet: "50%" }}
+          >
             <Text fontWeight={"light"}>
-              {formData.name} {formData.lastName} <br /> Documento:{" "}
-              {formData.dni} <br /> Tel: {formData.tel} <br /> {formData.adress}
-              , {formData.adressNumber} <br /> {formData.city},{" "}
-              {formData.province} <br />
+              {buyerData.name} {buyerData.lastName} <br /> Documento:{" "}
+              {buyerData.dni} <br /> Tel: {buyerData.tel} <br />{" "}
+              {buyerData.adress}, {buyerData.adressNumber} <br />{" "}
+              {buyerData.city}, {buyerData.province.split(",")[0]} <br />
               Argentina
             </Text>
             <Button
@@ -88,7 +153,8 @@ export default function BuyerForm() {
             </Button>
           </Box>
         ) : (
-          <form onSubmit={handleSubmit(onSubmit)}>
+          // Formulario para completar datos personales y de envio
+          <form onSubmit={handleSubmit(saveFormData)}>
             <Text fontSize={"20px"} fontWeight={"medium"}>
               Datos personales
             </Text>
@@ -185,8 +251,8 @@ export default function BuyerForm() {
                 </FormErrorMessage>
               </FormControl>
 
-              <Flex gap={10}>
-                <FormControl isInvalid={errors.adress}>
+              <Flex gap={10} direction={{ base: "column", tablet: "row" }}>
+                <FormControl isInvalid={errors.adressNumber}>
                   <FormLabel>Numero</FormLabel>
                   <Input
                     {...register("adressNumber", {
@@ -244,7 +310,7 @@ export default function BuyerForm() {
                   })}
                   placeholder="Elige una provincia"
                 >
-                  {Provincias.map((item) => (
+                  {ProvinceList.map((item) => (
                     <option key={item.name} value={[item.name, item.zone]}>
                       {item.name}
                     </option>
@@ -294,8 +360,51 @@ export default function BuyerForm() {
               Tipo de envio
             </Text>
 
-            <Box>A Domicilio</Box>
-            <Box>A Sucursal</Box>
+            <RadioGroup
+              name="form-shipping"
+              onChange={setShippingPriceType}
+              value={shippingPriceType}
+              py={"20px"}
+            >
+              <Stack direction="row" justify={"center"} gap={10}>
+                <Radio colorScheme="blue" value={"1"} size={"lg"}>
+                  <Text>Envio a domicilio</Text>
+                  <Text
+                    fontWeight={"regular"}
+                    fontSize={"16px"}
+                    color={"gray.200"}
+                  >
+                    Precio: ${ShippingPriceList[provinceZone].homePrice}
+                  </Text>
+                </Radio>
+                <Radio colorScheme="blue" value={"2"} size={"lg"}>
+                  <Text> Envio a sucursal</Text>
+                  <Text
+                    fontWeight={"regular"}
+                    fontSize={"16px"}
+                    color={"gray.200"}
+                  >
+                    Precio: $ {ShippingPriceList[provinceZone].branchPrice}
+                  </Text>
+                </Radio>
+              </Stack>
+            </RadioGroup>
+
+            {/* Continuar boton */}
+            <Flex justify={"end"}>
+              <Button
+                variant={"primary"}
+                px={"60px"}
+                mt={"20px"}
+                fontSize={"20px"}
+                // isLoading={isSubmitting}
+                onClick={() => goToPayment()}
+              >
+                Continuar
+              </Button>
+            </Flex>
+
+            {/*  */}
           </Box>
         )}
         <Text

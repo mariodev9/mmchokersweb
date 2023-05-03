@@ -9,7 +9,7 @@ export default function CategoryBox() {
         <Box overflow={"hidden"} borderRadius={"2px"} cursor={"pointer"}>
           <Flex
             w={"full"}
-            h={"30vh"}
+            h={"70vh"}
             bgImage={"/images/CollaresImage.jpg"}
             bgRepeat={"no-repeat"}
             bgPosition={"center"}

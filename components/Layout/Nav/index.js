@@ -22,6 +22,7 @@ import {
   AccordionIcon,
   AccordionPanel,
   Text,
+  Center,
 } from "@chakra-ui/react";
 import Link from "next/link";
 // import { Link } from "@chakra-ui/react";
@@ -34,30 +35,30 @@ import { useContext } from "react";
 import CartContext from "../../../context/CartContext";
 
 const NavLinks = [
-  // {
-  //   title: "Collares",
-  //   url: "/Collares",
-  // },
-  // {
-  //   title: "Cadenas",
-  //   url: "/Cadenas",
-  // },
-  // {
-  //   title: "Pulseras",
-  //   url: "/Pulseras",
-  // },
-  // {
-  //   title: "Billeteras",
-  //   url: "/Billeteras",
-  // },
   {
-    title: "Preguntas Frecuentes",
-    url: "/Preguntas",
+    title: "Collares",
+    url: "/Collares",
   },
   {
-    title: "Nosotros",
-    url: "/Nosotros",
+    title: "Cadenas",
+    url: "/Cadenas",
   },
+  {
+    title: "Pulseras",
+    url: "/Pulseras",
+  },
+  {
+    title: "Billeteras",
+    url: "/Billeteras",
+  },
+  // {
+  //   title: "Preguntas Frecuentes",
+  //   url: "/Preguntas",
+  // },
+  // {
+  //   title: "Nosotros",
+  //   url: "/Nosotros",
+  // },
 ];
 
 const variants = {
@@ -110,34 +111,12 @@ export const Navbar = () => {
           <MenuIcon />
         </Button>
         <Link href={"/"} passHref legacyBehavior>
-          <Logo />
+          <Box cursor={"pointer"}>
+            <Logo />
+          </Box>
         </Link>
         <Box display={{ base: "none", tablet: "flex" }}>
           <HStack spacing={10} fontWeight={500}>
-            <Menu isLazy>
-              <MenuButton
-                p={"5px 10px"}
-                fontWeight={500}
-                _expanded={{
-                  bg: "yellow.100",
-                  borderRadius: "2px",
-                }}
-              >
-                Productos
-              </MenuButton>
-              <MenuList bg={"#fff"}>
-                {/* Estos links deberian ser de next */}
-                <MenuItem as="a" bg={"none"}>
-                  <Link href="/Collares">Collares</Link>
-                </MenuItem>
-                <MenuItem as="a" bg={"none"}>
-                  <Link href="/Cadenas">Cadenas</Link>
-                </MenuItem>
-                <MenuItem as="a" bg={"none"}>
-                  <Link href="/Pulseras">Pulseras</Link>
-                </MenuItem>
-              </MenuList>
-            </Menu>
             {NavLinks.map((navlink) => (
               <Link key={navlink.title} href={navlink.url}>
                 {navlink.title}
@@ -153,7 +132,7 @@ export const Navbar = () => {
         />
       </Flex>
 
-      <Drawer isOpen={isOpen} placement="left" onClose={onClose} size={"lg"}>
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose} size={"xs"}>
         <DrawerOverlay />
         <DrawerContent bg={"#fff"}>
           <DrawerCloseButton />
@@ -167,36 +146,6 @@ export const Navbar = () => {
               align={"center"}
               justify={"center"}
             >
-              <Accordion allowToggle>
-                <AccordionItem borderColor={"#fff"}>
-                  <AccordionButton
-                    fontWeight={600}
-                    fontSize={"30px"}
-                    p={"5px 20px"}
-                    _hover={{
-                      bg: "yellow.100",
-                    }}
-                    borderRadius={"2px"}
-                  >
-                    <Text>Productos</Text>
-                    <AccordionIcon />
-                  </AccordionButton>
-                  <AccordionPanel pb={4} fontSize={"25px"} textAlign={"center"}>
-                    <Box>
-                      <Link href="/Collares">Collares</Link>
-                    </Box>
-                    <Box>
-                      <Link href="/Cadenas">Cadenas</Link>
-                    </Box>
-                    <Box>
-                      <Link href="/Pulseras">Pulseras</Link>
-                    </Box>
-                    <Box>
-                      <Link href="/Billeteras">Billeteras</Link>
-                    </Box>
-                  </AccordionPanel>
-                </AccordionItem>
-              </Accordion>
               {NavLinks.map((navlink) => (
                 <Box
                   key={navlink.title}
@@ -210,11 +159,29 @@ export const Navbar = () => {
                   <Link href={navlink.url}>{navlink.title}</Link>
                 </Box>
               ))}
-              <SocialMedia />
             </VStack>
           </DrawerBody>
 
-          <DrawerFooter></DrawerFooter>
+          <DrawerFooter>
+            <VStack
+              w={"full"}
+              spacing={5}
+              h={"100%"}
+              fontWeight={600}
+              fontSize={"30px"}
+              align={"center"}
+              justify={"center"}
+            >
+              <Text fontWeight={600} fontSize={"20px"}>
+                Quienes somos
+              </Text>
+              <Text fontWeight={600} fontSize={"20px"}>
+                Preguntas frecuentes
+              </Text>
+
+              <SocialMedia />
+            </VStack>
+          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </motion.div>

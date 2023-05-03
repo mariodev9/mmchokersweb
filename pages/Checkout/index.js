@@ -14,9 +14,12 @@ import {
   Stack,
   Grid,
 } from "@chakra-ui/react";
-import Summary from "../../components/Checkout/Summary";
 import { useForm } from "react-hook-form";
+import Summary from "../../components/Checkout/Summary";
 import BuyerForm from "../../components/Checkout/BuyerForm";
+import { useContext } from "react";
+import CartContext from "../../context/CartContext";
+import { useRouter } from "next/router";
 
 const WraperInfo = ({ title, description, children }) => (
   <Box border={"2px solid #ECECEC"} p={"20px 15px "} mt={"25px"} bg={"#fff"}>
@@ -40,29 +43,43 @@ export default function CheckoutPage() {
     formState: { errors, isSubmitting },
   } = useForm();
 
+  const router = useRouter();
+
+  const { SaveBuyerData, buyerData } = useContext(CartContext);
+
   const [shippingType, setShippingType] = useState("1");
   const [isReady, setIsReady] = useState(false);
 
-  function onSubmit(values) {
+  function emailIsReady(values) {
     return new Promise((resolve) => {
       setTimeout(() => {
+        SaveBuyerData({ email: values.email });
         setIsReady(true);
+        console.log({ email: values.email }, "lo que guardo el mail");
         resolve();
       }, 1500);
     });
   }
 
-  function onSubmitBuyer(values) {
+  function goToPayment(values) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        console.log(values, "quien retirara la roden?");
-        // GUARDAR DATA EN ESTADO GLOBAL
-        // FIX: AGREGAR EMAIL Y TIPO DE ENVIO AL BUYER GLOBAL STATE?
-        // ROUTER.PUSH("/PAYMENT")
+        SaveBuyerData({
+          ...buyerData,
+          ...values,
+          shipping: {
+            type: "Retiro por local",
+            price: 0,
+          },
+        });
+
+        router.push("/payment");
+
         resolve();
       }, 1500);
     });
   }
+
   return (
     <>
       <Box bg={"#FAFAFA"}>
@@ -70,7 +87,7 @@ export default function CheckoutPage() {
           <Logo width={"276px"} height={"53px"} />
         </Flex>
         <Text pl={"30px"} fontSize={"26px"}>
-          Datos de envio
+          Informacion de envio
         </Text>
 
         <Flex
@@ -118,7 +135,7 @@ export default function CheckoutPage() {
               title={"Ingresá tu correo"}
               description={"Para continuar y recibir el resumen de su compra"}
             >
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit(emailIsReady)}>
                 <FormControl mt={"15px"} isInvalid={errors.email}>
                   <FormLabel>Correo electronico</FormLabel>
                   <Input
@@ -162,11 +179,10 @@ export default function CheckoutPage() {
                 {shippingType === "1" && (
                   <>
                     <WraperInfo title={"Punto de retiro"}>
-                      Usted selecciono retirar por la tienda Quien retirara la
-                      orden? (formulario de datos)
+                      Usted selecciono retirar por la tienda.
                     </WraperInfo>
                     <WraperInfo title={"¿Quien retirara la orden?"}>
-                      <form onSubmit={handleSubmit(onSubmitBuyer)}>
+                      <form onSubmit={handleSubmit(goToPayment)}>
                         <Grid
                           templateColumns="repeat(2, 2fr)"
                           gap={10}
@@ -262,7 +278,7 @@ export default function CheckoutPage() {
                 )}
 
                 {shippingType === "2" && (
-                  <WraperInfo title={"¿A qué dirección la enviamos?"}>
+                  <WraperInfo title={"¿A qué dirección lo enviamos?"}>
                     <BuyerForm />
                   </WraperInfo>
                 )}

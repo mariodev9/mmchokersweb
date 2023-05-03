@@ -6,7 +6,10 @@ import { getProduct } from "../../firebase/services/products";
 import { Layout } from "../../components/Layout/Layout";
 import CartContext from "../../context/CartContext";
 import Image from "next/image";
-import { SwiperSlide, Swiper } from "swiper/react";
+import { Swiper, SwiperSlide, Navigation, Pagination } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 export default function ProductPage() {
   const router = useRouter();
@@ -60,7 +63,7 @@ export default function ProductPage() {
             >
               {/* images */}
 
-              <Box
+              {/* <Box
                 mx={{ base: "0px", tablet: "30px" }}
                 pos={"relative"}
                 w={{ base: "100%", tablet: "70%" }}
@@ -73,7 +76,46 @@ export default function ProductPage() {
                   layout="fill"
                   objectFit="cover"
                 />
-              </Box>
+              </Box> */}
+
+              <Swiper
+                spaceBetween={10}
+                slidesPerView={1}
+                grabCursor={true}
+                loop={true}
+                style={{ width: "100%" }}
+                pagination={{ el: "swiper-pagination", clickable: true }}
+                navigation={{
+                  nextEl: ".swiper-button-next",
+                  prevEl: ".swiper-button-prev",
+                  clickable: true,
+                }}
+              >
+                {productData.images.map((image) => (
+                  <SwiperSlide>
+                    <Box
+                      mx={{ base: "0px", tablet: "30px" }}
+                      pos={"relative"}
+                      w={{ base: "100%", tablet: "70%" }}
+                      minH={{ base: "400px", tablet: "500px" }}
+                    >
+                      <Image
+                        src={image}
+                        alt={"producto"}
+                        style={{ borderRadius: "2px" }}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </Box>
+                  </SwiperSlide>
+                ))}
+                {/* <div className="slider-controller">
+                  <div className="swiper-pagination">
+                    <div className="swiper-button-next slider-arrow">ddd</div>
+                    <div className="swiper-button-prev slider-arrow">aaa</div>
+                  </div>
+                </div> */}
+              </Swiper>
 
               {/* <Box>
                 <Swiper

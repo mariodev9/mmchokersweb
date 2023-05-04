@@ -74,7 +74,7 @@ export default function ProductPage() {
                 onSwiper={(swiper) => console.log(swiper)}
               >
                 {productData.images.map((image) => (
-                  <SwiperSlide>
+                  <SwiperSlide key={image}>
                     <Box
                       mx={{ base: "0px", tablet: "30px" }}
                       pos={"relative"}

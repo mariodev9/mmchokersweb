@@ -78,7 +78,7 @@ export default function ProductPage() {
                     <Box
                       mx={{ base: "0px", tablet: "30px" }}
                       pos={"relative"}
-                      w={{ base: "100%", tablet: "70%" }}
+                      w={{ base: "100%", tablet: "100%" }}
                       minH={{ base: "400px", tablet: "500px" }}
                     >
                       <Image
@@ -130,7 +130,7 @@ export default function ProductPage() {
                 direction={"column"}
                 bottom={0}
                 bg={"#fff"}
-                w={{ base: "full", tablet: "50%" }}
+                w={{ base: "full", tablet: "30%" }}
                 borderRadius={"30px 30px 0px 0px"}
                 layerStyle={"xWraper"}
               >
@@ -177,6 +177,7 @@ export default function ProductPage() {
                 </Flex>
               </Flex>
             </Flex>
+
             <Text
               fontSize={"24px"}
               fontWeight={500}

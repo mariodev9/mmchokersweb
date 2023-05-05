@@ -12,8 +12,8 @@ import Image from "next/image";
 
 export default function ProductItem({ images, price, name, id }) {
   return (
-    <LinkBox w={"100%"}>
-      <Flex direction={"column"} maxW={"250px"}>
+    <LinkBox w={"100%"} as={"article"}>
+      <Flex direction={"column"} maxW={"250px"} mb={"20px"}>
         <Box
           width={"full"}
           height={{ base: "180px", md: "220px" }}
@@ -30,18 +30,10 @@ export default function ProductItem({ images, price, name, id }) {
         <Box mt={"10px"}>
           <Link href={`/Producto/${id}`} passHref>
             <LinkOverlay>
-              {/* <Box
-                w={"100px"}
-                display={"inline-block"}
-                whiteSpace={"nowrap"}
-                overflow={"hidden"}
-                textOverflow={"ellipsis"}
-              > */}
               <Text
-                textTransform="uppercase"
-                fontSize={{ base: "16px", tablet: "25px" }}
-                fontWeight={"light"}
-                color={"#333"}
+                as={"h3"}
+                fontSize={{ base: "1.1rem", tablet: "1.4rem" }}
+                fontWeight={500}
               >
                 {name}
               </Text>
@@ -49,12 +41,8 @@ export default function ProductItem({ images, price, name, id }) {
             </LinkOverlay>
           </Link>
 
-          <Text
-            fontSize={{ base: "15px", tablet: "18px" }}
-            fontWeight={500}
-            color={"#000"}
-          >
-            ${price}
+          <Text fontSize={{ base: "1.1rem", tablet: "18px" }} fontWeight={600}>
+            $ {price}
           </Text>
         </Box>
       </Flex>

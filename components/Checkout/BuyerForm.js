@@ -95,8 +95,7 @@ export default function BuyerForm() {
   function saveFormData(values) {
     // Obtengo la zona del campo: province
     // formato del campo ej: Buenos Aires, 2
-    let zone = values.province.split("")[1];
-
+    let zone = values.province.split(",")[1];
     return new Promise((resolve) => {
       setTimeout(() => {
         SaveBuyerData({ ...buyerData, ...values });

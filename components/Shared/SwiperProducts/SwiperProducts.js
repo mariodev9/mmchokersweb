@@ -1,6 +1,7 @@
 import React from "react";
 import { SwiperSlide, Swiper } from "swiper/react";
 import Product from "../../Products/Product";
+import ProductItem from "../../Products/ProductItem";
 
 function SwiperProducts({ products }) {
   return (
@@ -29,7 +30,7 @@ function SwiperProducts({ products }) {
     >
       {products.map((product) => (
         <SwiperSlide key={product.name}>
-          <Product {...product} />
+          <ProductItem {...product} />
         </SwiperSlide>
       ))}
     </Swiper>

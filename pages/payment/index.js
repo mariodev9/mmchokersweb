@@ -113,6 +113,15 @@ export default function PaymentPage() {
             </Flex>
           </Summary>
         </WraperInfo>
+        <Text
+          mt={"20px"}
+          fontSize={"16px"}
+          fontWeight={"regular"}
+          color={"gray.200"}
+        >
+          Importante: Este boton te redirige directamente con el vendedor para
+          ultimar los detalles del pago.
+        </Text>
       </PaymentPageLayout>
       <Box bg={"red"} pos={"fixed"} bottom={0} w={"full"}>
         <Button

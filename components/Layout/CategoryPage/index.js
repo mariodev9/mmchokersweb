@@ -9,7 +9,7 @@ export default function CategoryPage({ children, category }) {
   return (
     <>
       <Layout footer>
-        <Box p={"120px 40px 0px"}>
+        <Box p={"80px 30px 0px"}>
           <Flex justify={"space-between"} align={"center"} pb={"30px"}>
             <Button
               p={"0px"}

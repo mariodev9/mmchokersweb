@@ -36,7 +36,7 @@ export default function Product({
         >
           <Box
             width={"100%"}
-            height={{ base: "250px", tablet: "250px" }}
+            height={{ base: "200px", tablet: "250px" }}
             pos={"relative"}
           >
             <Image
@@ -55,7 +55,6 @@ export default function Product({
                 fontSize={{ base: "16px", tablet: "18px" }}
                 fontWeight={400}
                 color={"#000"}
-                textTransform={"uppercase"}
               >
                 {name}
               </Text>

@@ -1,6 +1,7 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import React from "react";
 import Product from "../../Products/Product";
+import ProductItem from "../../Products/ProductItem";
 
 export default function WraperProducts({ products }) {
   return (
@@ -14,7 +15,7 @@ export default function WraperProducts({ products }) {
     >
       {products.map((item) => (
         <GridItem key={item.name} w="100%" mb={"15px"}>
-          <Product {...item} />
+          <ProductItem {...item} />
         </GridItem>
       ))}
     </Grid>

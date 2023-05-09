@@ -66,9 +66,12 @@ export default function ProductPage() {
             >
               <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
-                spaceBetween={10}
-                slidesPerView={1}
-                style={{ width: "100%" }}
+                spaceBetween={2}
+                slidesPerView={productData.images.length > 1 ? 2 : 1}
+                style={{
+                  width: "100%",
+                  cursor: productData.images.length > 2 ? "grab" : "",
+                }}
                 scrollbar={{ draggable: true }}
                 onSlideChange={(item) => console.log(item)}
                 onSwiper={(swiper) => console.log(swiper)}
@@ -93,44 +96,11 @@ export default function ProductPage() {
                 ))}
               </Swiper>
 
-              {/* <Box>
-                <Swiper
-                  spaceBetween={10}
-                  breakpoints={{
-                    0: {
-                      slidesPerView: 1.5,
-                    },
-                    450: {
-                      slidesPerView: 2.5,
-                    },
-                    720: {
-                      slidesPerView: 3.5,
-                    },
-                    960: {
-                      slidesPerView: 4.5,
-                    },
-                    1200: {
-                      slidesPerView: 5.5,
-                    },
-                  }}
-                >
-                  {productData.images.map((image) => (
-                    <SwiperSlide key={image}>
-                      <Box
-                        h={"100px"}
-                        w={"full"}
-                        border={"1px solid blue"}
-                      ></Box>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </Box> */}
-
               <Flex
                 direction={"column"}
                 bottom={0}
                 bg={"#fff"}
-                w={{ base: "full", tablet: "30%" }}
+                w={{ base: "full", tablet: "50%" }}
                 borderRadius={"30px 30px 0px 0px"}
                 layerStyle={"xWraper"}
               >

@@ -91,7 +91,11 @@ export const Navbar = () => {
       variants={variants}
       animate={hidden ? "hidden" : "visible"}
       transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.6 }}
-      style={{ width: "100%", position: "fixed", zIndex: 99 }}
+      style={{
+        width: "100%",
+        position: "fixed",
+        zIndex: 99,
+      }}
     >
       <Flex
         justify={"space-between"}

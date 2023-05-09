@@ -16,7 +16,7 @@ export async function getServerSideProps(context) {
   const category = resolvedUrl.slice(1);
 
   const res = await fetch(
-    `https://mmchokers.vercel.app/api/Categoria/${category}`
+    `https://mmchokers.vercel.app/api/Categoria/Pulseras`
   );
   const data = await res.json();
 

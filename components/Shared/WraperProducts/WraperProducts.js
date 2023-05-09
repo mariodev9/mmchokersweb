@@ -9,7 +9,7 @@ export default function WraperProducts({ products }) {
       templateColumns={{
         base: "repeat(2, 1fr)",
         tablet: "repeat(3, 1fr)",
-        desktop: "repeat(5, 1fr)",
+        desktop: "repeat(4, 1fr)",
       }}
       gap={3}
     >

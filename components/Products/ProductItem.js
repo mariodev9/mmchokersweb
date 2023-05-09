@@ -13,10 +13,10 @@ import Image from "next/image";
 export default function ProductItem({ images, price, name, id }) {
   return (
     <LinkBox w={"100%"} as={"article"}>
-      <Flex direction={"column"} maxW={"250px"} mb={"20px"}>
+      <Flex direction={"column"} maxW={"350px"} mb={"20px"}>
         <Box
           width={"full"}
-          height={{ base: "180px", md: "220px" }}
+          height={{ base: "180px", md: "320px" }}
           pos={"relative"}
         >
           <Image

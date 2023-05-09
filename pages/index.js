@@ -20,7 +20,6 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout footer>
-        {/* renderizarlo con useQuery */}
         {isLargerThan834 ? <DesktopHeader /> : <MobileHeader data={data} />}
         {/* Swiper Component */}
         <Box mt={"25px"}>

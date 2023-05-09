@@ -2,7 +2,6 @@ import { Box, Flex, Spinner, Text, Button, useToast } from "@chakra-ui/react";
 import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { getProduct } from "../../firebase/services/products";
-
 import { Layout } from "../../components/Layout/Layout";
 import CartContext from "../../context/CartContext";
 import Image from "next/image";

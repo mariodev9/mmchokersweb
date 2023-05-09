@@ -30,8 +30,8 @@ export default function PaymentPage() {
   const Purchase = async () => {
     if (cart && buyerData) {
       //1) añadir sale
-
-      const data = { cart, buyerData };
+      let totalPayment = subtotal + buyerData.shipping.price;
+      const data = { totalPayment, cart, buyerData };
       const res = await (
         await fetch("/api/pay", {
           method: "POST",
@@ -81,7 +81,8 @@ export default function PaymentPage() {
               <br />
               {buyerData.adress && buyerData.adress}{" "}
               {buyerData.adressNumber && buyerData.adressNumber}
-              {buyerData.city && buyerData.city}{" "}
+              {", "}
+              {buyerData.city && buyerData.city}
             </Text>
           )}
         </WraperInfo>

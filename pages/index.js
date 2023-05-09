@@ -16,7 +16,7 @@ export default function Home({ data }) {
     <>
       <Head>
         <title>mmChokers</title>
-        <meta name="e-commerce mmchokers"></meta>
+        <meta name="mmchokers"></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout footer>

@@ -32,7 +32,7 @@ export const MobileHeader = ({ data }) => {
               <Flex
                 w={"full"}
                 h={"20vh"}
-                bgImage={"/images/CollaresImage.jpg"}
+                bgImage={"/images/collarNegro.jpg"}
                 bgRepeat={"no-repeat"}
                 bgPosition={"center"}
                 bgSize={"cover"}
@@ -61,13 +61,6 @@ export const MobileHeader = ({ data }) => {
       <Catalog />
 
       <Grid layerStyle={"xWraper"} templateColumns={"repeat(2, 2fr)"} gap={3}>
-        {/* <GridItem w="100%">
-          <VStack spacing={5}>
-            {data.productos.slice(mitad).map((product) => (
-              <ProductItem key={product.id} {...product} />
-            ))}
-          </VStack>
-        </GridItem> */}
         {data.productos.map((product) => (
           <ProductItem key={product.id} {...product} />
         ))}

@@ -2,7 +2,7 @@ import { Box, LinkOverlay, LinkBox, Flex, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 
-export default function CategoryBox() {
+export default function CategoryBox({ imageUrl, name }) {
   return (
     <Box>
       <LinkBox>
@@ -10,7 +10,7 @@ export default function CategoryBox() {
           <Flex
             w={"full"}
             h={"70vh"}
-            bgImage={"/images/CollaresImage.jpg"}
+            bgImage={`/images/${imageUrl}`}
             bgRepeat={"no-repeat"}
             bgPosition={"center"}
             bgSize={"cover"}
@@ -25,7 +25,7 @@ export default function CategoryBox() {
             <Link href={"/Collares"}>
               <LinkOverlay>
                 <Text fontSize={"26px"} color={"#fff"}>
-                  Nueva colección
+                  {name}
                 </Text>
               </LinkOverlay>
             </Link>

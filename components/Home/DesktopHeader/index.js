@@ -1,13 +1,16 @@
 import React from "react";
 import { Box, Flex, Grid, GridItem, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-// import { SocialMedia } from "../SocialMedia";
-// import { Smile } from "../../Icons";
 import { Slider } from "../Slider";
-
 import CategoryBox from "../../Shared/CategoryBox/CategoryBox";
 
 // category list y mapear
+
+const categoryList = [
+  { name: "Cadenas", image: "cadenas.jpg" },
+  { name: "Black Site", image: "collarNegro.jpg" },
+  { name: "Chokers", image: "collares.jpg" },
+];
 
 export const DesktopHeader = () => {
   const heightWraper = "90vh";
@@ -41,9 +44,9 @@ export const DesktopHeader = () => {
           <Slider />
         </Flex>
         <Grid templateColumns="repeat(3, 1fr)" gap={2}>
-          {[1, 2, 3].map((item) => (
-            <GridItem key={item}>
-              <CategoryBox />
+          {categoryList.map((category) => (
+            <GridItem key={category.name}>
+              <CategoryBox name={category.name} imageUrl={category.image} />
             </GridItem>
           ))}
         </Grid>

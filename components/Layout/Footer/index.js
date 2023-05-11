@@ -18,7 +18,7 @@ export default function Footer() {
         mt={"40px"}
         bg={"#000"}
         p={"60px 40px"}
-        templateColumns={{ base: "repeat(1, 1fr)", tablet: "repeat(3, 1fr)" }}
+        templateColumns={{ base: "repeat(1, 1fr)", tablet: "repeat(4, 1fr)" }}
         gap={10}
         color={"#fff"}
       >
@@ -55,6 +55,19 @@ export default function Footer() {
               </LinkOverlay>
             </Flex>
           </LinkBox>
+        </GridItem>
+        <GridItem>
+          <Text fontSize={"20px"} fontWeight={600}>
+            Preguntas frecuentes
+          </Text>
+          <VStack align={"start"} mt={"15px"} fontWeight={600}>
+            <Link href={"/about"}>Sobre MMChokers</Link>
+            <Link href={"/preguntas-frecuentes"}>Información de envíos</Link>
+            <Link href={"/preguntas-frecuentes"}>Medios de pago</Link>
+            <Link href={"/preguntas-frecuentes"}>
+              Cómo puedo seguir mi pedido?
+            </Link>
+          </VStack>
         </GridItem>
         <GridItem>
           <Text fontSize={"20px"} fontWeight={600}>

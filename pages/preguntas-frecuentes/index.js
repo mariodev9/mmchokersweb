@@ -17,12 +17,16 @@ export default function PreguntasPage() {
     <Layout footer>
       {/* title */}
       <Flex layerStyle={"xWraper"} pt={"11vh"} direction={"column"}>
-        <Text as={"h1"} fontSize={"110px"} textAlign={"center"}>
+        <Text
+          as={"h1"}
+          fontSize={{ base: "40px", tablet: "110px" }}
+          textAlign={"center"}
+        >
           Preguntas frecuentes
         </Text>
       </Flex>
 
-      <Flex direction={"column"} gap={10} layerStyle={"xWraper"} mt={"20px"}>
+      <Flex direction={"column"} gap={10} layerStyle={"xWraper"} my={"30px"}>
         <Box>
           <Flex align={"center"}>
             <PaymentIcon />

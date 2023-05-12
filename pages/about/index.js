@@ -6,11 +6,20 @@ export default function AboutPage() {
   return (
     <Layout footer>
       <Box layerStyle={"layoutWraper"} pt={"11vh"}>
-        <VStack spacing={10} fontSize={{ base: "14px", tablet: "20px" }}>
+        <VStack
+          spacing={5}
+          fontSize={{ base: "14px", tablet: "20px" }}
+          pb={"40px"}
+        >
           {/* <AboutTitleSVG /> */}
-          <Text as={"h1"} fontSize={"110px"} textAlign={"center"}>
+          <Text
+            as={"h1"}
+            fontSize={{ base: "40px", tablet: "110px" }}
+            textAlign={"center"}
+          >
             Quienes somos
           </Text>
+
           <Text mt={"20px"} fontWeight={500}>
             En MMChokers somos jóvenes emprendedores con un objetivo claro:
             ofrecer collares innovadores y de alta calidad que complementen tu

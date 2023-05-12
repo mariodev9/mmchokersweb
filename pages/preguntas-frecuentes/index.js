@@ -14,10 +14,10 @@ import {
 
 export default function PreguntasPage() {
   return (
-    <Layout>
+    <Layout footer>
       {/* title */}
       <Flex layerStyle={"xWraper"} pt={"11vh"} direction={"column"}>
-        <Text as={"h1"} fontSize={"6xl"} fontWeight={700}>
+        <Text as={"h1"} fontSize={"110px"} textAlign={"center"}>
           Preguntas frecuentes
         </Text>
       </Flex>

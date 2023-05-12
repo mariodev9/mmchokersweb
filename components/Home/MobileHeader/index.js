@@ -32,7 +32,7 @@ export const MobileHeader = ({ data }) => {
               <Flex
                 w={"full"}
                 h={"20vh"}
-                bgImage={"/images/collarNegro.jpg"}
+                bgImage={"/images/collarNegro.JPG"}
                 bgRepeat={"no-repeat"}
                 bgPosition={"center"}
                 bgSize={"cover"}

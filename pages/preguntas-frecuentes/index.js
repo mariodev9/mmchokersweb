@@ -16,13 +16,8 @@ export default function PreguntasPage() {
   return (
     <Layout>
       {/* title */}
-      <Flex
-        layerStyle={"xWraper"}
-        pt={"11vh"}
-        bg={"yellow.100"}
-        direction={"column"}
-      >
-        <Text fontSize={"6xl"} fontWeight={700}>
+      <Flex layerStyle={"xWraper"} pt={"11vh"} direction={"column"}>
+        <Text as={"h1"} fontSize={"6xl"} fontWeight={700}>
           Preguntas frecuentes
         </Text>
       </Flex>

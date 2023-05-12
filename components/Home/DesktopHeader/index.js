@@ -7,9 +7,9 @@ import CategoryBox from "../../Shared/CategoryBox/CategoryBox";
 // category list y mapear
 
 const categoryList = [
-  { name: "Cadenas", image: "cadenas.jpg" },
-  { name: "Black Site", image: "collarNegro.jpg" },
-  { name: "Chokers", image: "collares.jpg" },
+  { name: "Cadenas", image: "cadenas.JPG" },
+  { name: "Black Site", image: "collarNegro.JPG" },
+  { name: "Chokers", image: "collares.JPG" },
 ];
 
 export const DesktopHeader = () => {
@@ -50,20 +50,6 @@ export const DesktopHeader = () => {
             </GridItem>
           ))}
         </Grid>
-        {/* smile */}
-        {/* <Box pos={"absolute"} right={"120px"}>
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1, type: "spring", delay: 1 }}
-          >
-            <Smile />
-          </motion.div>
-        </Box> */}
-        {/* Redes sociales */}
-        {/* <Flex justify={"end"} px={"30px"}>
-          <SocialMedia />
-        </Flex> */}
       </Box>
     </>
   );

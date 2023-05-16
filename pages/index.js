@@ -23,7 +23,7 @@ export default function Home({ data }) {
         {isLargerThan834 ? <DesktopHeader /> : <MobileHeader data={data} />}
         {/* Swiper Component */}
         <Box mt={"25px"}>
-          <Flex justify={"center"} p={"10px 30px"}>
+          <Flex justify={"center"} py={"25px"}>
             <Text
               textAlign={"center"}
               fontSize={{ base: "24px", tablet: "48px" }}
@@ -42,7 +42,7 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`${process.env.API_URL}/products`);
+  const res = await fetch(`${process.env.API_URL}/populares`);
   const data = await res.json();
   return { props: { data } };
 }

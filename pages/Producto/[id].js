@@ -72,8 +72,8 @@ export default function ProductPage() {
                   cursor: productData.images.length > 2 ? "grab" : "",
                 }}
                 scrollbar={{ draggable: true }}
-                onSlideChange={(item) => console.log(item)}
-                onSwiper={(swiper) => console.log(swiper)}
+                // onSlideChange={(item) => console.log(item)}
+                // onSwiper={(swiper) => console.log(swiper)}
               >
                 {productData.images.map((image) => (
                   <SwiperSlide key={image}>

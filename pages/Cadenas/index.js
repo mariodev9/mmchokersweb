@@ -22,8 +22,7 @@ export default function CadenasPage({ data }) {
 }
 
 export async function getServerSideProps() {
-  // https://mmchokers.vercel.app/api/Categoria/Cadenas
-  const res = await fetch(`https://mmchokers.vercel.app/api/Categoria/Cadenas`);
+  const res = await fetch(`http://localhost:3000/api/Categoria/Cadenas`);
   const data = await res.json();
   return { props: { data } };
 }

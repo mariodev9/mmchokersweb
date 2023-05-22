@@ -12,9 +12,8 @@ export default function PulserasPage({ data }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(
-    `https://mmchokers.vercel.app/api/Categoria/Pulseras`
-  );
+  const res = await fetch(`http://localhost:3000/api/Categoria/Pulseras`);
+
   const data = await res.json();
 
   return { props: { data } };

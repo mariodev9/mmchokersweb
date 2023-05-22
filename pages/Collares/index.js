@@ -15,9 +15,8 @@ export default function CollaresPage({ data }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(
-    `https://mmchokers.vercel.app/api/Categoria/Collares`
-  );
+  const res = await fetch(`http://localhost:3000/api/Categoria/Collares`);
+
   const data = await res.json();
 
   return { props: { data } };

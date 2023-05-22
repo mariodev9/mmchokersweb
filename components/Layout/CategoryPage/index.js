@@ -20,7 +20,7 @@ export default function CategoryPage({ children, category }) {
               <BackIcon />
             </Button>
             <Text
-              fontSize={{ base: "20px ", tablet: "40px" }}
+              fontSize={{ base: "25px ", tablet: "40px" }}
               fontWeight={500}
               textAlign={{ base: "center", tablet: "start" }}
               fontFamily={"'Bebas Neue', cursive"}

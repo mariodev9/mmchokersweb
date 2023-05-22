@@ -15,7 +15,7 @@ export default function handler(req, res) {
 
   const q = query(
     collection(firestore, "products"),
-    where("category", "==", param)
+    where("category", "array-contains", param)
   );
   const querySnap = getDocs(q);
   onSnapshot(q, (querySnap) => {
@@ -29,12 +29,10 @@ export default function handler(req, res) {
       };
     });
     if (allProducts) {
-      res
-        .status(200)
-        .json({
-          products: allProducts,
-          message: `Productos obtenidos con exito`,
-        });
+      res.status(200).json({
+        products: allProducts,
+        message: `Productos obtenidos con exito`,
+      });
     } else {
       response.status(404).json({ products: [], message: `No hay productos` });
     }

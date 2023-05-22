@@ -11,7 +11,9 @@ export default function BilleterasPage({ data }) {
 }
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`http://localhost:3000/api/Categoria/Billeteras`);
+  const res = await fetch(
+    `https://mmchokers.vercel.app/api/Categoria/Billeteras`
+  );
 
   const data = await res.json();
 

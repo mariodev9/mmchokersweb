@@ -7,9 +7,9 @@ import CategoryBox from "../../Shared/CategoryBox/CategoryBox";
 // category list y mapear
 
 const categoryList = [
-  { name: "Cadenas", image: "cadenas.JPG" },
-  { name: "Black Site", image: "collarNegro.JPG" },
-  { name: "Chokers", image: "collares.JPG" },
+  { name: "Cadenas", image: "cadenas.JPG", url: "Cadenas" },
+  { name: "Black Site", image: "collarNegro.JPG", url: "Black-Site" },
+  { name: "Chokers", image: "collares.JPG", url: "Chokers" },
 ];
 
 export const DesktopHeader = () => {
@@ -46,7 +46,11 @@ export const DesktopHeader = () => {
         <Grid templateColumns="repeat(3, 1fr)" gap={2}>
           {categoryList.map((category) => (
             <GridItem key={category.name}>
-              <CategoryBox name={category.name} imageUrl={category.image} />
+              <CategoryBox
+                name={category.name}
+                imageUrl={category.image}
+                url={category.url}
+              />
             </GridItem>
           ))}
         </Grid>

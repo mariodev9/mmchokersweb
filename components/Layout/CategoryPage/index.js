@@ -23,6 +23,7 @@ export default function CategoryPage({ children, category }) {
               fontSize={{ base: "20px ", tablet: "40px" }}
               fontWeight={500}
               textAlign={{ base: "center", tablet: "start" }}
+              fontFamily={"'Bebas Neue', cursive"}
             >
               {category}
             </Text>

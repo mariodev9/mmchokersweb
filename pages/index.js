@@ -28,8 +28,9 @@ export default function Home({ data }) {
               textAlign={"center"}
               fontSize={{ base: "24px", tablet: "48px" }}
               fontWeight={500}
+              fontFamily={"'Bebas Neue', cursive"}
             >
-              Mas populares
+              Los más populares
             </Text>
           </Flex>
           <Box mt={"5px"}>

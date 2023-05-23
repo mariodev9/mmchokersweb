@@ -7,6 +7,10 @@ import { BackIcon } from "../../Icons";
 export default function CategoryPage({ children, category }) {
   const router = useRouter();
 
+  function handleClick() {
+    router.push("/");
+  }
+
   return (
     <>
       <Layout footer>
@@ -14,7 +18,7 @@ export default function CategoryPage({ children, category }) {
           <Flex justify={"space-between"} align={"center"} pb={"30px"}>
             <Button
               px={"0px"}
-              onClick={() => router.push("/")}
+              onClick={() => handleClick()}
               bg={"none"}
               _hover={{ bg: "none" }}
             >

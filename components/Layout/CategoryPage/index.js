@@ -6,18 +6,19 @@ import { BackIcon } from "../../Icons";
 
 export default function CategoryPage({ children, category }) {
   const router = useRouter();
+
   return (
     <>
       <Layout footer>
         <Box p={"80px 30px 0px"}>
           <Flex justify={"space-between"} align={"center"} pb={"30px"}>
             <Button
-              p={"0px"}
-              onClick={() => router.back()}
+              px={"0px"}
+              onClick={() => router.push("/")}
               bg={"none"}
               _hover={{ bg: "none" }}
             >
-              <BackIcon />
+              <BackIcon height={30} weight={30} />
             </Button>
             <Text
               fontSize={{ base: "25px ", tablet: "40px" }}

@@ -44,7 +44,7 @@ export const MobileHeader = ({ data }) => {
                   transform: "scale(1.1)",
                 }}
               >
-                <Link href={"/Collares"}>
+                <Link href={"/Black-Site"}>
                   <LinkOverlay>
                     <Text fontSize={"26px"} color={"#fff"}>
                       Nueva colección

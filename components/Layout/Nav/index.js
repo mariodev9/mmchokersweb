@@ -51,6 +51,14 @@ const NavLinks = [
     title: "Billeteras",
     url: "/Billeteras",
   },
+  {
+    title: "Black Site Collection",
+    url: "/Black-Site",
+  },
+  {
+    title: "Chokers Collection",
+    url: "/Chokers",
+  },
   // {
   //   title: "Preguntas Frecuentes",
   //   url: "/Preguntas",
@@ -143,11 +151,11 @@ export const Navbar = () => {
 
           <DrawerBody>
             <VStack
-              spacing={5}
+              spacing={3}
               h={"100%"}
-              fontWeight={600}
-              fontSize={"30px"}
-              align={"center"}
+              fontWeight={500}
+              fontSize={"18px"}
+              align={"start"}
               justify={"center"}
             >
               {NavLinks.map((navlink) => (
@@ -166,22 +174,19 @@ export const Navbar = () => {
             </VStack>
           </DrawerBody>
 
-          <DrawerFooter>
+          <DrawerFooter borderTop={"1px solid #f3f3f3"}>
             <VStack
               w={"full"}
               spacing={5}
               h={"100%"}
-              fontWeight={600}
-              fontSize={"30px"}
+              fontWeight={500}
+              fontSize={"16px"}
               align={"center"}
               justify={"center"}
             >
-              <Text fontWeight={600} fontSize={"20px"}>
-                Quienes somos
-              </Text>
-              <Text fontWeight={600} fontSize={"20px"}>
-                Preguntas frecuentes
-              </Text>
+              <Link href={"/Nosotros"}> Quienes somos</Link>
+
+              <Link href={"/preguntas-frecuentes"}>Preguntas frecuentes</Link>
 
               <SocialMedia />
             </VStack>

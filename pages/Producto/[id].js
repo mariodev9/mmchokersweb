@@ -1,4 +1,14 @@
-import { Box, Flex, Spinner, Text, Button, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Spinner,
+  Text,
+  Button,
+  useToast,
+  useMediaQuery,
+  Grid,
+  GridItem,
+} from "@chakra-ui/react";
 import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { getProduct } from "../../firebase/services/products";
@@ -12,6 +22,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { CashIcon, DeliveryIcon } from "../../components/Icons";
 
 export default function ProductPage() {
   const router = useRouter();
@@ -20,12 +31,20 @@ export default function ProductPage() {
   const { AddProductToCart } = useContext(CartContext);
 
   const [productData, setProductData] = useState(undefined);
+  const [isLargerThan550] = useMediaQuery("(min-width: 750px)", {
+    ssr: true,
+    fallback: true,
+  });
 
   const { id } = router.query;
 
   useEffect(() => {
     id && getProduct(id, setProductData);
   }, [id]);
+
+  useEffect(() => {
+    // traer populares
+  }, []);
 
   function handleAddProduct() {
     toast({
@@ -62,48 +81,64 @@ export default function ProductPage() {
               pt={{ base: "70px", tablet: "120px" }}
               direction={{ base: "column", tablet: "row" }}
               gap={5}
+              layerStyle={"xWraper"}
             >
-              <Swiper
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
-                spaceBetween={2}
-                slidesPerView={productData.images.length > 1 ? 2 : 1}
-                style={{
-                  width: "100%",
-                  cursor: productData.images.length > 2 ? "grab" : "",
-                }}
-                scrollbar={{ draggable: true }}
-                // onSlideChange={(item) => console.log(item)}
-                // onSwiper={(swiper) => console.log(swiper)}
-              >
-                {productData.images.map((image) => (
-                  <SwiperSlide key={image}>
-                    <Box
-                      mx={{ base: "0px", tablet: "30px" }}
-                      pos={"relative"}
-                      w={{ base: "100%", tablet: "100%" }}
-                      minH={{ base: "400px", tablet: "500px" }}
-                    >
-                      <Image
-                        src={image}
-                        alt={"producto"}
-                        style={{ borderRadius: "2px" }}
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    </Box>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+              {isLargerThan550 ? (
+                <Grid templateColumns="repeat(2, 1fr)" gap={3} w={"60%"}>
+                  {productData.images.map((image) => (
+                    <GridItem w="100%" h="350" bg="blue.500">
+                      <Box w="100%" height={"100%"} pos={"relative"}>
+                        <Image
+                          src={image}
+                          alt={`imagen de ${productData.name}`}
+                          style={{ borderRadius: "2px" }}
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                      </Box>
+                    </GridItem>
+                  ))}
+                </Grid>
+              ) : (
+                <Swiper
+                  modules={[Navigation, Pagination, Scrollbar, A11y]}
+                  spaceBetween={2}
+                  slidesPerView={1}
+                  style={{
+                    width: "100%",
+                    cursor: "grab",
+                  }}
+                  scrollbar={{ draggable: true }}
+                >
+                  {productData.images.map((image) => (
+                    <SwiperSlide key={image}>
+                      <Box
+                        mx={{ base: "0px", tablet: "30px" }}
+                        pos={"relative"}
+                        w={{ base: "100%", tablet: "100%" }}
+                        minH={{ base: "350px", tablet: "500px" }}
+                      >
+                        <Image
+                          src={image}
+                          alt={"producto"}
+                          style={{ borderRadius: "2px" }}
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                      </Box>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              )}
 
               <Flex
                 direction={"column"}
                 bottom={0}
                 bg={"#fff"}
-                w={{ base: "full", tablet: "50%" }}
+                w={{ base: "full", tablet: "40%" }}
                 borderRadius={"30px 30px 0px 0px"}
-                layerStyle={"xWraper"}
               >
-                <Box>
+                <Flex direction={"column"} gap={4}>
                   <Flex
                     w={"full"}
                     justify={"space-between"}
@@ -115,34 +150,75 @@ export default function ProductPage() {
                     </Text>
                     <Text fontSize={"20px"}>${productData.price}</Text>
                   </Flex>
-                  <Box mt={"10px"} fontSize={"14px"}>
+                  <Box fontSize={"14px"}>
                     <Text>Descripcion</Text>
                     <Text fontWeight={400} color={"gray.200"}>
                       {productData.description}
                     </Text>
                   </Box>
-                  <Box mt={"10px"} fontSize={"14px"}>
+                  <Box fontSize={"14px"}>
                     <Text>Color</Text>
                     <Text fontWeight={400} color={"gray.200"}>
-                      Negro
+                      {productData.colors}
                     </Text>
                   </Box>
-                  <Box mt={"10px"} fontSize={"14px"}>
+                  <Box fontSize={"14px"}>
                     <Text>Dimensiones</Text>
                     <Text fontWeight={400} color={"gray.200"}>
-                      28.00 cm
+                      {productData.measures}cm
                     </Text>
                   </Box>
-                </Box>
-
-                <Flex gap={4} w={"full"} mt={"40px"}>
-                  <Button
-                    variant={"primary"}
-                    w={"full"}
-                    onClick={() => handleAddProduct()}
-                  >
-                    Añadir al carrito
-                  </Button>
+                  {productData.stock < 1 && (
+                    <Text color={"red.400"}>
+                      Este producto se encuentra sin stock!
+                    </Text>
+                  )}
+                  <Flex gap={4} w={"full"}>
+                    <Button
+                      variant={"primary"}
+                      w={"full"}
+                      onClick={() => handleAddProduct()}
+                      isDisabled={productData.stock < 1}
+                    >
+                      Añadir al carrito
+                    </Button>
+                  </Flex>
+                  <Flex mt={"10px"} gap={5} align={"center"}>
+                    <DeliveryIcon strokeWidth={3} />
+                    <Box>
+                      <Text
+                        fontSize={{ base: "10px", tablet: "14px" }}
+                        fontWeight={300}
+                      >
+                        Retira en tienda o pedido a domicilio
+                      </Text>
+                      <Text
+                        fontSize={{ base: "8", tablet: "12px" }}
+                        fontWeight={300}
+                      >
+                        Retira en tienda sin cargo o envio a domicilio sin cargo
+                        a partir de $5.000
+                      </Text>
+                    </Box>
+                  </Flex>
+                  <Flex gap={5} align={"center"}>
+                    <CashIcon />
+                    <Box>
+                      <Text
+                        fontSize={{ base: "10px", tablet: "14px" }}
+                        fontWeight={300}
+                      >
+                        Medios de pago
+                      </Text>
+                      <Text
+                        fontSize={{ base: "8", tablet: "12px" }}
+                        fontWeight={300}
+                      >
+                        Aceptamos las siguientes opciones de pago: Tarjetas de
+                        Crédito, Tarjetas de Débito y Mercado Pago.
+                      </Text>
+                    </Box>
+                  </Flex>
                 </Flex>
               </Flex>
             </Flex>
@@ -152,6 +228,7 @@ export default function ProductPage() {
               fontWeight={500}
               textAlign={"center"}
               mt={"50px"}
+              fontFamily={"'Bebas Neue', cursive"}
             >
               Tambien te puede interesar
             </Text>

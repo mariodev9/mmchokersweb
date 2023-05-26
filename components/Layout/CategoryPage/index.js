@@ -1,4 +1,4 @@
-import { Box, Button, Flex, StatArrow, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 import { Layout } from "../Layout";
@@ -14,7 +14,7 @@ export default function CategoryPage({ children, category }) {
   return (
     <>
       <Layout footer>
-        <Box p={"80px 30px 0px"}>
+        <Box p={"100px 30px 0px"}>
           <Flex justify={"space-between"} align={"center"} pb={"30px"}>
             <Button
               px={"0px"}

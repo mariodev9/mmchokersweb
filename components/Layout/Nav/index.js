@@ -59,14 +59,6 @@ const NavLinks = [
     title: "Chokers Collection",
     url: "/Chokers",
   },
-  // {
-  //   title: "Preguntas Frecuentes",
-  //   url: "/Preguntas",
-  // },
-  // {
-  //   title: "Nosotros",
-  //   url: "/Nosotros",
-  // },
 ];
 
 const variants = {

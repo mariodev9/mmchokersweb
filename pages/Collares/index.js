@@ -7,7 +7,7 @@ export default function CollaresPage() {
   const [products, setProducts] = useState(undefined);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/Categoria/Collares`)
+    fetch(`https://mmchokers.vercel.app/api/Categoria/Collares`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

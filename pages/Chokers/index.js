@@ -7,7 +7,7 @@ export default function ChokersPage() {
   const [products, setProducts] = useState(undefined);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/Categoria/Chokers`)
+    fetch(`https://mmchokers.vercel.app/api/Categoria/Chokers`)
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

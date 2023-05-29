@@ -4,17 +4,17 @@ import WraperProducts from "../../components/Shared/WraperProducts/WraperProduct
 import { Grid, GridItem, Skeleton } from "@chakra-ui/react";
 
 export default function CollaresPage() {
-  const [products, setProducts] = useState(undefined);
+  const [dataProducts, setDataProducts] = useState(undefined);
 
   useEffect(() => {
-    fetch(`https://mmchokers.vercel.app/api/Categoria/Collares`)
+    fetch(`http://localhost:3000/api/Categoria/Collares`)
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setDataProducts(data));
   }, []);
   return (
     <CategoryPage category={"Collares"}>
-      {products ? (
-        <WraperProducts products={products.products} />
+      {dataProducts ? (
+        <WraperProducts products={dataProducts.products} />
       ) : (
         <Grid
           templateColumns={{
@@ -31,6 +31,17 @@ export default function CollaresPage() {
           ))}
         </Grid>
       )}
+      {/* <WraperProducts products={data.products} /> */}
     </CategoryPage>
   );
 }
+
+// export async function getServerSideProps() {
+//   const res = await fetch(
+//     `https://mmchokers.vercel.app/api/Categoria/Collares`
+//   );
+
+//   const data = await res.json();
+
+//   return { props: { data } };
+// }

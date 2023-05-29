@@ -1,37 +1,37 @@
-import React, { useEffect, useState } from "react";
+// import  { useEffect, useState } from "react";
 import CategoryPage from "../../components/Layout/CategoryPage";
 import WraperProducts from "../../components/Shared/WraperProducts/WraperProducts";
-import { Grid, GridItem, Skeleton } from "@chakra-ui/react";
+// import { Grid, GridItem, Skeleton } from "@chakra-ui/react";
 
-export default function ChokersPage() {
-  const [products, setProducts] = useState(undefined);
+export default function ChokersPage({ allChokers }) {
+  // const [products, setProducts] = useState(undefined);
 
-  useEffect(() => {
-    fetch(`https://mmchokers.vercel.app/api/Categoria/Chokers`)
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch(`http://mmchokers.vercel.app/api/Categoria/Chokers`)
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data));
+  // }, []);
 
   return (
     <CategoryPage category={"Chokers"}>
-      {products ? (
-        <WraperProducts products={products.products} />
-      ) : (
-        <Grid
-          templateColumns={{
-            base: "repeat(2, 1fr)",
-            tablet: "repeat(3, 1fr)",
-            desktop: "repeat(5, 1fr)",
-          }}
-          gap={1}
-        >
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-            <GridItem key={item} w="100%" mb={"15px"}>
-              <Skeleton h={"300px"} w={"100%"}></Skeleton>
-            </GridItem>
-          ))}
-        </Grid>
-      )}
+      todo los choker
+      <WraperProducts products={allChokers} />
     </CategoryPage>
   );
 }
+
+export const getServerSideProps = async ({ params }) => {
+  const chokersResponse = await fetch(`${process.env.API_URL}/chokers`);
+
+  if (chokersResponse.status === 404) {
+    return { notFound: true };
+  }
+
+  const allChokers = await chokersResponse.json();
+
+  return {
+    props: {
+      allChokers,
+    },
+  };
+};

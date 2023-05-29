@@ -33,7 +33,7 @@ export default function handler(req, res) {
         message: `Productos obtenidos con exito`,
       });
     } else {
-      response.status(404).json({ products: [], message: `No hay productos` });
+      response.status(404).json({ message: `No hay productos` });
     }
   });
 }

@@ -12,9 +12,9 @@ export default function WraperProducts({ products }) {
       }}
       gap={1}
     >
-      {products.map((item) => (
+      {products.map((item, index) => (
         <GridItem key={item.name} w="100%" mb={"15px"}>
-          <ProductItem {...item} />
+          <ProductItem index={index} {...item} />
         </GridItem>
       ))}
     </Grid>

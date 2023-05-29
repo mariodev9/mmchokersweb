@@ -10,7 +10,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
-export default function ProductItem({ images, price, name, id }) {
+export default function ProductItem({ images, price, name, id, index }) {
   return (
     <LinkBox w={"100%"} as={"article"}>
       <Flex direction={"column"} maxW={"350px"} mb={"20px"}>
@@ -20,6 +20,7 @@ export default function ProductItem({ images, price, name, id }) {
           pos={"relative"}
         >
           <Image
+            priority={index}
             src={images[0]}
             alt={name}
             style={{ borderRadius: "2px" }}

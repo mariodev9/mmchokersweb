@@ -1,20 +1,9 @@
-// import  { useEffect, useState } from "react";
 import CategoryPage from "../../components/Layout/CategoryPage";
 import WraperProducts from "../../components/Shared/WraperProducts/WraperProducts";
-// import { Grid, GridItem, Skeleton } from "@chakra-ui/react";
 
 export default function ChokersPage({ allChokers }) {
-  // const [products, setProducts] = useState(undefined);
-
-  // useEffect(() => {
-  //   fetch(`http://mmchokers.vercel.app/api/Categoria/Chokers`)
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data));
-  // }, []);
-
   return (
     <CategoryPage category={"Chokers"}>
-      todo los choker
       <WraperProducts products={allChokers} />
     </CategoryPage>
   );

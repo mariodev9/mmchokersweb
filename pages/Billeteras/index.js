@@ -2,20 +2,28 @@ import React from "react";
 import CategoryPage from "../../components/Layout/CategoryPage";
 import WraperProducts from "../../components/Shared/WraperProducts/WraperProducts";
 
-export default function BilleterasPage({ data }) {
+export default function BilleterasPage({ products }) {
   return (
     <CategoryPage category={"Billeteras"}>
-      <WraperProducts products={data.products} />
+      <WraperProducts products={products} />
     </CategoryPage>
   );
 }
 
-export async function getServerSideProps(context) {
-  const res = await fetch(
-    `https://mmchokers.vercel.app/api/Categoria/Billeteras`
+export const getServerSideProps = async () => {
+  const productResponse = await fetch(
+    `${process.env.API_URL}/Categoria/Billeteras`
   );
 
-  const data = await res.json();
+  if (productResponse.status === 404) {
+    return { notFound: true };
+  }
 
-  return { props: { data } };
-}
+  const products = await productResponse.json();
+
+  return {
+    props: {
+      products,
+    },
+  };
+};

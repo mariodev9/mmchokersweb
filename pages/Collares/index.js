@@ -1,6 +1,5 @@
 import CategoryPage from "../../components/Layout/CategoryPage";
 import WraperProducts from "../../components/Shared/WraperProducts/WraperProducts";
-import { Grid, GridItem, Skeleton } from "@chakra-ui/react";
 
 export default function CollaresPage({ products }) {
   return (

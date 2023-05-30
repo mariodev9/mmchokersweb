@@ -33,7 +33,7 @@ export default function ProductItem({ images, price, name, id, index }) {
             <LinkOverlay>
               <Text
                 as={"h3"}
-                fontSize={{ base: "1.1rem", tablet: "1.4rem" }}
+                fontSize={{ base: "1rem", tablet: "1.4rem" }}
                 fontWeight={500}
               >
                 {name}
@@ -42,7 +42,10 @@ export default function ProductItem({ images, price, name, id, index }) {
             </LinkOverlay>
           </Link>
 
-          <Text fontSize={{ base: "1.1rem", tablet: "18px" }} fontWeight={600}>
+          <Text
+            fontSize={{ base: "0.9rem", tablet: "1.4rem" }}
+            fontWeight={600}
+          >
             $ {price}
           </Text>
         </Box>

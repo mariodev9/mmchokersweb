@@ -4,7 +4,6 @@ import {
   Box,
   Flex,
   Text,
-  VStack,
   Accordion,
   AccordionItem,
   AccordionButton,
@@ -19,7 +18,7 @@ export default function PreguntasPage() {
       <Flex layerStyle={"xWraper"} pt={"11vh"} direction={"column"}>
         <Text
           as={"h1"}
-          fontSize={{ base: "40px", tablet: "110px" }}
+          fontSize={{ base: "40px", tablet: "70px" }}
           textAlign={"center"}
         >
           Preguntas frecuentes

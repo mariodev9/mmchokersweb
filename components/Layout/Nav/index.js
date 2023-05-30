@@ -12,21 +12,10 @@ import {
   DrawerCloseButton,
   useDisclosure,
   VStack,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionIcon,
-  AccordionPanel,
-  Text,
-  Center,
 } from "@chakra-ui/react";
 import Link from "next/link";
 // import { Link } from "@chakra-ui/react";
-import { Logo, Logoo, MenuIcon } from "../../Icons";
+import { Logo, MenuIcon } from "../../Icons";
 import { motion, useScroll } from "framer-motion";
 import { SocialMedia } from "../../Home/SocialMedia";
 import { useRouter } from "next/router";
@@ -122,7 +111,7 @@ export const Navbar = () => {
         <Box display={{ base: "none", tablet: "flex" }}>
           <HStack spacing={10} fontWeight={500}>
             {NavLinks.map((navlink) => (
-              <Link key={navlink.title} href={navlink.url}>
+              <Link className="nav-link" key={navlink.title} href={navlink.url}>
                 {navlink.title}
               </Link>
             ))}

@@ -61,7 +61,7 @@ export default function Footer() {
             Preguntas frecuentes
           </Text>
           <VStack align={"start"} mt={"15px"} fontWeight={600}>
-            <Link href={"/about"}>Sobre MMChokers</Link>
+            <Link href={"/Nosotros"}>Sobre MMChokers</Link>
             <Link href={"/preguntas-frecuentes"}>Información de envíos</Link>
             <Link href={"/preguntas-frecuentes"}>Medios de pago</Link>
             <Link href={"/preguntas-frecuentes"}>

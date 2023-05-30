@@ -86,7 +86,7 @@ export default function ProductPage() {
               {isLargerThan550 ? (
                 <Grid templateColumns="repeat(2, 1fr)" gap={3} w={"60%"}>
                   {productData.images.map((image) => (
-                    <GridItem key={image} w="100%" h="350" bg="blue.500">
+                    <GridItem key={image} w="100%" h="350" bg="gray.100">
                       <Box w="100%" height={"100%"} pos={"relative"}>
                         <Image
                           src={image}

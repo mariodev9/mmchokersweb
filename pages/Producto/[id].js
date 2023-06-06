@@ -223,7 +223,7 @@ export default function ProductPage() {
               </Flex>
             </Flex>
 
-            <Text
+            {/* <Text
               fontSize={"24px"}
               fontWeight={500}
               textAlign={"center"}
@@ -231,7 +231,7 @@ export default function ProductPage() {
               fontFamily={"'Bebas Neue', cursive"}
             >
               Tambien te puede interesar
-            </Text>
+            </Text> */}
             {/* <SwiperProducts products={dar array de productos} /> */}
           </>
         )}

@@ -5,6 +5,7 @@ import { useContext } from "react";
 import CartContext from "../../context/CartContext";
 import { Logo } from "../../components/Icons";
 import PaymentPageLayout from "../../components/Layout/PaymentPage/PaymentPage";
+import { useRouter } from "next/router";
 
 const WraperInfo = ({ title, description, children }) => (
   <Box border={"2px solid #ECECEC"} p={"20px 15px "} mt={"25px"} bg={"#fff"}>
@@ -21,6 +22,7 @@ const WraperInfo = ({ title, description, children }) => (
 );
 
 export default function PaymentPage() {
+  const router = useRouter();
   const { cart, buyerData } = useContext(CartContext);
 
   const subtotal = cart.reduce((count, curItem) => {
@@ -50,13 +52,16 @@ export default function PaymentPage() {
 
       const message = `Hola MMCHOKERS, soy ${buyerData.name} ${
         buyerData.lastName
-      } y quiero completar mi compra.
-      Código de pedido: ${res.saleId},
-      Subtotal: $${subtotal}
-      Precio del envío: $${buyerData.shipping.price}
-      TOTAL A PAGAR: $${buyerData.shipping.price + subtotal}
+      } y quiero completar mi compra.%0A
+      Código de pedido: *${res.saleId}*%0A
+      *Subtotal:* $ ${subtotal}%0A
+      *Precio del envío:* $ ${buyerData.shipping.price}%0A
+      *TOTAL A PAGAR:* $ ${buyerData.shipping.price + subtotal}%0A
       Muchas gracias!`;
-      console.log(message);
+
+      // const asd = encodeURI(message)
+
+      router.push(`https://wa.me/2494600003?text=${message}`);
     }
   };
 

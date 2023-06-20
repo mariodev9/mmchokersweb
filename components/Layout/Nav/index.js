@@ -111,8 +111,8 @@ export const Navbar = () => {
         <Box display={{ base: "none", tablet: "flex" }}>
           <HStack spacing={10} fontWeight={500}>
             {NavLinks.map((navlink) => (
-              <Link className="nav-link" key={navlink.title} href={navlink.url}>
-                {navlink.title}
+              <Link key={navlink.title} href={navlink.url} passHref>
+                <a className="nav-link">{navlink.title}</a>
               </Link>
             ))}
           </HStack>

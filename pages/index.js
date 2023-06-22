@@ -5,6 +5,7 @@ import { DesktopHeader } from "../components/Home/DesktopHeader";
 import { MobileHeader } from "../components/Home/MobileHeader";
 import "swiper/css";
 import SwiperProducts from "../components/Shared/SwiperProducts/SwiperProducts";
+import { Logo } from "../components/Icons";
 
 export default function Home({ data }) {
   const [isLargerThan834] = useMediaQuery("(min-width: 834px)", {
@@ -19,9 +20,17 @@ export default function Home({ data }) {
         <meta name="mmchokers"></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout footer>
+      <Flex
+        direction={"column"}
+        justify={"center"}
+        align={"center"}
+        h={"100vh"}
+      >
+        <h1 style={{ fontSize: "4rem" }}>Hola! Estamos de refacciones</h1>
+        <Logo />
+      </Flex>
+      {/* <Layout footer>
         {isLargerThan834 ? <DesktopHeader /> : <MobileHeader data={data} />}
-        {/* Swiper Component */}
         <Box mt={"25px"}>
           <Flex justify={"center"} py={"25px"}>
             <Text
@@ -37,7 +46,7 @@ export default function Home({ data }) {
             <SwiperProducts products={data.productos} />
           </Box>
         </Box>
-      </Layout>
+      </Layout> */}
     </>
   );
 }

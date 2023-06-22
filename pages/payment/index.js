@@ -6,6 +6,7 @@ import CartContext from "../../context/CartContext";
 import { Logo } from "../../components/Icons";
 import PaymentPageLayout from "../../components/Layout/PaymentPage/PaymentPage";
 import { useRouter } from "next/router";
+import { MercadopagoButton } from "../../components/Shared/Buttons/MercadopagoButton";
 
 const WraperInfo = ({ title, description, children }) => (
   <Box border={"2px solid #ECECEC"} p={"20px 15px "} mt={"25px"} bg={"#fff"}>
@@ -29,41 +30,39 @@ export default function PaymentPage() {
     return count + curItem.price * curItem.quantity;
   }, 0);
 
-  const Purchase = async () => {
-    if (cart && buyerData) {
-      //1) añadir sale
-      let totalPayment = subtotal + buyerData.shipping.price;
-      const data = { totalPayment, cart, buyerData };
-      const res = await (
-        await fetch("/api/pay", {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-      ).json();
+  // const Purchase = async () => {
+  //   if (cart && buyerData) {
+  //     //1) añadir sale
+  //     let totalPayment = subtotal + buyerData.shipping.price;
+  //     const data = { totalPayment, cart, buyerData };
+  //     const res = await (
+  //       await fetch("/api/pay", {
+  //         method: "POST",
+  //         body: JSON.stringify(data),
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       })
+  //     ).json();
 
-      //2) bajar stock
-      // deberua ser en el servidor
-      // cart.forEach((product) => {
-      //   console.log("bajar el stock de", product.id);
-      // });
+  //     //2) bajar stock
+  //     // deberua ser en el servidor
+  //     // cart.forEach((product) => {
+  //     //   console.log("bajar el stock de", product.id);
+  //     // });
 
-      const message = `Hola MMCHOKERS, soy ${buyerData.name} ${
-        buyerData.lastName
-      } y quiero completar mi compra.%0A
-      Código de pedido: *${res.saleId}*%0A
-      *Subtotal:* $ ${subtotal}%0A
-      *Precio del envío:* $ ${buyerData.shipping.price}%0A
-      *TOTAL A PAGAR:* $ ${buyerData.shipping.price + subtotal}%0A
-      Muchas gracias!`;
+  //     const message = `Hola MMCHOKERS, soy ${buyerData.name} ${
+  //       buyerData.lastName
+  //     } y quiero completar mi compra.%0A
+  //     Código de pedido: *${res.saleId}*%0A
+  //     *Subtotal:* $ ${subtotal}%0A
+  //     *Precio del envío:* $ ${buyerData.shipping.price}%0A
+  //     *TOTAL A PAGAR:* $ ${buyerData.shipping.price + subtotal}%0A
+  //     Muchas gracias!`;
 
-      // const asd = encodeURI(message)
-
-      router.push(`https://wa.me/2494600003?text=${message}`);
-    }
-  };
+  //     router.push(`https://wa.me/2494600003?text=${message}`);
+  //   }
+  // };
 
   return cart && buyerData.shipping ? (
     <>
@@ -119,29 +118,11 @@ export default function PaymentPage() {
             </Flex>
           </Summary>
         </WraperInfo>
-        <Text
-          mt={"20px"}
-          fontSize={"16px"}
-          fontWeight={"regular"}
-          color={"gray.200"}
-        >
-          Importante: Este boton te redirige directamente con el vendedor para
-          ultimar los detalles del pago.
-        </Text>
+
+        <MercadopagoButton product={cart} buyerData={buyerData} />
       </PaymentPageLayout>
-      <Box bg={"red"} pos={"fixed"} bottom={0} w={"full"}>
-        <Button
-          pos={"sticky"}
-          variant={"primary"}
-          w={"full"}
-          p={"25px 0px"}
-          onClick={() => Purchase()}
-        >
-          <Text fontSize={"22px"}>Finalizar Compra</Text>
-        </Button>
-      </Box>
     </>
   ) : (
-    <h1>el carrito esta vacio</h1>
+    <h1>El carrito esta vacio!</h1>
   );
 }

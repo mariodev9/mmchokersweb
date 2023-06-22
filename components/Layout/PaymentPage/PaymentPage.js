@@ -23,14 +23,6 @@ export default function PaymentPageLayout({ title, children }) {
         >
           {children}
         </Box>
-        <Box
-          w={{ base: "100%", desktop: "30%" }}
-          order={{ base: 1, desktop: 2 }}
-        >
-          <WraperInformation title={"Resumen de Compras"}>
-            <Summary />
-          </WraperInformation>
-        </Box>
       </Flex>
     </Box>
   );

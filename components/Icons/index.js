@@ -619,3 +619,49 @@ export const AboutTitleSVG = (props) => {
     </svg>
   );
 };
+
+export const PaymentCheck = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="150"
+    height="150"
+    viewBox="0 0 150 150"
+    fill="none"
+  >
+    <path
+      d="M75 131.25C106.066 131.25 131.25 106.066 131.25 75C131.25 43.934 106.066 18.75 75 18.75C43.934 18.75 18.75 43.934 18.75 75C18.75 106.066 43.934 131.25 75 131.25Z"
+      fill="#0CBB1D"
+    />
+    <path d="M56.25 75L68.75 87.5L93.75 62.5" fill="#0CBB1D" />
+    <path
+      d="M56.25 75L68.75 87.5L93.75 62.5M131.25 75C131.25 106.066 106.066 131.25 75 131.25C43.934 131.25 18.75 106.066 18.75 75C18.75 43.934 43.934 18.75 75 18.75C106.066 18.75 131.25 43.934 131.25 75Z"
+      stroke="white"
+      strokeWidth="8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+export const PaymentFail = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="150"
+    height="150"
+    viewBox="0 0 150 150"
+    fill="none"
+  >
+    <path
+      d="M75 131.25C106.066 131.25 131.25 106.066 131.25 75C131.25 43.934 106.066 18.75 75 18.75C43.934 18.75 18.75 43.934 18.75 75C18.75 106.066 43.934 131.25 75 131.25Z"
+      fill="#FE2525"
+    />
+    <path d="M87.5 62.5L62.5 87.5Z" fill="#FE2525" />
+    <path
+      d="M62.5 62.5L87.5 87.5M87.5 62.5L62.5 87.5M131.25 75C131.25 106.066 106.066 131.25 75 131.25C43.934 131.25 18.75 106.066 18.75 75C18.75 43.934 43.934 18.75 75 18.75C106.066 18.75 131.25 43.934 131.25 75Z"
+      stroke="white"
+      strokeWidth="8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);

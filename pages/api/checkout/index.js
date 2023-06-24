@@ -12,6 +12,8 @@ const handler = async (req, res) => {
     const URL = "https://mmchokers.vercel.app/";
     try {
       const preference = {
+        // Hace que los pagos sean rechazados o aceptados, no hay pagos pendientes
+        // binary_mode: true,
         items: product.map((item) => ({
           id: item.id,
           title: item.name,
@@ -42,16 +44,15 @@ const handler = async (req, res) => {
         // },
         auto_return: "approved",
         back_urls: {
-          success: `${URL}`,
-          failure: `${URL}`,
+          success: `${URL}/success`,
+          failure: `${URL}/failure`,
         },
         statement_descriptor: "mmChokers",
         shipments: {
           cost: buyerData.shipping.price,
           mode: "not_specified",
         },
-        // Hace que los pagos sean rechazados o aceptados, no hay pagos pendientes
-        // binary_mode: true,
+
         notification_url: `${URL}/api/notify`,
       };
 

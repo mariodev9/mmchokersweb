@@ -4,8 +4,8 @@ export const Logo = (props) => {
   return (
     <Icon
       xmlns="http://www.w3.org/2000/svg"
-      width="68"
-      height="5"
+      width="38"
+      height={{ base: 4, tablet: 7 }}
       viewBox="0 0 88 10"
       fill="none"
       {...props}
@@ -199,8 +199,8 @@ export const Cart = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="22"
-      height="27"
+      width="18"
+      height="23"
       viewBox="0 0 27 32"
       fill="none"
     >

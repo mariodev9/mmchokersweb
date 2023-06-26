@@ -43,10 +43,23 @@ export const theme = extendTheme({
   layerStyles: {
     layoutWraper: {
       px: "30px",
-      pt: { base: "11vh", tablet: "13vh" },
+      // pt: { base: "1vh", tablet: "5vh" },
+
+      pt: { base: "11vh", tablet: "10vh" },
     },
     xWraper: {
       px: "30px",
+    },
+
+    ImageHeaderBox: {
+      h: "full",
+      w: "full",
+      pos: "relative",
+      transition: "all .25s ease",
+      cursor: "pointer",
+      _hover: { transform: "scale(1.03)" },
+      borderRadius: "20px",
+      overflow: "hidden",
     },
   },
   // COMPONENTES
@@ -62,12 +75,29 @@ export const theme = extendTheme({
 
       variants: {
         primary: {
+          fill: "#000",
+          w: "full",
           bg: "yellow.100",
           color: "#000",
-          fontSize: "15px",
-          padding: "15px 27px",
-          borderRadius: "2px",
+          fontSize: "4xl",
+          py: "3rem",
+          borderRadius: "full",
           _hover: {
+            fill: "yellow.100",
+            bg: "#000",
+            color: "yellow.100",
+          },
+        },
+        formbutton: {
+          fill: "#000",
+          w: "50%",
+          bg: "yellow.100",
+          color: "#000",
+          fontSize: "xl",
+          py: "1.5rem",
+          borderRadius: "full",
+          _hover: {
+            fill: "yellow.100",
             bg: "#000",
             color: "yellow.100",
           },

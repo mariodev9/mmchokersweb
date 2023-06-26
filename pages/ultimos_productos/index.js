@@ -7,11 +7,11 @@ export default function PulserasPage({ products }) {
   return (
     <>
       <Head>
-        <title>MM Chokers | Pulseras</title>
-        <meta name="MM Chokers website" content="Pulseras" />
+        <title>MM Chokers | Novedades</title>
+        <meta name="MM Chokers website" content="Ultimos productos" />
       </Head>
-      <CategoryPage category={"Pulseras"}>
-        <WraperProducts products={products} />
+      <CategoryPage category={"Ultimos productos"}>
+        <WraperProducts products={products.productos} />
       </CategoryPage>
     </>
   );
@@ -19,7 +19,7 @@ export default function PulserasPage({ products }) {
 
 export const getServerSideProps = async () => {
   const productResponse = await fetch(
-    `${process.env.API_URL}/Categoria/Pulseras`
+    `${process.env.API_URL}/products?limit=10`
   );
 
   if (productResponse.status === 404) {

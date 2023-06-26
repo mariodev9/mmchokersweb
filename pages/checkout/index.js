@@ -158,14 +158,11 @@ export default function CheckoutPage() {
                 </FormControl>
 
                 {/* Continuar boton */}
-                <Flex justify={"end"}>
+                <Flex justify={"start"} mt={"20px"}>
                   <Button
+                    variant={"formbutton"}
                     isLoading={isSubmitting}
                     type="submit"
-                    variant={"primary"}
-                    px={"60px"}
-                    mt={"20px"}
-                    fontSize={"20px"}
                   >
                     Continuar
                   </Button>
@@ -180,6 +177,7 @@ export default function CheckoutPage() {
                   <>
                     <WraperInfo title={"Punto de retiro"}>
                       Usted selecciono retirar por la tienda.
+                      <Text>Direccion: Brivio 1474, Tandil.</Text>
                     </WraperInfo>
                     <WraperInfo title={"¿Quien retirara la orden?"}>
                       <form onSubmit={handleSubmit(goToPayment)}>
@@ -260,12 +258,9 @@ export default function CheckoutPage() {
                             </FormErrorMessage>
                           </FormControl>
                         </Grid>
-                        <Flex justify={"end"}>
+                        <Flex justify={"start"} mt={"20px"}>
                           <Button
-                            variant={"primary"}
-                            px={"60px"}
-                            mt={"20px"}
-                            fontSize={"20px"}
+                            variant={"formbutton"}
                             isLoading={isSubmitting}
                             type="submit"
                           >

@@ -12,6 +12,7 @@ import {
   DrawerCloseButton,
   useDisclosure,
   VStack,
+  Container,
 } from "@chakra-ui/react";
 import Link from "next/link";
 // import { Link } from "@chakra-ui/react";
@@ -86,44 +87,46 @@ export const Navbar = () => {
         zIndex: 99,
       }}
     >
-      <Flex
-        justify={"space-between"}
-        align={"center"}
-        w={"100%"}
-        h={"10vh"}
-        p={{ base: "15px 30px", tablet: "40px 40px" }}
-        bg={"#fff"}
-      >
-        <Button
-          display={{ base: "flex", tablet: "none" }}
-          onClick={onOpen}
-          border={"none"}
-          bg={"none"}
-          px={"0px"}
+      <Container maxW="8xl">
+        <Flex
+          justify={"space-between"}
+          align={"center"}
+          w={"100%"}
+          h={"10vh"}
+          p={{ base: "15px 30px", tablet: "40px 40px" }}
+          bg={"#fff"}
         >
-          <MenuIcon />
-        </Button>
-        <Link href={"/"} passHref legacyBehavior>
-          <Box cursor={"pointer"}>
-            <Logo />
+          <Button
+            display={{ base: "flex", tablet: "none" }}
+            onClick={onOpen}
+            border={"none"}
+            bg={"none"}
+            px={"0px"}
+          >
+            <MenuIcon />
+          </Button>
+          <Link href={"/"} passHref legacyBehavior>
+            <Box cursor={"pointer"}>
+              <Logo />
+            </Box>
+          </Link>
+          <Box display={{ base: "none", tablet: "flex" }}>
+            <HStack spacing={10} fontWeight={500}>
+              {NavLinks.map((navlink) => (
+                <Link key={navlink.title} href={navlink.url} passHref>
+                  <a className="nav-link">{navlink.title}</a>
+                </Link>
+              ))}
+            </HStack>
           </Box>
-        </Link>
-        <Box display={{ base: "none", tablet: "flex" }}>
-          <HStack spacing={10} fontWeight={500}>
-            {NavLinks.map((navlink) => (
-              <Link key={navlink.title} href={navlink.url} passHref>
-                <a className="nav-link">{navlink.title}</a>
-              </Link>
-            ))}
-          </HStack>
-        </Box>
 
-        <CartButton
-          subtotal={cart.reduce((count, curItem) => {
-            return count + curItem.price * curItem.quantity;
-          }, 0)}
-        />
-      </Flex>
+          <CartButton
+            subtotal={cart.reduce((count, curItem) => {
+              return count + curItem.price * curItem.quantity;
+            }, 0)}
+          />
+        </Flex>
+      </Container>
 
       <Drawer isOpen={isOpen} placement="left" onClose={onClose} size={"xs"}>
         <DrawerOverlay />

@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { Box, Flex, Text, useMediaQuery } from "@chakra-ui/react";
 import { Layout } from "../components/Layout/Layout";
-import { DesktopHeader } from "../components/Home/DesktopHeader";
+import { NewDesktopHeader } from "../components/Home/NewDesktopHeader";
 import { MobileHeader } from "../components/Home/MobileHeader";
 import "swiper/css";
 import SwiperProducts from "../components/Shared/SwiperProducts/SwiperProducts";
-import { Logo } from "../components/Icons";
+// import { Logo } from "../components/Icons";
 
 export default function Home({ data }) {
   const [isLargerThan834] = useMediaQuery("(min-width: 834px)", {
@@ -16,11 +16,11 @@ export default function Home({ data }) {
   return (
     <>
       <Head>
-        <title>mmChokers</title>
-        <meta name="mmchokers"></meta>
+        <title>MM Chokers | Inicio</title>
+        <meta name="MM Chokers website" content="Inicio y productos varios" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Flex
+      {/* <Flex
         direction={"column"}
         justify={"center"}
         align={"center"}
@@ -28,25 +28,24 @@ export default function Home({ data }) {
       >
         <h1 style={{ fontSize: "4rem" }}>Hola! Estamos de refacciones</h1>
         <Logo />
-      </Flex>
-      {/* <Layout footer>
-        {isLargerThan834 ? <DesktopHeader /> : <MobileHeader data={data} />}
-        <Box mt={"25px"}>
-          <Flex justify={"center"} py={"25px"}>
-            <Text
-              textAlign={"center"}
-              fontSize={{ base: "24px", tablet: "48px" }}
-              fontWeight={500}
-              fontFamily={"'Bebas Neue', cursive"}
-            >
-              Los más populares
-            </Text>
-          </Flex>
-          <Box mt={"5px"}>
-            <SwiperProducts products={data.productos} />
-          </Box>
+      </Flex> */}
+      <Layout footer>
+        {isLargerThan834 ? <NewDesktopHeader /> : <MobileHeader data={data} />}
+        <Flex mt={"65px"} justify={"center"}>
+          <Text
+            py={"25px"}
+            textAlign={"center"}
+            fontSize={{ base: "24px", tablet: "48px" }}
+            fontWeight={500}
+            fontFamily={"'Bebas Neue', cursive"}
+          >
+            Los más populares
+          </Text>
+        </Flex>
+        <Box mt={"5px"}>
+          <SwiperProducts products={data.productos} />
         </Box>
-      </Layout> */}
+      </Layout>
     </>
   );
 }

@@ -145,7 +145,7 @@ export default function BuyerForm() {
             </Text>
             <Button
               mt={"10px"}
-              variant={"primary"}
+              variant={"formbutton"}
               onClick={() => setHideForm(!hideForm)}
             >
               Editar Informacion
@@ -337,12 +337,9 @@ export default function BuyerForm() {
             </Grid>
 
             {/* Continuar boton */}
-            <Flex justify={"end"}>
+            <Flex justify={"start"} mt={"20px"}>
               <Button
-                variant={"primary"}
-                px={"60px"}
-                mt={"20px"}
-                fontSize={"20px"}
+                variant={"formbutton"}
                 isLoading={isSubmitting}
                 type="submit"
               >
@@ -390,9 +387,9 @@ export default function BuyerForm() {
             </RadioGroup>
 
             {/* Continuar boton */}
-            <Flex justify={"end"}>
+            <Flex justify={"start"}>
               <Button
-                variant={"primary"}
+                variant={"formbutton"}
                 px={"60px"}
                 mt={"20px"}
                 fontSize={"20px"}
@@ -402,7 +399,6 @@ export default function BuyerForm() {
                 Continuar
               </Button>
             </Flex>
-
             {/*  */}
           </Box>
         )}

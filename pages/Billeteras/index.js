@@ -1,12 +1,19 @@
 import React from "react";
 import CategoryPage from "../../components/Layout/CategoryPage";
 import WraperProducts from "../../components/Shared/WraperProducts/WraperProducts";
+import Head from "next/head";
 
 export default function BilleterasPage({ products }) {
   return (
-    <CategoryPage category={"Billeteras"}>
-      <WraperProducts products={products} />
-    </CategoryPage>
+    <>
+      <Head>
+        <title>MM Chokers | Billeteras</title>
+        <meta name="MM Chokers website" content="Billeteras" />
+      </Head>
+      <CategoryPage category={"Billeteras"}>
+        <WraperProducts products={products} />
+      </CategoryPage>
+    </>
   );
 }
 

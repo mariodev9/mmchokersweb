@@ -8,8 +8,9 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     const product = req.body.product;
     const buyerData = req.body.buyerData;
-    // console.log(buyerData, "Data del comprador");
-    const URL = "https://mmchokers.vercel.app/";
+    const URL = "https://519b-186-138-187-46.ngrok-free.app";
+    // const URL = "https://mmchokers.vercel.app/";
+
     try {
       const preference = {
         // Hace que los pagos sean rechazados o aceptados, no hay pagos pendientes
@@ -23,7 +24,6 @@ const handler = async (req, res) => {
           description: item.description,
         })),
 
-        // TODO: Agregar payer info, editar estilos de payment, subir a produccion, testear
         // payer: {
         //   name: "Juan",
         //   surname: "Lopez",
@@ -52,7 +52,6 @@ const handler = async (req, res) => {
           cost: buyerData.shipping.price,
           mode: "not_specified",
         },
-
         notification_url: `${URL}/api/notify`,
       };
 

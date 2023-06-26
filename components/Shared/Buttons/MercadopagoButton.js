@@ -30,6 +30,9 @@ export const MercadopagoButton = ({ product, buyerData }) => {
   }, [product]);
 
   const goToMercadopagoCheckout = () => {
+    // if (buyerData && product && paymentUrl) {
+    //   router.push(paymentUrl);
+    // }
     router.push(paymentUrl);
   };
 
@@ -37,11 +40,13 @@ export const MercadopagoButton = ({ product, buyerData }) => {
     <>
       <Button
         onClick={() => goToMercadopagoCheckout()}
-        variant={"primary"}
+        variant={"formbutton"}
+        mt={"20px"}
+        w={"full"}
         isLoading={loading}
         isDisabled={product.stock < 1}
       >
-        Comprar ahora
+        Realizar el pago
       </Button>
     </>
   );

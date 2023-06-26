@@ -1,11 +1,18 @@
+import Head from "next/head";
 import CategoryPage from "../../components/Layout/CategoryPage";
 import WraperProducts from "../../components/Shared/WraperProducts/WraperProducts";
 
 export default function CollaresPage({ products }) {
   return (
-    <CategoryPage category={"Collares"}>
-      <WraperProducts products={products} />
-    </CategoryPage>
+    <>
+      <Head>
+        <title>MM Chokers | Collares</title>
+        <meta name="MM Chokers website" content="Collares" />
+      </Head>
+      <CategoryPage category={"Collares"}>
+        <WraperProducts products={products} />
+      </CategoryPage>
+    </>
   );
 }
 

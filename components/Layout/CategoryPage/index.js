@@ -14,7 +14,7 @@ export default function CategoryPage({ children, category }) {
   return (
     <>
       <Layout footer>
-        <Box p={"100px 30px 0px"}>
+        <Box pt={"10vh"}>
           <Flex justify={"space-between"} align={"center"} pb={"30px"}>
             <Button
               px={"0px"}

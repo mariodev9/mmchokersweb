@@ -7,6 +7,7 @@ import { Logo } from "../../components/Icons";
 import PaymentPageLayout from "../../components/Layout/PaymentPage/PaymentPage";
 import { useRouter } from "next/router";
 import { MercadopagoButton } from "../../components/Shared/Buttons/MercadopagoButton";
+import Head from "next/head";
 
 const WraperInfo = ({ title, description, children }) => (
   <Box border={"2px solid #ECECEC"} p={"20px 15px "} mt={"25px"} bg={"#fff"}>
@@ -30,8 +31,6 @@ export default function PaymentPage() {
     return count + curItem.price * curItem.quantity;
   }, 0);
 
-  // const Purchase = async () => {
-  //   if (cart && buyerData) {
   //     //1) añadir sale
   //     let totalPayment = subtotal + buyerData.shipping.price;
   //     const data = { totalPayment, cart, buyerData };
@@ -51,45 +50,13 @@ export default function PaymentPage() {
   //     //   console.log("bajar el stock de", product.id);
   //     // });
 
-  //     const message = `Hola MMCHOKERS, soy ${buyerData.name} ${
-  //       buyerData.lastName
-  //     } y quiero completar mi compra.%0A
-  //     Código de pedido: *${res.saleId}*%0A
-  //     *Subtotal:* $ ${subtotal}%0A
-  //     *Precio del envío:* $ ${buyerData.shipping.price}%0A
-  //     *TOTAL A PAGAR:* $ ${buyerData.shipping.price + subtotal}%0A
-  //     Muchas gracias!`;
-
-  //     router.push(`https://wa.me/2494600003?text=${message}`);
-  //   }
-  // };
-
   return cart && buyerData.shipping ? (
     <>
+      <Head>
+        <title>Proceso de pago</title>
+        <meta name="MM Chokers website" content="Payment form" />
+      </Head>
       <PaymentPageLayout title={"Revisa y confirma la compra"}>
-        <WraperInfo title={"Datos personales"}>
-          <Text fontWeight={"light"} fontSize={"14px"}>
-            {buyerData.name} {buyerData.lastName}
-            <br />
-            {buyerData.email} <br />
-            {buyerData.tel} <br />
-          </Text>
-        </WraperInfo>
-        <WraperInfo title={"Informacion de Envio"}>
-          {buyerData && (
-            <Text fontWeight={"light"} fontSize={"14px"}>
-              {buyerData.shipping.type} <br />
-              {buyerData.shipping.price === 0
-                ? "!Gratis!"
-                : `$${buyerData.shipping.price}`}
-              <br />
-              {buyerData.adress && buyerData.adress}{" "}
-              {buyerData.adressNumber && buyerData.adressNumber}
-              {", "}
-              {buyerData.city && buyerData.city}
-            </Text>
-          )}
-        </WraperInfo>
         <WraperInfo title={"Resumen de la compra"}>
           <Summary>
             <Flex
@@ -118,7 +85,6 @@ export default function PaymentPage() {
             </Flex>
           </Summary>
         </WraperInfo>
-
         <MercadopagoButton product={cart} buyerData={buyerData} />
       </PaymentPageLayout>
     </>

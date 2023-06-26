@@ -36,7 +36,7 @@ export default function Catalog() {
               p={"5px"}
               bg="#000"
               color={"#fff"}
-              borderRadius={"2px"}
+              borderRadius={"10px"}
               fontWeight={600}
               justify={"center"}
               _hover={{

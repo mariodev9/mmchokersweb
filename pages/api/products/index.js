@@ -4,17 +4,21 @@ import {
   getDocs,
   orderBy,
   onSnapshot,
+  limit,
 } from "firebase/firestore";
 import { firestore } from "../../../firebase/firebaseConfig";
 
 export default async function handler(req, res) {
-  // QUERY que obtiene todos los productos
+  let limitProducts = req.query.limit;
+
+  const productsRef = collection(firestore, "products");
+
   const q = query(
-    collection(firestore, "products"),
-    orderBy("createdAt", "desc")
+    productsRef,
+    orderBy("createdAt", "desc"),
+    limit(limitProducts)
   );
 
-  // ejecuto la QUERY
   const querySnap = await getDocs(q);
 
   // Devuelvo todos los productos con su respectivo Id.

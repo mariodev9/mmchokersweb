@@ -20,10 +20,10 @@ export default function ProductItem({ images, price, name, id, index }) {
           pos={"relative"}
         >
           <Image
-            priority={index}
+            loading="lazy"
             src={images[0]}
             alt={name}
-            style={{ borderRadius: "2px" }}
+            style={{ borderRadius: "15px" }}
             layout="fill"
             objectFit="cover"
           />

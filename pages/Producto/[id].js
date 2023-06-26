@@ -23,7 +23,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { CashIcon, DeliveryIcon } from "../../components/Icons";
-import { MercadopagoButton } from "../../components/Shared/Buttons/MercadopagoButton";
 
 export default function ProductPage() {
   const router = useRouter();
@@ -143,8 +142,7 @@ export default function ProductPage() {
                   <Flex
                     w={"full"}
                     justify={"space-between"}
-                    align={{ base: "center", tablet: "start" }}
-                    direction={{ base: "row", tablet: "column" }}
+                    direction={"column"}
                   >
                     <Text fontSize={"30px"} fontWeight={600}>
                       {productData.name}
@@ -177,14 +175,14 @@ export default function ProductPage() {
                   <Flex gap={4} w={"full"}>
                     <Button
                       variant={"primary"}
-                      w={"full"}
+                      py={"1.5rem"}
+                      fontSize={"2xl"}
                       onClick={() => handleAddProduct()}
                       isDisabled={productData.stock < 1}
                     >
                       Añadir al carrito
                     </Button>
                   </Flex>
-                  {/* <MercadopagoButton product={productData} /> */}
                   <Flex mt={"10px"} gap={5} align={"center"}>
                     <DeliveryIcon strokeWidth={3} />
                     <Box>

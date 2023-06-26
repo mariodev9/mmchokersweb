@@ -104,8 +104,9 @@ export default function CartButton({ subtotal }) {
                 w={"full"}
                 onClick={() => router.push(`/checkout`)}
                 variant={"primary"}
+                py={"1.5rem"}
                 mb={"50px"}
-                fontSize={"20px"}
+                fontSize={"xl"}
               >
                 Iniciar compra
               </Button>

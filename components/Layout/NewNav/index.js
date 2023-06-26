@@ -171,7 +171,7 @@ export const NewNavbar = () => {
                   </MenuButton>
                   <MenuList>
                     {CategoriesList.map((category) => (
-                      <MenuItem bg={"none"}>
+                      <MenuItem bg={"none"} key={category.title}>
                         <Link
                           key="ultimos_productos"
                           href={category.url}

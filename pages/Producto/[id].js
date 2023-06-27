@@ -31,6 +31,8 @@ export default function ProductPage() {
   const { AddProductToCart } = useContext(CartContext);
 
   const [productData, setProductData] = useState(undefined);
+  const [productStock, setProductStock] = useState(undefined);
+
   const [isLargerThan550] = useMediaQuery("(min-width: 750px)", {
     ssr: true,
     fallback: true,
@@ -43,8 +45,8 @@ export default function ProductPage() {
   }, [id]);
 
   useEffect(() => {
-    // traer populares
-  }, []);
+    productData && setProductStock(productData.stock);
+  }, [productData]);
 
   function handleAddProduct() {
     toast({
@@ -55,6 +57,7 @@ export default function ProductPage() {
       isClosable: true,
       position: "top",
     });
+    setProductStock(productStock - 1);
     AddProductToCart({ id, ...productData });
   }
 
@@ -145,7 +148,8 @@ export default function ProductPage() {
                     direction={"column"}
                   >
                     <Text fontSize={"30px"} fontWeight={600}>
-                      {productData.name}
+                      {productData.name} <br></br>
+                      {productStock}
                     </Text>
                     <Text fontSize={"20px"}>${productData.price}</Text>
                   </Flex>
@@ -167,7 +171,7 @@ export default function ProductPage() {
                       {productData.measures}cm
                     </Text>
                   </Box>
-                  {productData.stock < 1 && (
+                  {productStock < 1 && (
                     <Text color={"red.400"}>
                       Este producto se encuentra sin stock!
                     </Text>
@@ -178,7 +182,7 @@ export default function ProductPage() {
                       py={"1.5rem"}
                       fontSize={"2xl"}
                       onClick={() => handleAddProduct()}
-                      isDisabled={productData.stock < 1}
+                      isDisabled={productStock < 1}
                     >
                       Añadir al carrito
                     </Button>

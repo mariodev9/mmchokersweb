@@ -8,8 +8,8 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     const product = req.body.product;
     const buyerData = req.body.buyerData;
-    const URL = "https://519b-186-138-187-46.ngrok-free.app";
-    // const URL = "https://mmchokers.vercel.app/";
+    // const URL = "https://5875-186-138-187-46.ngrok-free.app";
+    const URL = "https://mmchokers.vercel.app";
 
     try {
       const preference = {
@@ -23,7 +23,15 @@ const handler = async (req, res) => {
           quantity: item.quantity,
           description: item.description,
         })),
-
+        payer: {
+          name: buyerData.name,
+          surname: buyerData.lastName,
+          email: buyerData.email,
+          identification: {
+            type: "DNI",
+            number: buyerData.dni,
+          },
+        },
         // payer: {
         //   name: "Juan",
         //   surname: "Lopez",

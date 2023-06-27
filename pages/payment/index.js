@@ -8,6 +8,7 @@ import PaymentPageLayout from "../../components/Layout/PaymentPage/PaymentPage";
 import { useRouter } from "next/router";
 import { MercadopagoButton } from "../../components/Shared/Buttons/MercadopagoButton";
 import Head from "next/head";
+import Link from "next/link";
 
 const WraperInfo = ({ title, description, children }) => (
   <Box border={"2px solid #ECECEC"} p={"20px 15px "} mt={"25px"} bg={"#fff"}>
@@ -30,19 +31,6 @@ export default function PaymentPage() {
   const subtotal = cart.reduce((count, curItem) => {
     return count + curItem.price * curItem.quantity;
   }, 0);
-
-  //     //1) añadir sale
-  //     let totalPayment = subtotal + buyerData.shipping.price;
-  //     const data = { totalPayment, cart, buyerData };
-  //     const res = await (
-  //       await fetch("/api/pay", {
-  //         method: "POST",
-  //         body: JSON.stringify(data),
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       })
-  //     ).json();
 
   //     //2) bajar stock
   //     // deberua ser en el servidor
@@ -89,6 +77,21 @@ export default function PaymentPage() {
       </PaymentPageLayout>
     </>
   ) : (
-    <h1>El carrito esta vacio!</h1>
+    <Flex direction={"column"} justify={"center"} align={"center"} h={"100vh"}>
+      <Text as={"h1"} fontSize={"4xl"}>
+        El carrito esta vacio!
+      </Text>
+      <Link href={"/"} passHref>
+        <a
+          style={{
+            fontSize: " 20px",
+            fontWeight: 600,
+            textDecoration: "underline",
+          }}
+        >
+          Ir a Inicio
+        </a>
+      </Link>
+    </Flex>
   );
 }

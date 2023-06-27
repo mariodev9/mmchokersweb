@@ -45,7 +45,7 @@ export default function CheckoutPage() {
 
   const router = useRouter();
 
-  const { SaveBuyerData, buyerData } = useContext(CartContext);
+  const { SaveBuyerData, buyerData, cart } = useContext(CartContext);
 
   const [shippingType, setShippingType] = useState("1");
   const [isReady, setIsReady] = useState(false);
@@ -80,16 +80,17 @@ export default function CheckoutPage() {
     });
   }
 
+  // SI ESTA VACIO EL CARRO NO MOSTRAR
   return (
     <>
       <Box bg={"#FAFAFA"}>
         <Flex layerStyle={"xWraper"} py={"15px"} justify={"center"}>
           <Logo width={"276px"} height={"53px"} />
         </Flex>
+        {cart.length}
         <Text pl={"30px"} fontSize={"26px"}>
           Informacion de envio
         </Text>
-
         <Flex
           direction={{ base: "column", desktop: "row" }}
           layerStyle={"xWraper"}

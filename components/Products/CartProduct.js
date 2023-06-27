@@ -2,7 +2,14 @@ import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import CartContext from "../../context/CartContext";
 
-export default function CartProduct({ name, price, images, id, quantity }) {
+export default function CartProduct({
+  name,
+  price,
+  images,
+  id,
+  quantity,
+  stock,
+}) {
   const { RemoveProductFromCart, AddProductToCart } = useContext(CartContext);
 
   return (
@@ -38,6 +45,7 @@ export default function CartProduct({ name, price, images, id, quantity }) {
           onClick={() =>
             AddProductToCart({ name, price, images, id, quantity })
           }
+          isDisabled={quantity >= stock}
         >
           +
         </Button>

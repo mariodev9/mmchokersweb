@@ -148,8 +148,7 @@ export default function ProductPage() {
                     direction={"column"}
                   >
                     <Text fontSize={"30px"} fontWeight={600}>
-                      {productData.name} <br></br>
-                      {productStock}
+                      {productData.name}
                     </Text>
                     <Text fontSize={"20px"}>${productData.price}</Text>
                   </Flex>

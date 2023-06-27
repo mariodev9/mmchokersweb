@@ -26,8 +26,6 @@ export default function CartButton({ subtotal }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
 
-  let message = `Hola compre ${subtotal}`;
-
   return (
     <>
       <Flex justify={"center"} cursor={"pointer"} onClick={onOpen}>

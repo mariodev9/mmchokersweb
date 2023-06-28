@@ -7,7 +7,8 @@ import "swiper/css";
 import SwiperProducts from "../components/Shared/SwiperProducts/SwiperProducts";
 // import { Logo } from "../components/Icons";
 
-export default function Home({ data }) {
+// export default function Home({ data }) {
+export default function Home() {
   const [isLargerThan834] = useMediaQuery("(min-width: 834px)", {
     ssr: true,
     fallback: true, // return false on the server, and re-evaluate on the client side
@@ -20,7 +21,7 @@ export default function Home({ data }) {
         <meta name="MM Chokers website" content="Inicio y productos varios" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Flex
+      <Flex
         direction={"column"}
         justify={"center"}
         align={"center"}
@@ -28,8 +29,8 @@ export default function Home({ data }) {
       >
         <h1 style={{ fontSize: "4rem" }}>Hola! Estamos de refacciones</h1>
         <Logo />
-      </Flex> */}
-      <Layout footer>
+      </Flex>
+      {/* <Layout footer>
         {isLargerThan834 ? <NewDesktopHeader /> : <MobileHeader data={data} />}
         <Flex mt={"65px"} justify={"center"}>
           <Text
@@ -45,14 +46,13 @@ export default function Home({ data }) {
         <Box mt={"5px"}>
           <SwiperProducts products={data.products} />
         </Box>
-      </Layout>
+      </Layout> */}
     </>
   );
 }
 
-export async function getServerSideProps() {
-  // CAMBIAR A URL DE PRODUCCION
-  const res = await fetch(`https://mmchokers.vercel.app/api/populares`);
-  const data = await res.json();
-  return { props: { data } };
-}
+// export async function getServerSideProps() {
+//   const res = await fetch(`http://localhost:3000/api/populares`);
+//   const data = await res.json();
+//   return { props: { data } };
+// }

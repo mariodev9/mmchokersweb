@@ -43,7 +43,7 @@ export default function Home({ data }) {
           </Text>
         </Flex>
         <Box mt={"5px"}>
-          <SwiperProducts products={data.productos} />
+          <SwiperProducts products={data.products} />
         </Box>
       </Layout>
     </>
@@ -51,7 +51,8 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`https://mmchokers.vercel.app/api/populares`);
+  // CAMBIAR A URL DE PRODUCCION
+  const res = await fetch(`http://localhost:3000/api/populares`);
   const data = await res.json();
   return { props: { data } };
 }

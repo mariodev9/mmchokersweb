@@ -11,7 +11,6 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
-import { getProduct } from "../../firebase/services/products";
 import { Layout } from "../../components/Layout/Layout";
 import CartContext from "../../context/CartContext";
 import Image from "next/image";
@@ -41,7 +40,23 @@ export default function ProductPage() {
   const { id } = router.query;
 
   useEffect(() => {
-    id && getProduct(id, setProductData);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/products/${id}`
+        );
+        if (!response.ok) {
+          throw new Error("Error al obtener los datos");
+        }
+        const data = await response.json();
+        setProductData(data);
+        // Procesar los datos obtenidos
+        console.log(data);
+      } catch (error) {
+        console.error("Error en la solicitud fetch:", error);
+      }
+    };
+    id && fetchData();
   }, [id]);
 
   useEffect(() => {

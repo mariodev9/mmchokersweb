@@ -1,44 +1,34 @@
-import {
-  collection,
-  query,
-  getDocs,
-  orderBy,
-  onSnapshot,
-  limit,
-} from "firebase/firestore";
-import { firestore } from "../../../firebase/firebaseConfig";
+import admin from "../../../firebase/firebaseAdminConfig";
 
 export default async function handler(req, res) {
-  let limitProducts = req.query.limit;
+  let { limit } = req.query;
+  const limitNumberProducts = parseInt(limit);
+  const firestoreAdmin = admin.firestore();
 
-  const productsRef = collection(firestore, "products");
-
-  const q = query(
-    productsRef,
-    orderBy("createdAt", "desc"),
-    limit(limitProducts)
-  );
-
-  const querySnap = await getDocs(q);
-
-  // Devuelvo todos los productos con su respectivo Id.
-  onSnapshot(q, (querySnap) => {
-    const { docs } = querySnap;
-    const allProducts = docs.map((doc) => {
-      const data = doc.data();
-      const id = doc.id;
-      return {
-        ...data,
-        id,
-      };
-    });
-
-    // Devuelvo los productos
-    if (allProducts) {
-      res.status(200).json({ productos: allProducts });
-    } else {
-      // No hay productos
-      response.status(404).json({ message: `404 not found` });
-    }
+  return new Promise((resolve, reject) => {
+    firestoreAdmin
+      .collection("products")
+      .orderBy("createdAt", "desc")
+      .limit(limitNumberProducts || 30)
+      .get()
+      .then((items) => {
+        res.status(200).json({
+          products: items.docs.map((doc) => {
+            const data = doc.data();
+            const id = doc.id;
+            return {
+              ...data,
+              id,
+            };
+          }),
+        });
+        res.end();
+        resolve();
+      })
+      .catch((e) => {
+        res.status(405).json(e);
+        res.end();
+        resolve();
+      });
   });
 }

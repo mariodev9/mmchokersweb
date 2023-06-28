@@ -1,12 +1,13 @@
 import mercadopago from "mercadopago";
-import { addDoc, collection } from "firebase/firestore";
-import { firestore } from "../../../firebase/firebaseConfig";
+import admin from "../../../firebase/firebaseAdminConfig";
 
 mercadopago.configure({
   access_token: `${process.env.MERCADOPAGO_ACCES_TOKEN}`,
 });
 
 const handler = async (req, res) => {
+  const firestoreAdmin = admin.firestore();
+
   const { query } = req;
 
   console.log("Se ejecuto");
@@ -19,7 +20,7 @@ const handler = async (req, res) => {
       let payment = await mercadopago.payment.findById(Number(paymentId));
       let paymentStatus = payment.body.status;
       let transactionDetails = payment.body.transaction_details;
-      // description,  date_approved payment_method_id payment_type_id status_detail buyer: llenar data
+
       const firestorePayment = {
         id: payment.body.id,
         status: paymentStatus,
@@ -30,13 +31,17 @@ const handler = async (req, res) => {
           paidAmount: transactionDetails.net_received_amount,
         },
       };
+
+      // console.log("agregar", firestorePayment);
+
       // Guardar en firebase el pago y el estado del pago
-      const docRef = await addDoc(collection(firestore, "sales"), {
-        firestorePayment,
-      });
-      console.log("Body del pago:", payment.body);
-      // console.log(`Estado del pago: ${paymentStatus}`);
-      // console.log("la info ", payment.body.additional_info.payer);
+      try {
+        const salesRef = firestoreAdmin.collection("sales");
+        const docRef = await salesRef.add(firestorePayment);
+        console.log("Producto agregado con ID:", docRef.id);
+      } catch (error) {
+        console.error("Error al agregar el producto:", error);
+      }
     }
   } catch (error) {
     res.send(error);

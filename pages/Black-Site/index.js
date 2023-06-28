@@ -3,7 +3,7 @@ import CategoryPage from "../../components/Layout/CategoryPage";
 import WraperProducts from "../../components/Shared/WraperProducts/WraperProducts";
 import Head from "next/head";
 
-export default function BlackSitePage({ products }) {
+export default function BlackSitePage({ data }) {
   return (
     <>
       <Head>
@@ -11,7 +11,7 @@ export default function BlackSitePage({ products }) {
         <meta name="MM Chokers website" content="Collares" />
       </Head>
       <CategoryPage category={"Black Site"}>
-        <WraperProducts products={products} />
+        <WraperProducts products={data.products} />
       </CategoryPage>
     </>
   );
@@ -26,11 +26,11 @@ export const getServerSideProps = async () => {
     return { notFound: true };
   }
 
-  const products = await productResponse.json();
+  const data = await productResponse.json();
 
   return {
     props: {
-      products,
+      data,
     },
   };
 };

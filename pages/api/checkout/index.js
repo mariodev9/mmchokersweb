@@ -8,7 +8,7 @@ const handler = async (req, res) => {
   if (req.method === "POST") {
     const product = req.body.product;
     const buyerData = req.body.buyerData;
-    // const URL = "https://5875-186-138-187-46.ngrok-free.app";
+    // const URL = "https://d5f3-186-138-187-46.ngrok-free.app";
     const URL = "https://mmchokers.vercel.app";
 
     try {

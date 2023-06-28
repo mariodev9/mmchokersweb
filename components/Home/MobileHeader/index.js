@@ -15,7 +15,7 @@ import Catalog from "../../Shared/Catalog/Catalog";
 import ProductItem from "../../Products/ProductItem";
 
 export const MobileHeader = ({ data }) => {
-  let mitad = Math.floor(data.productos.length / 2);
+  let mitad = Math.floor(data.products.length / 2);
 
   return (
     <>
@@ -61,7 +61,7 @@ export const MobileHeader = ({ data }) => {
       <Catalog />
 
       <Grid layerStyle={"xWraper"} templateColumns={"repeat(2, 2fr)"} gap={3}>
-        {data.productos.map((product) => (
+        {data.products.map((product) => (
           <ProductItem key={product.id} {...product} />
         ))}
       </Grid>

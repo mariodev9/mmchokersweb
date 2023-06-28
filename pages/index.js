@@ -7,8 +7,8 @@ import "swiper/css";
 import SwiperProducts from "../components/Shared/SwiperProducts/SwiperProducts";
 import { Logo } from "../components/Icons";
 
-// export default function Home({ data }) {
-export default function Home() {
+export default function Home({ data }) {
+  // export default function Home() {
   const [isLargerThan834] = useMediaQuery("(min-width: 834px)", {
     ssr: true,
     fallback: true, // return false on the server, and re-evaluate on the client side
@@ -51,8 +51,8 @@ export default function Home() {
   );
 }
 
-// export async function getServerSideProps() {
-//   const res = await fetch(`${process.env.API_URL}/populares`);
-//   const data = await res.json();
-//   return { props: { data } };
-// }
+export async function getServerSideProps() {
+  const res = await fetch(`${process.env.API_URL}/populares`);
+  const data = await res.json();
+  return { props: { data } };
+}

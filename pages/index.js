@@ -5,7 +5,7 @@ import { NewDesktopHeader } from "../components/Home/NewDesktopHeader";
 import { MobileHeader } from "../components/Home/MobileHeader";
 import "swiper/css";
 import SwiperProducts from "../components/Shared/SwiperProducts/SwiperProducts";
-// import { Logo } from "../components/Icons";
+import { Logo } from "../components/Icons";
 
 // export default function Home({ data }) {
 export default function Home() {

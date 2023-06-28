@@ -52,7 +52,7 @@ export default function Home({ data }) {
 
 export async function getServerSideProps() {
   // CAMBIAR A URL DE PRODUCCION
-  const res = await fetch(`${process.env.API_URL}/populares`);
+  const res = await fetch(`https://mmchokers.vercel.app/api/populares`);
   const data = await res.json();
   return { props: { data } };
 }

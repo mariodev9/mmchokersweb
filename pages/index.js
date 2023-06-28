@@ -52,7 +52,7 @@ export default function Home({ data }) {
 
 export async function getServerSideProps() {
   // CAMBIAR A URL DE PRODUCCION
-  const res = await fetch(`http://localhost:3000/api/populares`);
+  const res = await fetch(`${process.env.API_URL}/populares`);
   const data = await res.json();
   return { props: { data } };
 }

@@ -1,8 +1,15 @@
+// import verifyRequestOrigin from "../../../api/verifyRequestOrigin";
 import admin from "../../../firebase/firebaseAdminConfig";
 
 export default async function handler(req, res) {
   const param = req.query.Categoria;
   const firestoreAdmin = admin.firestore();
+
+  // await verifyRequestOrigin(req);
+
+  const requestHost = req.headers.host;
+  const requestProtocol = req.headers["x-forwarded-proto"] || "http";
+  const requestOrigin = `${requestProtocol}://${requestHost}`;
 
   return new Promise((resolve, reject) => {
     firestoreAdmin
@@ -19,6 +26,7 @@ export default async function handler(req, res) {
               id,
             };
           }),
+          requestOrigin,
         });
         res.end();
         resolve();

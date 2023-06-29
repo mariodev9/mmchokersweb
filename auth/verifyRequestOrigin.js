@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 async function verifyRequestOrigin(req) {
   const allowedOrigins = [
     "https://mmchokers.vercel.app",
-    // "http://localhost:3000",
+    "http://localhost:3000",
   ];
 
   const requestHost = req.headers.host;

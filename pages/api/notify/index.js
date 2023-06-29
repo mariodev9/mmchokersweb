@@ -10,8 +10,6 @@ const handler = async (req, res) => {
 
   const { query } = req;
 
-  console.log("Se ejecuto");
-
   const topic = query.topic || query.type;
   // console.log({ query, topic }, "Notificacion!");
   try {
